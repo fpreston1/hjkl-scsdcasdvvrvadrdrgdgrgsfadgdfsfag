@@ -1,3 +1,193 @@
+
+
+Save New Duplicate & Edit Just Text Twitter 
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
@@ -9,7 +199,6 @@ bot.on("ready", async () => {
 
 bot.on("guildMemberAdd", function(member) {
 	member.guild.channels.find("name", "chat").sendMessage(member.toString() + "Welcome to Small Scrims Discord!");
-	member.author.send("Hi, im ScrimBot. I work for Small Scrims Discord, use !help in #bot-commands for assistance!");
     member.addRole(member.guild.roles.find("name", "Scrimmer"));
 });
 
@@ -26,7 +215,7 @@ bot.on("message", async message => {
 
 	
 	if(cmd === `${prefix}region`){
-	message.reply("Type !nae, !naw or !eu - For region to be set!");
+	message.reply("Command not set - Ask Admin to set Region");
 
 	
 
@@ -35,23 +224,6 @@ bot.on("message", async message => {
 }
 
 
-	if(cmd === `${prefix}nae`) {
-	member.addRole(member.guild.roles.find("name", "NAE"));	
-	
-	return;
-}
-
-	if(cmd === `${prefix}naw`) {
-	member.addRole(member.guild.roles.find("name", "NAW"));	
-	
-	return;
-}
-
-	if(cmd === `${prefix}eu`) {
-	member.addRole(member.guild.roles.find("name", "EU"));	
-	
-	return;
-}
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let startEmbed = new Discord.RichEmbed()
@@ -72,7 +244,6 @@ bot.on("message", async message => {
 }
 	
 	
-
 
 	if(cmd === `${prefix}hacked`) {
 	let hackedEmbed = new Discord.RichEmbed()
@@ -116,17 +287,17 @@ bot.on("message", async message => {
 	
 	let helpEmbed = new Discord.RichEmbed()
 	.addField("Help", "You are able to @ Pulse or Flip for help.", true)
-	.addField("Commands", "Here are a list of ScrimBot commands", true)
-    	.addField("Help", "!help - You just did it!", true)
-    	.addField("Ping", "!ping - This is a test command for pinging", true)
-   	.addField("Invite", "!invite - Makes a fresh invite to this discord server", true)
-    	.addField("Starting", "!starting - Administrator command for starting scrims", true)
-    	.addField("Region", "!region - Sets your scrim region", true)
-    	.addField("Report", "!report - Report a player if a rule is disobeyed", false)
+	.addField("Commands", "Here are a list of commands", true)
+    	.addField("Help", "!help - You literally typed it", true)
+    	.addField("Ping", "!ping - Command for pinging", true)
+   	.addField("Invite", "!invite - Makes an invite", true)
+    	.addField("Starting", "!starting - Start Scrims", true)
+    	.addField("Region", "!region - Sets your region", true)
+    	.addField("Report", "!report - Report a player", false)
     	.addField("Info", "!info - Shows your info", false)
     	.addField("BotInfo", "!botinfo - Shows ScrimBot info!", false)
     	.addField("Hacked", "!hacked - Shows important info!", false)
-    	.addField("Clear", "!cls - Clears recent messages (admin+)!", false)
+    	.addField("Clear", "!cls - Clears recent messages", false)
    	.setColor(6812512);
 
 	message.channel.send(helpEmbed);
