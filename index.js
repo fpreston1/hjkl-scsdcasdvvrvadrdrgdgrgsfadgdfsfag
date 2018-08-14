@@ -35,9 +35,11 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}iwon`) {
 	message.reply("won, is this true Pulse? (Y/N)");
-	if(message.content === "y" || message.content === "Y" && message.member.hasPermissions("ADMINISTRATOR"))
+	if(message.content === "${prefix}yes" && message.member.hasPermissions("ADMINISTRATOR")){
 	message.channel.send("Congrats to" + message.author + "for winning!");
 	message.channel.send("Your score will be set on the leaderboards.");
+	
+	}
 	
 	
 	return;
