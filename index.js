@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 
+
 const PREFIX = "!";
 
 var bot = new Discord.Client();
@@ -80,9 +81,7 @@ bot.on("message", function(message) {
 
     
         case "starting":
-    var admins = message.guild.members.array().filter(admin => admin.hasPermission("MANAGE_GUILD", true, true) == 
-true).filter(notBot => notBot.user.bot == false);
-	if(!admins.includes(message.author.id)) return;
+    if(!message.member.hasPermissions())
         var embed2 = new Discord.RichEmbed()
         .addField("ScrimBot", "Scrims starting soon! @everyone", true)
         .setColor(6812512)
