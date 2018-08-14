@@ -35,12 +35,10 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}iwon`) {
 	message.channel.reply("won, is this true Pulse? (Y/N)");
-	if(message.content === "y" || message.content === "Y" && message.member.hasPermissions("ADMINISTRATOR")) {
+	if(message.content === "y" || message.content === "Y" && message.member.hasPermissions("ADMINISTRATOR"))
 	message.channel.send("Congrats to" + message.author + "for winning!");
 	message.channel.send("Your score will be set on the leaderboards.");
-	}else{
-	return;
-	}
+	
 	
 	return;
 }
@@ -117,12 +115,12 @@ bot.on("message", async message => {
 	
 	let helpEmbed = new Discord.RichEmbed()
 	.addField("Help", "You are able to @ Pulse or Flip for help.", true)
-	.addField("Commands", "Here are a list of commands", true)
-    	.addField("Help", "!help - You literally typed it", true)
-    	.addField("Ping", "!ping - Command for pinging", true)
-   	.addField("Invite", "!invite - Makes an invite", true)
-    	.addField("Starting", "!starting - Start Scrims", true)
-    	.addField("Region", "!region - Sets your region", true)
+	.addField("Commands", "Here are a list of commands")
+    	.addField("Help", "!help - You literally typed it")
+    	.addField("Ping", "!ping - Command for pinging")
+   	.addField("Invite", "!invite - Makes an invite")
+    	.addField("Starting", "!starting - Start Scrims")
+    	.addField("Region", "!region - Sets your region")
     	.addField("Report", "!report - Report a player")
     	.addField("Info", "!info - Shows your info")
     	.addField("BotInfo", "!botinfo - Shows ScrimBot info!")
