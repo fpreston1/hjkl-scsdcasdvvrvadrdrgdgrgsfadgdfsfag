@@ -34,7 +34,7 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}iwon`) {
-	message.channel.reply("won, is this true Pulse? (Y/N)");
+	message.reply("won, is this true Pulse? (Y/N)");
 	if(message.content === "y" || message.content === "Y" && message.member.hasPermissions("ADMINISTRATOR"))
 	message.channel.send("Congrats to" + message.author + "for winning!");
 	message.channel.send("Your score will be set on the leaderboards.");
@@ -67,6 +67,8 @@ bot.on("message", async message => {
 	let endEmbed = new Discord.RichEmbed()
 	.addField("Game Info", "Games have now ended, please type !iWon if you Won your Match.")
 	.setColor(6812512);
+
+	message.channel.send(endEmbed);
 	
 	return;
 }
@@ -101,8 +103,7 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}invite`) {
 	let inviteEmbed = new Discord.RichEmbed()
-	.addField("Invite Link", "Heres a fresh invite link to this discord server! ", true)
-	.addField("Link", " https://discord.gg/ggPntHV", true)
+	.addField("Invite Link", "https://discord.gg/ggPntHV")
 	.setColor(6812512);
 	
 	message.channel.send(inviteEmbed);
@@ -114,7 +115,7 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}help`) {
 	
 	let helpEmbed = new Discord.RichEmbed()
-	.addField("Help", "You are able to @ Pulse or Flip for help.", true)
+	.addField("Help", "You are able to @ Pulse or Flip for help.")
 	.addField("Commands", "Here are a list of commands")
     	.addField("Help", "!help - You literally typed it")
     	.addField("Ping", "!ping - Command for pinging")
