@@ -9,6 +9,7 @@ bot.on("ready", async () => {
 
 bot.on("guildMemberAdd", function(member) {
 	member.guild.channels.find("name", "chat").sendMessage(member.toString() + "Welcome to Small Scrims Discord!");
+	member.author.send("Hi, im ScrimBot. I work for Small Scrims Discord, use !help in #bot-commands for assistance!");
     member.addRole(member.guild.roles.find("name", "Scrimmer"));
 });
 
@@ -25,12 +26,47 @@ bot.on("message", async message => {
 
 	
 	if(cmd === `${prefix}region`){
-	message.channel.send("NA-East - Press Eggplant - NA-West - Press Clap Emoji - EU - Press Heart Emoji")
-	.then(m => m.react(":eggplant:" + ":clap:" + ":heart:"))
-	.catch(console.error("Failed"));
+	message.reply("Type !nae, !naw or !eu - For region to be set!");
 
 	
 
+	
+	return;
+}
+
+
+	if(cmd === `${prefix}nae`) {
+	member.addRole(member.guild.roles.find("name", "NAE"));	
+	
+	return;
+}
+
+	if(cmd === `${prefix}naw`) {
+	member.addRole(member.guild.roles.find("name", "NAW"));	
+	
+	return;
+}
+
+	if(cmd === `${prefix}eu`) {
+	member.addRole(member.guild.roles.find("name", "EU"));	
+	
+	return;
+}
+
+	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let startEmbed = new Discord.RichEmbed()
+	.addField("Bot", "Type your last 3 digits in chat now!")
+	.setColor(6812512);
+	message.channel.send(startEmbed);
+	message.delete().catch(O_o=>{});
+
+	
+	return;
+}
+
+	if(cmd === `${prefix}cls` && message.member.hasPermissions("ADMINISTRATOR")) {
+	message.channel.bulkDelete(10);
+	message.channel.send(`Cleared recent messages.`).then(msg => msg.delete(1000));
 	
 	return;
 }
@@ -52,7 +88,7 @@ bot.on("message", async message => {
 
 	
 
-	if(cmd === `${prefix}starting` && message.member.hasPermissions()) {
+	if(cmd === `${prefix}starting` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let startingEmbed = new Discord.RichEmbed()
 	.addField("ScrimBot", "Scrims starting soon! @everyone")
 	.setColor(6812512);
@@ -66,8 +102,8 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}invite`) {
 	let inviteEmbed = new Discord.RichEmbed()
-	.addField("Invite Link", "Heres a fresh invite link to this discord server!", true)
-	.addField("Link", "https://discord.gg/ggPntHV", true)
+	.addField("Invite Link", "Heres a fresh invite link to this discord server! ", true)
+	.addField("Link", " https://discord.gg/ggPntHV", true)
 	.setColor(6812512);
 	
 	message.channel.send(inviteEmbed);
@@ -79,16 +115,18 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}help`) {
 	
 	let helpEmbed = new Discord.RichEmbed()
-	.addField("Help", "You are able to @ Pulse or Flip for help, you can also Direct Message them", true)
-	.addField("Commands", "Here are a list of ScrimBot commands", false)
-    	.addField("Help", "!help", false)
-    	.addField("Ping", "!ping", false)
-   	.addField("Invite", "!invite", false)
-    	.addField("Starting", "!starting", false)
-    	.addField("Region", "!region", false)
-    	.addField("Report", "!report", false)
-    	.addField("Info", "!info", false)
-    	.addField("BotInfo", "!botinfo", false)
+	.addField("Help", "You are able to @ Pulse or Flip for help.", true)
+	.addField("Commands", "Here are a list of ScrimBot commands", true)
+    	.addField("Help", "!help - You just did it!", true)
+    	.addField("Ping", "!ping - This is a test command for pinging", true)
+   	.addField("Invite", "!invite - Makes a fresh invite to this discord server", true)
+    	.addField("Starting", "!starting - Administrator command for starting scrims", true)
+    	.addField("Region", "!region - Sets your scrim region", true)
+    	.addField("Report", "!report - Report a player if a rule is disobeyed", false)
+    	.addField("Info", "!info - Shows your info", false)
+    	.addField("BotInfo", "!botinfo - Shows ScrimBot info!", false)
+    	.addField("Hacked", "!hacked - Shows important info!", false)
+    	.addField("Clear", "!cls - Clears recent messages (admin+)!", false)
    	.setColor(6812512);
 
 	message.channel.send(helpEmbed);
@@ -119,6 +157,7 @@ bot.on("message", async message => {
 	if(!reportschannel) return message.channel.send("Couldn't find reports channel");
 	
 	message.delete().catch(O_o=>{});
+	message.reply("Your report has been sent!");
 	reportschannel.send(reportEmbed);
 
 
@@ -133,12 +172,12 @@ bot.on("message", async message => {
 
 	let sicon = message.guild.iconURL;
 	let serverembed = new Discord.RichEmbed()
-	.setDescription("Server Information")
 	.setColor(6812512)
 	.setThumbnail(sicon)
-	.addField("Server Name", message.guild.name)
-	.addField("Created On", message.guild.createdAt)
-	.addField("You joined", message.member.joinedAt);
+	.addField("Server Name", message.guild.name, true)
+	.addField("Created On", message.guild.createdAt, true)
+	.addField("You joined", message.member.joinedAt, true)
+	.addField("You", message.reply("BOOM!"), false);
 
 
 
