@@ -35,12 +35,19 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}iwon`) {
 	message.reply("won, is this true Pulse? (Y/N)");
-	if(message.content === "${prefix}yes" && message.member.hasPermissions("ADMINISTRATOR")){
-	message.channel.send("Congrats to" + message.author + "for winning!");
-	message.channel.send("Your score will be set on the leaderboards.");
 	
-	}
 	
+	return;
+}
+
+	if(cmd === `${prefix}yes` && message.member.hasPermissions("ADMINISTRATOR")){
+	message.channel.send("Congrats on the win! Your stats will be displayed on the leaderboards!");
+	
+	return;
+}
+
+	if(cmd === `${prefix}no` && message.member.hasPermissions("ADMINISTRATOR")) {
+	message.channel.send("Please do not lie about wins, this will get you banned.");
 	
 	return;
 }
