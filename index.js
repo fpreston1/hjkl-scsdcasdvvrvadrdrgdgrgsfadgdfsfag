@@ -95,7 +95,7 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}report`){
 	
-	let rUser = message.guild.member(message.mentions.users.first) || message.guild.members.get(args[0]);
+	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	if(!rUser) return message.channel.send("Couldn't find the specified user.");
 	
 	let reason = args.join(" ").slice(22);
@@ -118,7 +118,6 @@ bot.on("message", async message => {
 
 	return;
 }
-
 
 
 
@@ -152,9 +151,11 @@ bot.on("message", async message => {
 		.addField("Created On", bot.user.createdAt);
 
 		return message.channel.send(botembed);
-};
+
+	}
+});
 
 
 
 
-bot.login(process.env.BOT_TOKEN);})
+bot.login(process.env.BOT_TOKEN);
