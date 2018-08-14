@@ -87,7 +87,7 @@ bot.on("message", function(message) {
         .setColor("6812512")
         message.channel.sendEmbed(embed2);
 	var embed3 = new Discord.RichEmbed()
-	 .addField("Scrims starting in...", ${args[0]}, true)
+	 .addField("Scrims starting in...", `${args[0]}`, true)
 	 .setColor("6812512");
         break;
 
