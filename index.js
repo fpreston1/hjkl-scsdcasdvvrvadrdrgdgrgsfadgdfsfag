@@ -65,9 +65,7 @@ bot.on("message", function(message) {
         .addField("ScrimBot", "Scrims starting soon! @everyone", true)
         .setColor("6812512")
         message.channel.sendEmbed(embed2);
-	var embed3 = new Discord.RichEmbed()
-	 .addField("Scrims starting in...", `${args[0]}`, true)
-	 .setColor("6812512");
+	
         break;
 
         default:
