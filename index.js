@@ -103,14 +103,14 @@ bot.on("message", async message => {
    	.addField("Invite", "!invite - Makes an invite", true)
     	.addField("Starting", "!starting - Start Scrims", true)
     	.addField("Region", "!region - Sets your region", true)
-    	.addField("Report", "!report - Report a player", false)
-    	.addField("Info", "!info - Shows your info", false)
-    	.addField("BotInfo", "!botinfo - Shows ScrimBot info!", false)
-    	.addField("Hacked", "!hacked - Shows important info!", false)
-    	.addField("Clear", "!cls - Clears recent messages", false)
+    	.addField("Report", "!report - Report a player")
+    	.addField("Info", "!info - Shows your info")
+    	.addField("BotInfo", "!botinfo - Shows ScrimBot info!")
+    	.addField("Hacked", "!hacked - Shows important info!")
+    	.addField("Clear", "!cls - Clears recent messages")
    	.setColor(6812512);
 
-	message.channel.send(helpEmbed);
+	message.channel.sendEmbed(helpEmbed);
 	
 	return;
 }
