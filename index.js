@@ -41,17 +41,17 @@ bot.on("message", function(message) {
     var embed = new Discord.RichEmbed()
     .addField("Help", "You are able to @ Pulse or Flip for help, or DM them.", true)
     .addField("Commands", "Here are a list of ScrimBot commands", true)
-    .addField(" ", "!help", true)
-    .addField(" ", "!ping", true)
-    .addField(" ", "!starting", true)
-    .addField("More coming soon!")
+    .addField("Help", "!help", true)
+    .addField("Ping", "!ping", true)
+    .addField("Starting", "!starting", true)
+   
     .setColor(6812512)
     message.channel.sendEmbed(embed);
         break;
 
     
         case "starting":
-    if(!message.member.hasPermissions())
+    if(message.member.hasPermissions())
         var embed2 = new Discord.RichEmbed()
         .addField("ScrimBot", "Scrims starting soon! @everyone", true)
         .setColor(6812512)
