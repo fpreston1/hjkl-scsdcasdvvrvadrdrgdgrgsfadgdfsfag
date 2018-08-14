@@ -33,6 +33,18 @@ bot.on("message", async message => {
 	return;
 }
 
+	if(cmd === `${prefix}iwon`) {
+	message.channel.reply("won, is this true Pulse? (Y/N)");
+	if(message.content === "y" || message.content === "Y" && message.member.hasPermissions("ADMINISTRATOR")) {
+	message.channel.send("Congrats to" + message.author + "for winning!");
+	message.channel.send("Your score will be set on the leaderboards.");
+	}else{
+	return;
+	}
+	
+	return;
+}
+
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
@@ -49,6 +61,14 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}cls` && message.member.hasPermissions("ADMINISTRATOR")) {
 	message.channel.bulkDelete(10);
 	message.channel.send(`Cleared recent messages.`).then(msg => msg.delete(1000));
+	
+	return;
+}
+
+	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let endEmbed = new Discord.RichEmbed()
+	.addField("Game Info", "Games have now ended, please type !iWon if you Won your Match.")
+	.setColor(6812512);
 	
 	return;
 }
@@ -96,13 +116,13 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}help`) {
 	
 	let helpEmbed = new Discord.RichEmbed()
-	.addField("Help", "You are able to @ Pulse or Flip for help.")
-	.addField("Commands", "Here are a list of commands")
-    	.addField("Help", "!help - You literally typed it")
-    	.addField("Ping", "!ping - Command for pinging")
-   	.addField("Invite", "!invite - Makes an invite")
-    	.addField("Starting", "!starting - Start Scrims")
-    	.addField("Region", "!region - Sets your region")
+	.addField("Help", "You are able to @ Pulse or Flip for help.", true)
+	.addField("Commands", "Here are a list of commands", true)
+    	.addField("Help", "!help - You literally typed it", true)
+    	.addField("Ping", "!ping - Command for pinging", true)
+   	.addField("Invite", "!invite - Makes an invite", true)
+    	.addField("Starting", "!starting - Start Scrims", true)
+    	.addField("Region", "!region - Sets your region", true)
     	.addField("Report", "!report - Report a player")
     	.addField("Info", "!info - Shows your info")
     	.addField("BotInfo", "!botinfo - Shows ScrimBot info!")
