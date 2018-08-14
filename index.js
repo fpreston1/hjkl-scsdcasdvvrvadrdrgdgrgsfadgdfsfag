@@ -26,8 +26,10 @@ bot.on("message", async message => {
 	
 	if(cmd === `${prefix}region`){
 	message.channel.send("NA-East - Press Eggplant - NA-West - Press Clap Emoji - EU - Press Heart Emoji")
-	.then(() => message.react(":eggplant:" + ":clap:" + ":heart:"))
-	.catch(() => console.error("Failed"));
+	.then(m => m.react(":eggplant:" + ":clap:" + ":heart:"))
+	.catch(console.error("Failed"));
+
+	
 
 	
 	return;
@@ -39,9 +41,9 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}hacked`) {
 	let hackedEmbed = new Discord.RichEmbed()
 	.addField("Hacked", "The reason the previous discord was hacked is because Pulse is an idiot and leaked the token :cry:")
-	.setColor("6812512");
+	.setColor(6812512);
 
-	message.channel.sendEmbed(hackedEmbed);
+	message.channel.send(hackedEmbed);
 
 	return;
 }
@@ -53,9 +55,9 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}starting` && message.member.hasPermissions()) {
 	let startingEmbed = new Discord.RichEmbed()
 	.addField("ScrimBot", "Scrims starting soon! @everyone")
-	.setColor("6812512");
+	.setColor(6812512);
 
-	message.channel.sendEmbed(startingEmbed);
+	message.channel.send(startingEmbed);
 	
 	return;
 }
@@ -66,9 +68,9 @@ bot.on("message", async message => {
 	let inviteEmbed = new Discord.RichEmbed()
 	.addField("Invite Link", "Heres a fresh invite link to this discord server!", true)
 	.addField("Link", "https://discord.gg/ggPntHV", true)
-	.setColor("6812512");
+	.setColor(6812512);
 	
-	message.channel.sendEmbed(inviteEmbed);
+	message.channel.send(inviteEmbed);
 	
 	
 	return;
@@ -83,9 +85,13 @@ bot.on("message", async message => {
     	.addField("Ping", "!ping", false)
    	.addField("Invite", "!invite", false)
     	.addField("Starting", "!starting", false)
+    	.addField("Region", "!region", false)
+    	.addField("Report", "!report", false)
+    	.addField("Info", "!info", false)
+    	.addField("BotInfo", "!botinfo", false)
    	.setColor(6812512);
 
-	message.channel.sendEmbed(helpEmbed);
+	message.channel.send(helpEmbed);
 	
 	return;
 }
@@ -102,7 +108,7 @@ bot.on("message", async message => {
 
 	let reportEmbed = new Discord.RichEmbed()
 	.setDescription("Reports")
-	.setColor("6812512")
+	.setColor(6812512)
 	.addField("Reported User", `${rUser} with ID: ${rUser.id}`)
 	.addField("Reported By", `${message.author} with ID: ${message.author.id}`)
 	.addField("Channel", message.channel)
@@ -128,7 +134,7 @@ bot.on("message", async message => {
 	let sicon = message.guild.iconURL;
 	let serverembed = new Discord.RichEmbed()
 	.setDescription("Server Information")
-	.setColor("6812512")
+	.setColor(6812512)
 	.setThumbnail(sicon)
 	.addField("Server Name", message.guild.name)
 	.addField("Created On", message.guild.createdAt)
@@ -145,7 +151,7 @@ bot.on("message", async message => {
 		let bicon = bot.user.displayAvatarURL;
 		let botembed = new Discord.RichEmbed()
 		.setDescription("Bot Information")
-		.setColor("6812512")
+		.setColor(6812512)
 		.setThumbnail(bicon)
 		.addField("Bot Name", bot.user.username)
 		.addField("Created On", bot.user.createdAt);
