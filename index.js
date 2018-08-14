@@ -49,23 +49,22 @@ bot.on("message", function(message) {
     message.channel.sendEmbed(embed);
         break;
 
-	
 
 	case "invite":
-	let memeEmbed = new Discord.RichEmbed()
+	var memeEmbed = new Discord.RichEmbed()
 	.addField("Invite Link", "Heres a fresh invite link to this discord server!", true)
 	.addField("Link", "https://discord.gg/ggPntHV", true)
 	setColor("6812512");
+	message.channel.sendEmbed(memeEmbed);
 	break;
 
     
         case "starting":
-    if(message.member.hasPermissions())
+    if(!message.member.hasPermissions())
         var embed2 = new Discord.RichEmbed()
         .addField("ScrimBot", "Scrims starting soon! @everyone", true)
         .setColor("6812512")
         message.channel.sendEmbed(embed2);
-	
         break;
 
         default:
