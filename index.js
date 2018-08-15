@@ -114,24 +114,28 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
+
+	message.channel.bulkDelete(10);
+	message.channel.send(`Scrims Ended....`).then(msg => msg.delete(1000));
 	let endEmbed = new Discord.RichEmbed()
 	.addField("Game Info", "Games have now ended, please type !iWon if you Won your Match.")
 	.setColor(6812512);
 
 	message.channel.send(endEmbed);
-	
+
+		
 	return;
 }
 
 	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
-	message.delete();
 	let sayEmbed = new Discord.RichEmbed()
-	.addField("Game Info", args[0])
-	.addField("", args[1])
+	.addField("Game Info", args[2])
+	.addField("\u200b", args[1])
 	.setColor(6812512);
 
 	message.channel.send(sayEmbed);
-	
+	message.delete
+	.catch(console.error);
 	
 	return;
 }
@@ -220,6 +224,7 @@ bot.on("message", async message => {
 	.addField("Channel", message.channel)
 	.addField("Time", message.createdAt)
 	.addField("Reason", reason);
+
 
 	let reportschannel = message.guild.channels.find(`name`, "reports");
 	if(!reportschannel) return message.channel.send("Couldn't find reports channel");
