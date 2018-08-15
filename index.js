@@ -13,6 +13,46 @@ bot.on("guildMemberAdd", function(member) {
 });
 
 
+const Fortnite = require("fortnite");
+const stats = new Fortnite(process.env.TRN);
+
+exports.run = (client, message, args, tools) => {
+	let platform;
+	let username;
+
+	if(!["pc", "xbl", "psn"].includes(args[0])) return message.channel.send("**Please include platform!: `!fortnite <platform> <name>`**");
+	if(!args[1]) return message.channel.send("**Please include the username: `!fortnite [ pc | xbl | psn ] <name>`**");
+
+	platform = args.shift();
+	username = args.join(" ");
+
+	stats.getInfo(username, platform).then( data => {
+	
+
+	const statEmbed = new Discord.RichEmbed()
+	.setColor(6812512)
+	.setTitle(`Stats for ${data.username}`)
+	.setDescription(`**Top Placement**\n\n**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top 6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimestats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value*}*`, true)
+	.addField("Total Score", data.lifetimeStats[6].value, true)
+	.addField("Matches Played", data.lifetimeStats[7].value, true)
+	.addField("Wins", data.lifetimeStats[8].value, true)
+	.addField("Win Percentage", data.lifetimeStats[9].value, true)
+	.addField("Kills", data.lifetimeStats[10].value, true)
+	.addField("K/D", data.lifetimeStats[11].value, true)
+	
+	message.channel.send(statEmbed);
+	
+	
+})
+
+	.catch(error => {
+
+	message.channel.send("Username not found!");
+})
+	
+}
+
+
 
 bot.on("message", async message => {
 	if(message.author.bot) return;
