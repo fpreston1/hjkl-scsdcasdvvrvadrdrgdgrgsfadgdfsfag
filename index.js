@@ -130,28 +130,18 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
 
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
-	if(!${args[1]}) args.join(" "));
-	if(!${args[2]}) args.join(" "));
-	if(!${args[3]}) args.join(" "));
-	if(!${args[4]}) args.join(" "));
-	if(!${args[5]}) args.join(" "));
-	if(!${args[6]}) args.join(" "));
-	if(!${args[7]}) args.join(" "));
-	if(!${args[8]}) args.join(" "));
-	if(!${args[9]}) args.join(" "));
-	if(!${args[10]}) args.join(" "));
 	let sayEmbed = new Discord.RichEmbed()
 	.addField("Game Info", `Code: ${args[0]}`)
-	.addField("\u200b", args[1])
-	.addField("\u200b", args[2])
-	.addField("\u200b", args[3])
-	.addField("\u200b", args[4])
-	.addField("\u200b", args[5])
-	.addField("\u200b", args[6])
-	.addField("\u200b", args[7])
-	.addField("\u200b", args[8])
-	.addField("\u200b", args[9])
-	.addField("\u200b", args[10])
+	.addField("\u200b", args[1] || " ")
+	.addField("\u200b", args[2] || " ")
+	.addField("\u200b", args[3] || " ")
+	.addField("\u200b", args[4] || " ")
+	.addField("\u200b", args[5] || " ")
+	.addField("\u200b", args[6] || " ")
+	.addField("\u200b", args[7] || " ")
+	.addField("\u200b", args[8] || " ")
+	.addField("\u200b", args[9] || " ")
+	.addField("\u200b", args[10] || " ")
 	.setColor(6812512);
 
 	last3chan.send(sayEmbed);
