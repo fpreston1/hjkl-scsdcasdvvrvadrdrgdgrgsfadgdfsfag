@@ -16,7 +16,31 @@ bot.on("guildMemberAdd", function(member) {
 const Fortnite = require("fortnite");
 const stats = new Fortnite(process.env.TRN);
 
-exports.run = (client, message, args, tools) => {
+
+
+
+
+bot.on("message", async message => {
+	if(message.author.bot) return;
+	if(message.channel.type === "dm") return;
+
+	let prefix = "!";
+	let messageArray = message.content.split(" ");
+	let cmd = messageArray[0];
+	let args = messageArray.slice(1);
+
+	
+	if(cmd === `${prefix}region`){
+	message.reply("Command not set - Ask Admin to set Region");
+
+	
+
+	
+	return;
+}
+
+	if(cmd === `${prefix}fortnite`) {
+	exports.run = (client, message, args, tools) => {
 	let platform;
 	let username;
 
@@ -53,23 +77,6 @@ exports.run = (client, message, args, tools) => {
 }
 
 
-
-bot.on("message", async message => {
-	if(message.author.bot) return;
-	if(message.channel.type === "dm") return;
-
-	let prefix = "!";
-	let messageArray = message.content.split(" ");
-	let cmd = messageArray[0];
-	let args = messageArray.slice(1);
-
-	
-	if(cmd === `${prefix}region`){
-	message.reply("Command not set - Ask Admin to set Region");
-
-	
-
-	
 	return;
 }
 
