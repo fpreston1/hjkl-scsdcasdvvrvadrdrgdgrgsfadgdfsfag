@@ -83,10 +83,10 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
-	let args = message.content.slice(prefix.length).trim().split(" ");
-	let say = args.join(" ");
+	let say = args.join(' ');
 	message.delete();
 	message.channel.send(say);
+	
 	
 	return;
 }
@@ -133,22 +133,22 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}help`) {
 	
 	let helpEmbed = new Discord.RichEmbed()
-	.addField("Help", "You can @ Pulse or Flip for help.", true)
-	.addField("Commands", "List of User Commands", true)
-    	.addField("!help", "Help Command", true)
-    	.addField("!ping", "Ping Command", true)
-   	.addField("!invite", "Makes Invite", true)
-    	.addField("!report", "Report player", true)
-    	.addField("!info", "Show Info", true)
-    	.addField("!botinfo", "Show Bot Info", true)
-    	.addField("!hacked", "Old Discord", true)
-    	.addField("!region", "Sets ur region", true)
-	.addField("Other Commands", "Admin Commands")
+	.addField("Commands", "User Commands", true)
+	.addField("Other Commands", "Admin Commands", true)
+    	.addField("!help", "Help Command")
+    	.addField("!ping", "Ping Command")
+   	.addField("!invite", "Makes Invite")
+    	.addField("!report", "Report player")
+    	.addField("!info", "Show Info")
+    	.addField("!botinfo", "Show Bot Info")
+    	.addField("!hacked", "Old Discord")
+    	.addField("!region", "Sets ur region")
     	.addField("!starting", "Starting Scrims")
     	.addField("!cls", "Clears messages(10)")
     	.addField("!start", "Start Scrims")
     	.addField("!end", "End Scrims")
     	.addField("!say", "Control Bot")
+	.setFooter("You executed the !help command")
    	.setColor(6812512);
 
 	message.channel.sendEmbed(helpEmbed);
