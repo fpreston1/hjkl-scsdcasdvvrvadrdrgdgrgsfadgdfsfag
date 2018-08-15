@@ -94,6 +94,7 @@ bot.on("message", async message => {
 
 
 
+
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let startEmbed = new Discord.RichEmbed()
 	.addField("Bot", "Type your last 3 digits in chat now!")
@@ -123,9 +124,13 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
-	const sayMessage = args.join(" ");
-	message.delete().catch(O_o=>{});
-	message.channel.send(sayMessage);
+	message.delete();
+	let sayEmbed = new Discord.RichEmbed()
+	.addField("Game Info", args[0])
+	.addField("", args[1])
+	.setColor(6812512);
+
+	message.channel.send(sayEmbed);
 	
 	
 	return;
