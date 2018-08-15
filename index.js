@@ -134,7 +134,7 @@ bot.on("message", async message => {
 	
 	let helpEmbed = new Discord.RichEmbed()
 	.addField("Commands", "User Commands", true)
-	.addField("Other Commands", "Admin Commands", true)
+	.addField("Other", "Commands", true)
     	.addField("!help", "Help Command", true)
   	.addField("!starting", "Starting Scrims", true)
     	.addField("!ping", "Ping Command", true)
