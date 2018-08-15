@@ -134,7 +134,7 @@ bot.on("message", async message => {
 	.setColor(6812512);
 
 	message.channel.send(sayEmbed);
-	message.delete
+	message.delete()
 	.catch(console.error);
 	
 	return;
