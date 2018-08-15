@@ -129,7 +129,7 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let sayEmbed = new Discord.RichEmbed()
-	.addField("Game Info", args[2])
+	.addField("Game Info", args[0])
 	.addField("\u200b", args[1])
 	.setColor(6812512);
 
