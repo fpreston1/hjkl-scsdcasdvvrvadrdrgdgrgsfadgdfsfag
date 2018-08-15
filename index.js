@@ -81,6 +81,15 @@ bot.on("message", async message => {
 	
 	return;
 }
+
+	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let args = message.content.slice(prefix.length).trim().split(" ");
+	let say = args.join(" ");
+	message.delete();
+	message.channel.send(say);
+	
+	return;
+}
 	
 	
 
@@ -124,18 +133,22 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}help`) {
 	
 	let helpEmbed = new Discord.RichEmbed()
-	.addField("Help", "You are able to @ Pulse or Flip for help.")
-	.addField("Commands", "Here are a list of commands")
-    	.addField("Help", "!help - You literally typed it")
-    	.addField("Ping", "!ping - Command for pinging")
-   	.addField("Invite", "!invite - Makes an invite")
-    	.addField("Starting", "!starting - Start Scrims")
-    	.addField("Region", "!region - Sets your region")
-    	.addField("Report", "!report - Report a player")
-    	.addField("Info", "!info - Shows your info")
-    	.addField("BotInfo", "!botinfo - Shows ScrimBot info!")
-    	.addField("Hacked", "!hacked - Shows important info!")
-    	.addField("Clear", "!cls - Clears recent messages")
+	.addField("Help", "You can @ Pulse or Flip for help.", true)
+	.addField("Commands", "List of User Commands", true)
+    	.addField("!help", "Help Command", true)
+    	.addField("!ping", "Ping Command", true)
+   	.addField("!invite", "Makes Invite", true)
+    	.addField("!report", "Report player", true)
+    	.addField("!info", "Show Info", true)
+    	.addField("!botinfo", "Show Bot Info", true)
+    	.addField("!hacked", "Old Discord", true)
+    	.addField("!region", "Sets ur region", true)
+	.addField("Other Commands", "Admin Commands")
+    	.addField("!starting", "Starting Scrims")
+    	.addField("!cls", "Clears messages(10)")
+    	.addField("!start", "Start Scrims")
+    	.addField("!end", "End Scrims")
+    	.addField("!say", "Control Bot")
    	.setColor(6812512);
 
 	message.channel.sendEmbed(helpEmbed);
@@ -186,7 +199,7 @@ bot.on("message", async message => {
 	.addField("Server Name", message.guild.name, true)
 	.addField("Created On", message.guild.createdAt, true)
 	.addField("You joined", message.member.joinedAt, true)
-	.addField("You", message.reply("BOOM!"), false);
+	.addField("You", message.author, false);
 
 
 
