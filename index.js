@@ -131,6 +131,15 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.addField("Game Info", `Code: ${args[0]}`)
 	.addField("\u200b", args[1])
+	.addField("\u200b", args[2])
+	.addField("\u200b", args[3])
+	.addField("\u200b", args[4])
+	.addField("\u200b", args[5])
+	.addField("\u200b", args[6])
+	.addField("\u200b", args[7])
+	.addField("\u200b", args[8])
+	.addField("\u200b", args[9])
+	.addField("\u200b", args[10])
 	.setColor(6812512);
 
 	message.channel.send(sayEmbed);
