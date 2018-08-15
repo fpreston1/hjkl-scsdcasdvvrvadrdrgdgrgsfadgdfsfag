@@ -13,12 +13,6 @@ bot.on("guildMemberAdd", function(member) {
 });
 
 
-const Fortnite = require("fortnite");
-const stats = new Fortnite(process.env.TRN);
-
-
-
-
 
 bot.on("message", async message => {
 	if(message.author.bot) return;
@@ -40,43 +34,42 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}fortnite`) {
-	exports.run = (client, message, args, tools) => {
-	let platform;
-	let username;
-
-	if(!["pc", "xbl", "psn"].includes(args[0])) return message.channel.send("**Please include platform!: `!fortnite <platform> <name>`**");
-	if(!args[1]) return message.channel.send("**Please include the username: `!fortnite [ pc | xbl | psn ] <name>`**");
-
-	platform = args.shift();
-	username = args.join(" ");
-
-	stats.getInfo(username, platform).then( data => {
+	message.reply("BOOM!");
+	const apikey = require(process.env.APIKEY);
+	const fortnite = require("fortnite");
+	const ft = new Fortnite(process.env.APIKEY);
 	
+	let username = args[0]
+	let platform = args[1] || "pc";
 
-	const statEmbed = new Discord.RichEmbed()
-	.setColor(6812512)
-	.setTitle(`Stats for ${data.username}`)
-	.setDescription(`**Top Placement**\n\n**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top 6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimestats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value*}*`, true)
-	.addField("Total Score", data.lifetimeStats[6].value, true)
-	.addField("Matches Played", data.lifetimeStats[7].value, true)
-	.addField("Wins", data.lifetimeStats[8].value, true)
-	.addField("Win Percentage", data.lifetimeStats[9].value, true)
-	.addField("Kills", data.lifetimeStats[10].value, true)
-	.addField("K/D", data.lifetimeStats[11].value, true)
+	let data = ft.getInfo(username, platform).then(data => {
+
+		let stats = data.lifetimeStats;
+
+		let kills = stats.find(s => s.stat == "kills");
+		let wins = stats.find(s => s.stat == "wins");
+		let kd = stats.find(s => s.stat == "kd");
+		let mPlayed = stats.find(s => s.stat == "matchesPlayed");
+		let tPlayed = stats.find(s => s.stat == "timePlayed");
+
+		let fortniteEmbed = new Discord.RichEmbed()
+		.setTitle("Fortnite Stats")
+		.setAuthor(data.username)
+		.setColor()
+		.addField("Kills", kills.value, true)
+		.addField("Wins", wins.value, true)
+		.addField("KD", kd.value, true)
+		.addField("Matches Played", mPlayed.value, true)
+		.addField("Time Played", tPlayed.value, true);
+
+		message.channel.send(fortniteEmbed);
+
 	
-	message.channel.send(statEmbed);
+	}).catch(e => {
+	console.log(e);
+	message.channel.send("Couldnt find user");
+	});
 	
-	
-})
-
-	.catch(error => {
-
-	message.channel.send("Username not found!");
-})
-	
-}
-
-
 	return;
 }
 
@@ -195,6 +188,7 @@ bot.on("message", async message => {
     	.addField("!botinfo", "Show Bot Info")
     	.addField("!hacked", "Old Discord")
     	.addField("!region", "Sets ur region")
+    	.addField("!fortnite", "Tracks a user")
 	.setFooter("You executed the !help command with ScrimBot!")
    	.setColor(6812512);
 
