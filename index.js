@@ -74,7 +74,7 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}iwon`) {
-	message.reply("won, is this true Pulse? (Y/N)");
+	message.reply("won, is this true? (Y/N)");
 	
 	
 	return;
@@ -113,8 +113,10 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
+	boolean lockedchat = true;
 
+	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
+	lockedchat = false;
 	message.channel.bulkDelete(10);
 	message.channel.send(`Scrims Ended....`).then(msg => msg.delete(1000));
 	let endEmbed = new Discord.RichEmbed()
@@ -127,23 +129,95 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
+	
+
+	if(cmd === `${prefix}last3` && message.member.hasPermissions("ADMINISTRATOR")) {
 
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
-	if(!args[1]) return message.channel.send("Error.");
 	let sayEmbed = new Discord.RichEmbed()
-	.addField("Game Info", `Code: ${args[0]}`)
-	.addField("\u200b", args[1])
+	.setTitle("Game Info")
+	.addField(`ID: ${args[0]}`, args[1] || " ")
+	.addField("\u200b", args[2] || "")
+	.addField("\u200b", args[3] || "")
+	.addField("\u200b", args[4] || "")
+	.addField("\u200b", args[5] || "")
+	.addField("\u200b", args[6] || "")
+	.addField("\u200b", args[7] || "")
+	.addField("\u200b", args[8] || "")
+	.addField("\u200b", args[9] || "")
+	.addField("\u200b", args[10] || "")
+	.addField("\u200b", args[11] || "")
+	.setFooter("Scrims hosted by ${message.author}")
 	.setColor(6812512);
 
 	last3chan.send(sayEmbed);
 	message.delete()
 	.catch(console.error);
+
+	last3chan.send("Chat is now locked...");
+
+	
+	if(message.channel.id === "478949150340153358") {
+		if(isNaN(message.content) != -1 && lockedchat === true) {
+			message.delete()
+			message.author.send("Please dont write messages when chat is locked.")
+		}else{
+		return;
+	}
+	
+
+	
+	let msg = await message.channel.send("[Poll] Should we restart? (ThumbUp = Yes, ThumbDown = No");
+	await msg.react("👍");
+	await msg.react("👎");
+
+	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "" || reaction.emoji.name === "", {time: 20000});
+	message.channel.send("Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count -1}");
+	if(reactions.get(agree).count > reactions.get(disagree).count){ 
+	message.channel.send("The poll lasted 20 seconds.").then(msg => msg.delete(5000));
+	message.channel.send("Majority would like a restart. An admin can type !restart for this.").then(msg => msg.delete(15000));
+	}else{
+	message.channel.send("Matches will NOT restart.").then(msg => msg.delete(15000));
+	}
+	
+	
+	
+
+	
 	
 	return;
 }
+
+	if(cmd === `${prefix}ac` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let acEmbed = new Discord.RichEmbed()
+	.setTitle("Admin Commands")
+    	.addField(" ", "!last3")
+  	.addField(" ", "!starting")
+    	.addField(" ", "!cls")
+  	.addField(" ", "!start")
+    	.addField(" ", "!say")
+   	.addField(" ", "!end")
+   	.addField(" ", "!restart")
+	.setFooter("All commands made by Pulse")
+   	.setColor(6812512);
+
+	message.channel.send(acEmbed);
 	
 	
+	return;
+}
+
+	if(cmd === `${prefix}restart` && message.member.hasPermissions("ADMINISTRATOR")) {
+	message.channel.bulkDelete(4);
+	message.channel.send("Matches will now restart!").then(msg => msg.delete(10000));
+	return;
+}
+
+	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
+	
+	
+	return;	
+}	
 
 	if(cmd === `${prefix}hacked`) {
 	let hackedEmbed = new Discord.RichEmbed()
@@ -188,15 +262,10 @@ bot.on("message", async message => {
 	.addField("Commands", "User Commands", true)
 	.addField("Other", "Commands", true)
     	.addField("!help", "Help Command", true)
-  	.addField("!starting", "Starting Scrims", true)
     	.addField("!ping", "Ping Command", true)
-    	.addField("!cls", "Clears messages(10)", true)
    	.addField("!invite", "Makes Invite", true)
-  	.addField("!start", "Start Scrims", true)
     	.addField("!report", "Report player", true)
-    	.addField("!end", "End Scrims", true)
     	.addField("!info", "Show Info", true)
-    	.addField("!say", "Control Bot", true)
     	.addField("!botinfo", "Show Bot Info")
     	.addField("!hacked", "Old Discord")
     	.addField("!region", "Sets ur region")
