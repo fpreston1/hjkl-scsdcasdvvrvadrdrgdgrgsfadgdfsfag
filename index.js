@@ -135,24 +135,14 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
-	.setFooter("Scrims hosted by" + message.author)
+	.setFooter("Small Scrims Discord")
 	.setColor(6812512);
 
 	last3chan.send(sayEmbed);
 	message.delete()
 	.catch(console.error);
 
-	last3chan.send("Chat is now locked...");
 
-	
-	if(message.channel.id === "478949150340153358") {
-		if(message.content != -1) {
-			message.delete()
-			message.author.send("Please dont write messages when chat is locked.")
-		}else{
-		return;
-	}
-	
 
 	
 	let msg = await message.channel.send("[Poll] Should we restart? (ThumbUp = Yes, ThumbDown = No");
