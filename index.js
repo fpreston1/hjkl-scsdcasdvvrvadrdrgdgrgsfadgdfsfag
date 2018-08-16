@@ -128,46 +128,7 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}last3` && message.member.hasPermissions("ADMINISTRATOR")) {
 
-	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
-	let sayEmbed = new Discord.RichEmbed()
-	.setTitle("Game Info")
-	.addField(`ID: ${args[0]}`, args[1])
-	.setFooter("Scrims hosted by ${message.author}")
-	.setColor(6812512);
-
-	last3chan.send(sayEmbed);
-	message.delete()
-	.catch(console.error);
-
-	last3chan.send("Chat is now locked...");
-
-	
-	if(message.channel.id === "478949150340153358") {
-		if(message.content != -1) {
-			message.delete()
-			message.author.send("Please dont write messages when chat is locked.")
-		}else{
-		return;
-	}
-	
-
-	
-	let msg = await message.channel.send("[Poll] Should we restart? (ThumbUp = Yes, ThumbDown = No");
-	await msg.react(agree);
-	await msg.react(disagree);
-
-	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "agree" || reaction.emoji.name === "disagree", {time: 20000});
-	message.channel.send("Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count -1}");
-	
-	
-
-	
-	
-	return;
-}
-	
 
 
 	if(cmd === `${prefix}ac` && message.member.hasPermissions("ADMINISTRATOR")) {
