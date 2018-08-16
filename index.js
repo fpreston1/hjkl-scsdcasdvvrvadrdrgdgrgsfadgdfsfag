@@ -155,17 +155,7 @@ bot.on("message", async message => {
 	
 
 	
-	const agree = "✅";
-	const disagree = "❎";
 
-	let msg = await message.channel.send("Should we reset?");
-	await msg.react(agree);
-	await msg.react(disagree);
-
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
-	message.channel.send(`Voting has been completed! \n\n${agree}: ${reactions.get(agree).count-1\n${disagree}: ${reactions.get(disagree).count-1}`);
-
-	
 	
 	return;
 }
