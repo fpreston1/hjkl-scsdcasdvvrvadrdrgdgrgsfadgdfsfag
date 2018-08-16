@@ -282,8 +282,17 @@ bot.on("message", async message => {
 	last3chan.send(sayEmbed);
 	message.delete()
 	.catch(console.error);
+	
+	
+	
 
-	last3chan.send("Chat is now locked...");
+	
+	let msg = await message.channel.send("[Poll] Should we restart? (ThumbUp = Yes, ThumbDown = No");
+	await msg.react("👍");
+	await msg.react("👎");
+
+	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "👍" || reaction.emoji.name === "👎", {time: 20000});
+	message.channel.send("Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count -1}");
 
 	
 	
