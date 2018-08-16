@@ -134,16 +134,6 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
-	.addField("\u200b", args[2])
-	.addField("\u200b", args[3])
-	.addField("\u200b", args[4])
-	.addField("\u200b", args[5])
-	.addField("\u200b", args[6])
-	.addField("\u200b", args[7])
-	.addField("\u200b", args[8])
-	.addField("\u200b", args[9])
-	.addField("\u200b", args[10])
-	.addField("\u200b", args[11])
 	.setFooter("Scrims hosted by ${message.author}")
 	.setColor(6812512);
 
@@ -170,13 +160,6 @@ bot.on("message", async message => {
 
 	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "" || reaction.emoji.name === "", {time: 20000});
 	message.channel.send("Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count -1}");
-	if(reactions.get(agree).count > reactions.get(disagree).count){ 
-	message.channel.send("The poll lasted 20 seconds.").then(msg => msg.delete(5000));
-	message.channel.send("Majority would like a restart. An admin can type !restart for this.").then(msg => msg.delete(15000));
-	}else{
-	message.channel.send("Matches will NOT restart.").then(msg => msg.delete(15000));
-	}
-	
 	
 	
 
