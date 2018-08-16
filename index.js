@@ -113,10 +113,9 @@ bot.on("message", async message => {
 	return;
 }
 
-	boolean lockedchat = true;
+
 
 	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
-	lockedchat = false;
 	message.channel.bulkDelete(10);
 	message.channel.send(`Scrims Ended....`).then(msg => msg.delete(1000));
 	let endEmbed = new Discord.RichEmbed()
