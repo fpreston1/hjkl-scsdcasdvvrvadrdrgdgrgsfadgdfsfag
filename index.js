@@ -134,7 +134,8 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
-	.setFooter("Scrims hosted by ${message.author}")
+	.addField("\u200b", args[2] || " ")
+	.setFooter("You are playing in Small Scrims Discord hosted by Pulse")
 	.setColor(6812512);
 
 	last3chan.send(sayEmbed);
