@@ -153,19 +153,7 @@ bot.on("message", async message => {
 	message.delete()
 	.catch(console.error);
 
-	last3chan.send("Chat is now locked...");
 
-	
-	if(message.channel.id === "478949150340153358") {
-		if(isNaN(message.content) != -1) {
-			message.delete()
-			message.author.send("Please dont write messages when chat is locked.")
-		}else{
-		return;
-	}
-	
-
-	
 	let msg = await message.channel.send("[Poll] Should we restart? (ThumbUp = Yes, ThumbDown = No");
 	await msg.react("👍");
 	await msg.react("👎");
