@@ -155,8 +155,8 @@ bot.on("message", async message => {
 	
 
 	
-	const agree = "";
-	const disagree = "";
+	const agree = "✅";
+	const disagree = "❎";
 
 	let msg = await message.channel.send("Should we reset?");
 	await msg.react(agree);
