@@ -155,10 +155,10 @@ bot.on("message", async message => {
 
 	
 	let msg = await message.channel.send("[Poll] Should we restart? (ThumbUp = Yes, ThumbDown = No");
-	await msg.react("");
-	await msg.react("");
+	await msg.react(agree);
+	await msg.react(disagree);
 
-	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "" || reaction.emoji.name === "", {time: 20000});
+	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "agree" || reaction.emoji.name === "disagree", {time: 20000});
 	message.channel.send("Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count -1}");
 	
 	
