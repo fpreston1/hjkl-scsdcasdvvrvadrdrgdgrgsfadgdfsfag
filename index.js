@@ -151,12 +151,7 @@ bot.on("message", async message => {
 
 	const reactions = await.msg.awaitReactions(reaction => reaction.emoji.name === "agree" || reaction.emoji.name === "disagree", {time: 20000});
 	message.channel.send("Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count -1}");
-	if(reactions.get(agree).count > reactions.get(disagree).count){ 
-	message.channel.send("The poll lasted 20 seconds.").then(msg => msg.delete(5000));
-	message.channel.send("Majority would like a restart. An admin can type !restart for this.").then(msg => msg.delete(15000));
-	}else{
-	message.channel.send("Matches will NOT restart.").then(msg => msg.delete(15000));
-	}
+	
 	
 	
 	
