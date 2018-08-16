@@ -142,11 +142,22 @@ bot.on("message", async message => {
 	message.delete()
 	.catch(console.error);
 
-
-
+	
+	
 
 
 	
+	return;
+}
+	if(cmd === `${prefix}test`) {
+	const agree = "✅"
+	const disagree = "❎"
+	let msg = await message.channel.send("Vote!");
+	await msg.react(agree);
+	await msg.react(disagree);
+		
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
+	message.channel.send(`Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count-1}`);
 	
 	return;
 }
