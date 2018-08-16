@@ -135,29 +135,45 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
-	.setFooter("Small Scrims Discord")
+	.setFooter("Scrims hosted by" + message.author)
 	.setColor(6812512);
 
 	last3chan.send(sayEmbed);
 	message.delete()
 	.catch(console.error);
 
-	
-	
-
+	last3chan.send("Chat is now locked...");
 
 	
-	return;
-}
-	if(cmd === `${prefix}test`) {
-	const agree = "✅"
-	const disagree = "❎"
-	let msg = await message.channel.send("Vote!");
+	if(message.channel.id === "478949150340153358") {
+		if(message.content != -1) {
+			message.delete()
+			message.author.send("Please dont write messages when chat is locked.")
+		}else{
+		return;
+	}
+	
+
+	
+	const agree = "";
+	const disagree = "";
+
+	let msg = await message.channel.send("Should we reset?");
 	await msg.react(agree);
 	await msg.react(disagree);
-		
+
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
-	message.channel.send(`Voting Complete! \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count-1}`);
+	message.channel.send(`Voting has been completed! \n\n${agree}: ${reactions.get(agree).count-1\n${disagree}: ${reactions.get(disagree).count-1}`);
+
+	if(${reactions.get(agree).count} > ${reactions.get(disagree).count} {
+	message.channel.send("The votes for YES are higher, an Admin will decide a restart.");
+	}else{
+	message.channel.send("The matches will NOT restart");
+}
+	
+	
+
+	
 	
 	return;
 }
