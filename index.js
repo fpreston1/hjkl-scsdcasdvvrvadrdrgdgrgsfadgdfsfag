@@ -113,10 +113,9 @@ bot.on("message", async message => {
 	return;
 }
 
-	boolean lockedchat = true;
+
 
 	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
-	lockedchat = false;
 	message.channel.bulkDelete(10);
 	message.channel.send(`Scrims Ended....`).then(msg => msg.delete(1000));
 	let endEmbed = new Discord.RichEmbed()
@@ -158,7 +157,7 @@ bot.on("message", async message => {
 
 	
 	if(message.channel.id === "478949150340153358") {
-		if(isNaN(message.content) != -1 && lockedchat === true) {
+		if(isNaN(message.content) != -1) {
 			message.delete()
 			message.author.send("Please dont write messages when chat is locked.")
 		}else{
