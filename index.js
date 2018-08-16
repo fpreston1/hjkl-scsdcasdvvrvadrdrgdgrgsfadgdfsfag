@@ -144,14 +144,18 @@ bot.on("message", async message => {
 
 	last3chan.send("Chat is now locked...");
 
+		
+	const agree = "✅";
+	const disagree = "❎";
+
+	let msg = await message.channel.send("Should we reset?");
+	await msg.react(agree);
+	await msg.react(disagree);
+
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
+	message.channel.send(`Voting has been completed! \n\n${agree}: ${reactions.get(agree).count-1\n${disagree}: ${reactions.get(disagree).count-1}`);
+
 	
-	if(message.channel.id === "478949150340153358") {
-		if(message.content != -1) {
-			message.delete()
-			message.author.send("Please dont write messages when chat is locked.")
-		}else{
-		return;
-	}
 	
 
 	
