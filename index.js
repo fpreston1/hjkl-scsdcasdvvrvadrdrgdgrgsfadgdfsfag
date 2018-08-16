@@ -133,17 +133,17 @@ bot.on("message", async message => {
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
-	.addField(`ID: ${args[0]}`, args[1] || " ")
-	.addField("\u200b", args[2] || "")
-	.addField("\u200b", args[3] || "")
-	.addField("\u200b", args[4] || "")
-	.addField("\u200b", args[5] || "")
-	.addField("\u200b", args[6] || "")
-	.addField("\u200b", args[7] || "")
-	.addField("\u200b", args[8] || "")
-	.addField("\u200b", args[9] || "")
-	.addField("\u200b", args[10] || "")
-	.addField("\u200b", args[11] || "")
+	.addField(`ID: ${args[0]}`, args[1])
+	.addField("\u200b", args[2])
+	.addField("\u200b", args[3])
+	.addField("\u200b", args[4])
+	.addField("\u200b", args[5])
+	.addField("\u200b", args[6])
+	.addField("\u200b", args[7])
+	.addField("\u200b", args[8])
+	.addField("\u200b", args[9])
+	.addField("\u200b", args[10])
+	.addField("\u200b", args[11])
 	.setFooter("Scrims hosted by ${message.author}")
 	.setColor(6812512);
 
@@ -155,7 +155,7 @@ bot.on("message", async message => {
 
 	
 	if(message.channel.id === "478949150340153358") {
-		if(isNaN(message.content) != -1) {
+		if(message.content != -1) {
 			message.delete()
 			message.author.send("Please dont write messages when chat is locked.")
 		}else{
