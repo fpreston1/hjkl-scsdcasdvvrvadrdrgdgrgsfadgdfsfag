@@ -165,14 +165,6 @@ bot.on("message", async message => {
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
 	message.channel.send(`Voting has been completed! \n\n${agree}: ${reactions.get(agree).count-1\n${disagree}: ${reactions.get(disagree).count-1}`);
 
-	if(${reactions.get(agree).count} > ${reactions.get(disagree).count} {
-	message.channel.send("The votes for YES are higher, an Admin will decide a restart.");
-	}else{
-	message.channel.send("The matches will NOT restart");
-}
-	
-	
-
 	
 	
 	return;
