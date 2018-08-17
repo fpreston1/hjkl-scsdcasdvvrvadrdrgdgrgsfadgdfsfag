@@ -79,6 +79,33 @@ bot.on("message", async message => {
 	
 	return;
 }
+	
+	if(cmd === `${prefix}test`) {
+	const agree = "";
+	const disagee = "";
+
+	let testEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("Should we restart?")
+	.setColor(6812512);
+	let msg = await message.channel.send(testEmbed);
+	await msg.react(agree);
+	await msg.react(disagree);
+
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
+	message.channel.send(`Voting completed \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count-1}`);
+
+	if(reactions.get(agree).count-1 >= reactions.get(disagee).count-1) {
+	let ootzEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("Majority of people want a restart. However, the host will decide!")
+	.setColor(6812512);
+	message.channel.send(ootzEmbed);
+}
+	
+	return;
+}
+
 
 	if(cmd === `${prefix}yes` && message.member.hasPermissions("ADMINISTRATOR")){
 	message.channel.send("Congrats on the win! Your stats will be displayed on the leaderboards!");
