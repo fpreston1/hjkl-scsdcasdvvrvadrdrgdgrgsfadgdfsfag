@@ -157,8 +157,15 @@ bot.on("message", async message => {
 	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
 	.setFooter(`Match hosted today at ${message.createdAt}`)
 	.setColor(6812512);
+		
+	
 
 	message.channel.send(startingEmbed);
+		
+	message.member.voiceChannel.join();
+		
+	message.channel.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0").then(msg => msg.delete(1));
+	
 		
 	
 	const startTimeout = ms => new Promise(res => setTimeout(res, ms))
