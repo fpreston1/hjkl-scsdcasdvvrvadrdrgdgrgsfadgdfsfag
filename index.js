@@ -276,6 +276,12 @@ bot.on("message", async message => {
 	message.channel.send(samexEmbed);
 
 }
+	message.channel.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: false
+	})
+	message.channel.send("Chat is now locked...");
+	
+	
 
 
 
