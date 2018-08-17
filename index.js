@@ -91,13 +91,22 @@ bot.on("message", async message => {
 	.setColor(6812512);
 	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
-	await msg.react(disagree);
+	msg.react(disagree);
 		
 	
 
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
-	message.channel.send(`Voting Completed! \n\n${agree}:  ${reactions.get(agree).count-1}\n${disagree}:  ${reactions.get(disagree).count-1}`);
-
+	let gaymanEmbed = new Discord.RichEmbed()
+	.setTitle("Voting Completed!")
+	.setDescription("Here are the results!")
+	.addField("\u200b", `${agree}:  ${reactions.get(agree).count-1}`)
+	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
+	.setColor(6812512);
+	
+	message.channel.send(gaymanEmbed);
+		
+		
+		
 	if(reactions.get(agree) >= reactions.get(disagree)) {
 	let agEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
