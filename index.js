@@ -220,9 +220,9 @@ bot.on("message", async message => {
 	let gameID = "ID: ";
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
-	.addField(`${gameID || `\u200b`}, ${args[0] || `\u200b`} ${args[1] || `\u200b`}`, true)
-	.addField(`${gameID || `\u200b`}, ${args[2] || `\u200b`} ${args[3] || `\u200b`}`, true)
-	.addField(`${gameID || `\u200b`}, ${args[4] || `\u200b`} ${args[5] || `\u200b`}`)
+	.addField(`${gameID || `\u200b`} ${args[0] || `\u200b`}, ${args[1] || `\u200b`}`, true)
+	.addField(`${gameID || `\u200b`} ${args[2] || `\u200b`}, ${args[3] || `\u200b`}`, true)
+	.addField(`${gameID || `\u200b`} ${args[4] || `\u200b`}, ${args[5] || `\u200b`}`, true)
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(13328335);
 
