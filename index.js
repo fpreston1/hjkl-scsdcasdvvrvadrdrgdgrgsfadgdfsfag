@@ -150,7 +150,9 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let startEmbed = new Discord.RichEmbed()
-	.addField("Bot", "Type your last 3 digits in chat now!")
+	.setTitle("Waiting for Server IDs...")
+	.setDescription("**Please enter the last3 digits of your server!**")
+	.addField("\u200b", "When in game, find this at the top left corner of your screen.")
 	.setColor(6812512);
 	message.channel.send(startEmbed);
 	message.delete().catch(O_o=>{});
@@ -188,6 +190,7 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
+	.addField(`ID: ${args[2]}`, args[3])
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(6812512);
 
@@ -204,7 +207,7 @@ bot.on("message", async message => {
 	let testEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll] Should We Restart?")
 	.setDescription("Please vote below.")
-	.setFooter("Note: The host will decide a restart!")
+	.setFooter("**Note: The host will decide a restart!**")
 	.setColor(6812512);
 	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
@@ -224,7 +227,7 @@ bot.on("message", async message => {
 		
 		
 		
-	if(reactions.get(agree) >= reactions.get(disagree)) {
+	if(reactions.get(agree).count >= reactions.get(disagree).count) {
 	let agEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
 	.setDescription("The games will not restart unless the host does !restart")
@@ -303,8 +306,13 @@ bot.on("message", async message => {
 	
 
 	if(cmd === `${prefix}starting` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let nficon = bot.user.displayAvatarURL;
 	let startingEmbed = new Discord.RichEmbed()
-	.addField("ScrimBot", "Scrims starting soon! @everyone")
+	.setTitle("Small Scrims Discord")
+	.setThumbnail(nficon)
+	.addField("Alert!", "A scrim match is starting very soon! @everyone")
+	.addField("Instructions", "In the "Snipe Countdown" channel, a countdown will be held, press Ready on "go".")
+	.setFooter("Match hosted by ${message.author} >> Today at ${message.createdAt}")
 	.setColor(6812512);
 
 	message.channel.send(startingEmbed);
