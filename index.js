@@ -98,8 +98,8 @@ bot.on("message", async message => {
 	let gaymanEmbed = new Discord.RichEmbed()
 	.setTitle("Voting Completed!")
 	.setDescription("Here are the results!")
-	.addField(/u200b, `${agree}:  ${reactions.get(agree).count-1}`)
-	.addField(/u200b, `${disagree}:  ${reactions.get(disagree).count-1}`)
+	.addField("\u200b", `${agree}:  ${reactions.get(agree).count-1}`)
+	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
 	.setColor(6812512);
 	
 	message.channel.send(gaymanEmbed);
