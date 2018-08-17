@@ -191,9 +191,12 @@ bot.on("message", async message => {
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(6812512);
 
-	await last3chan.send(sayEmbed, {time: 10000});
+	last3chan.send(sayEmbed);
 	message.delete()
 	.catch(console.error);
+		
+	const timeout = ms => new Promise(res => setTimeout(res, ms))
+	await timeout(5000);
 
 	const agree = "👍";
 	const disagree = "👎";
