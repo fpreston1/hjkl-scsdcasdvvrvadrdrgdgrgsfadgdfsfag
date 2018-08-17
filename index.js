@@ -113,7 +113,7 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	message.channel.send(agEmbed);
-	}else{
+	}else if(reactions.get(disagree) >= reactions.get(agree)){
 	let disEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
 	.setDescription("The match will NOT restart!")
