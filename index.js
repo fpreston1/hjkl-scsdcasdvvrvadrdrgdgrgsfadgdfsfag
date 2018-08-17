@@ -99,8 +99,8 @@ bot.on("message", async message => {
 
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
 	message.channel.send(gaymanEmbed);
-	message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`);
-	message.channel.send(`{disagree}:  ${reactions.get(disagree).count-1}`);
+	await message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`);
+	await message.channel.send(`${disagree}:  ${reactions.get(disagree).count-1}`);
 
 
 	
