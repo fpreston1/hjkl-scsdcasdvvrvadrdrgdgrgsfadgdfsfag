@@ -217,10 +217,11 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}last3` && message.member.hasPermissions("ADMINISTRATOR")) {
 
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
+	let gameID = "ID: ";
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
-	.addField(`ID: ${args[0]}`, `${args[1] || `\u200b`}`, true)
-	.addField(`ID: ${args[2] || `\u200b`}`, `${args[3] || `\u200b`}`, true)
+	.addField(`${gameID || `\u200b`} ${args[0] || `\u200b`}`, `${args[1] || `\u200b`}`, true)
+	.addField(`${gameID || `\u200b`} ${args[2] || `\u200b`}`, `${args[3] || `\u200b`}`, true)
 	.addField(`ID: ${args[4] || `\u200b`}`, `${args[5] || `\u200b`}`, true)
 	.addField(`ID: ${args[6] || `\u200b`}`, `${args[7] || `\u200b`}`, true)
 	.addField(`ID: ${args[8] || `\u200b`}`, `${args[9] || `\u200b`}`, true)
