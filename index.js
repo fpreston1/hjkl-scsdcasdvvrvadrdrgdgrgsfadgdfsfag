@@ -92,16 +92,10 @@ bot.on("message", async message => {
 	await msg.react(agree);
 	await msg.react(disagree);
 
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
 	message.channel.send(`Voting completed \n\n${agree}: ${reactions.get(agree).count-1}\n${disagree}: ${reactions.get(disagree).count-1}`);
 
-	if(reactions.get(agree).count-1 >= reactions.get(disagee).count-1) {
-	let ootzEmbed = new Discord.RichEmbed()
-	.setTitle("[Poll]")
-	.setDescription("Majority of people want a restart. However, the host will decide!")
-	.setColor(6812512);
-	message.channel.send(ootzEmbed);
-}
+
 	
 	return;
 }
