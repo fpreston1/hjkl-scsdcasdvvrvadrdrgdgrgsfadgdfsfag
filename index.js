@@ -95,7 +95,7 @@ bot.on("message", async message => {
 		
 	
 
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
 	let gaymanEmbed = new Discord.RichEmbed()
 	.setTitle("Voting Completed!")
 	.setDescription("Here are the results!")
@@ -209,7 +209,7 @@ bot.on("message", async message => {
 		
 	
 
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 20000});
 	let gaymanEmbed = new Discord.RichEmbed()
 	.setTitle("Voting Completed!")
 	.setDescription("Here are the results!")
@@ -229,7 +229,7 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	message.channel.send(agEmbed);
-	}else{
+	}else if(reactions.get(disagree) >= reactions.get(agree)){
 	let disEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
 	.setDescription("The match will NOT restart!")
@@ -237,6 +237,13 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	message.channel.send(disEmbed);
+}else if(reactions.get(agree) = reactions.get(disagree)){
+	let samexEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("The match will NOT restart, because votes are equal!")
+	.setFooter("Poll completed")
+	.setColor(6812512);
+
 }
 
 
