@@ -200,9 +200,6 @@ bot.on("message", async message => {
 	.setColor(6812512);
 
 	message.channel.send(endEmbed);
-	
-	const endTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await timeout(1000);
 
 	message.channel.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: true
