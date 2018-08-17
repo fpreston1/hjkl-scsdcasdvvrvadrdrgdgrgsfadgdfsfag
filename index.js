@@ -88,7 +88,7 @@ bot.on("message", async message => {
 	.setTitle("[Poll]")
 	.setDescription("Should we restart?")
 	.setColor(6812512);
-	let msg = await message.channel.send(testEmbed).then(msg => msg.delete(15000);
+	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
 	await msg.react(disagree);
 		
