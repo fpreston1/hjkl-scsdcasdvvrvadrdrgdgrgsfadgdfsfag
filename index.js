@@ -218,10 +218,10 @@ bot.on("message", async message => {
 
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let sayEmbed = new Discord.RichEmbed()
-	let gameID = "ID: "
 	.setTitle("Game Info")
-	.addField(`${gameID || `\u200b`} ${args[0] || `\u200b`}, ${args[1] || `\u200b`}`)
-	.addField(`${gameID || `\u200b`} ${args[2] || `\u200b`}, ${args[3] || `\u200b`}`)
+	.addField("lol", "lol")
+	.addField(`${`ID: ` || `\u200b`} ${args[0] || `\u200b`}`, ${args[1] || `\u200b`})
+	.addField(`${`ID: ` || `\u200b`} ${args[2] || `\u200b`}`, ${args[3] || `\u200b`})
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(13328335);
 
