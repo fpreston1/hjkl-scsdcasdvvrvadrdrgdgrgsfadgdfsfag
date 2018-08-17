@@ -81,8 +81,8 @@ bot.on("message", async message => {
 }
 	
 	if(cmd === `${prefix}test`) {
-	const agree = "";
-	const disagee = "";
+	const agree = "👍";
+	const disagee = "👎";
 
 	let testEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
