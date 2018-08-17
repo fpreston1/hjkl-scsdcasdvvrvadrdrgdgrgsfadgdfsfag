@@ -92,16 +92,17 @@ bot.on("message", async message => {
 	await msg.react(agree);
 	await msg.react(disagree);
 		
+	
+
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
 	let gaymanEmbed = new Discord.RichEmbed()
 	.setTitle("Voting Completed!")
 	.setDescription("Here are the results!")
+	.addField("/u200b ", `${agree}:  ${reactions.get(agree).count-1}`)
+	.addField("/u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
 	.setColor(6812512);
 	
-	await message.channel.send(gaymanEmbed, {time: 14000});
-
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
-	message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`).then(msg => msg.delete(10000);
-	message.channel.send(`${disagree}:  ${reactions.get(disagree).count-1}`).then(msg => msg.delete(10000);
+	message.channel.send(gaymanEmbed);
 
 
 	
