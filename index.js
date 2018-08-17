@@ -87,7 +87,7 @@ bot.on("message", async message => {
 	let testEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
 	.setDescription("Should we restart?")
-	.setFooter("The host will decide a restart!")
+	.setFooter("Note: The host will decide a restart!")
 	.setColor(6812512);
 	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
@@ -105,23 +105,7 @@ bot.on("message", async message => {
 	
 	message.channel.send(gaymanEmbed);
 		
-	if(reactions.get(agree) >= reactions.get(disagree)) {
-	let agEmbed = new Discord.RichEmbed()
-	.setTitle("[Poll]")
-	.setDescription("Majority would like a restart, it is up to the host for games to reset, please wait.")
-	.setFooter("Poll completed")
-	.setColor(6812512);
-		
-	message.channel.send(agEmbed);
-	}else if(reactions.get(disagree) >= reactions.get(agree)){
-	let disEmbed = new Discord.RichEmbed()
-	.setTitle("[Poll]")
-	.setDescription("The match will NOT restart!")
-	.setFooter("Poll completed")
-	.setColor(6812512);
-		
-	message.channel.send(disEmbed);
-}
+	
 
 
 	
