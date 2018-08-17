@@ -88,7 +88,7 @@ bot.on("message", async message => {
 	.setTitle("[Poll]")
 	.setDescription("Should we restart?")
 	.setColor(6812512);
-	let msg = await message.channel.send(testEmbed);
+	let msg = await message.channel.send(testEmbed).then(msg => msg.delete(15000);
 	await msg.react(agree);
 	await msg.react(disagree);
 		
@@ -96,11 +96,12 @@ bot.on("message", async message => {
 	.setTitle("Voting Completed!")
 	.setDescription("Here are the results!")
 	.setColor(6812512);
+	
+	await message.channel.send(gaymanEmbed, {time: 14000});
 
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
-	message.channel.send(gaymanEmbed);
-	await message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`, {time: 1000});
-	await message.channel.send(`${disagree}:  ${reactions.get(disagree).count-1}`, {time: 1100});
+	message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`).then(msg => msg.delete(10000);
+	message.channel.send(`${disagree}:  ${reactions.get(disagree).count-1}`).then(msg => msg.delete(10000);
 
 
 	
