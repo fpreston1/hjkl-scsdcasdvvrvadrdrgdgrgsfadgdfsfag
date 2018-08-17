@@ -80,7 +80,7 @@ bot.on("message", async message => {
 	return;
 }
 	
-	if(cmd === `${prefix}test`) {
+	if(cmd === `${prefix}test` && message.member.hasPermissions("ADMINISTRATOR")) {
 	const agree = "👍";
 	const disagree = "👎";
 
@@ -196,14 +196,14 @@ bot.on("message", async message => {
 	.catch(console.error);
 		
 	const timeout = ms => new Promise(res => setTimeout(res, ms))
-	await timeout(5000);
+	await timeout(7000);
 
 	const agree = "👍";
 	const disagree = "👎";
 
 	let testEmbed = new Discord.RichEmbed()
-	.setTitle("[Poll]")
-	.setDescription("Should we restart?")
+	.setTitle("[Poll] Should We Restart?")
+	.setDescription("Please vote below.")
 	.setFooter("Note: The host will decide a restart!")
 	.setColor(6812512);
 	let msg = await message.channel.send(testEmbed);
@@ -246,6 +246,8 @@ bot.on("message", async message => {
 	.setDescription("The match will NOT restart, because votes are equal!")
 	.setFooter("Poll completed")
 	.setColor(6812512);
+	
+	message.channel.send(samexEmbed);
 
 }
 
