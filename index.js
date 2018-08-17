@@ -95,7 +95,7 @@ bot.on("message", async message => {
 		
 	
 
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === disagree || reaction.emoji.name === agree, {time: 15000});
 	let gaymanEmbed = new Discord.RichEmbed()
 	.setTitle("Voting Completed!")
 	.setDescription("Here are the results!")
