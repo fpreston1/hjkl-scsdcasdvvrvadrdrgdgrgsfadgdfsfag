@@ -55,7 +55,7 @@ bot.on("message", async message => {
 		let fortniteEmbed = new Discord.RichEmbed()
 		.setTitle("Fortnite Stats")
 		.setAuthor(data.username)
-		.setColor()
+		.setColor(6812512)
 		.addField("Kills", kills.value, true)
 		.addField("Wins", wins.value, true)
 		.addField("KD", kd.value, true)
