@@ -164,7 +164,6 @@ bot.on("message", async message => {
 		
 	message.member.voiceChannel.join();
 		
-	message.channel.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0").then(msg => msg.delete(1));
 	
 		
 	
