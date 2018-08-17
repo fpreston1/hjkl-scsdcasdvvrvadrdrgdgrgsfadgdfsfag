@@ -162,8 +162,15 @@ bot.on("message", async message => {
 
 	message.channel.send(startingEmbed);
 		
-	if(message.member.voiceChannel && message.guild.voiceConnection){
-	   message.member.voiceChannel.join();
+	if(message.member.voiceChannel){
+		if(message.guild.voiceConnection){
+			message.member.voiceChannel.join()
+			.then(connection =>{
+				message.reply("Joined.").then(msg => msg.delete(50));
+			})
+
+	}
+	   
 }
 		
 	
