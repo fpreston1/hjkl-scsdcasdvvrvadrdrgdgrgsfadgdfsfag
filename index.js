@@ -87,6 +87,7 @@ bot.on("message", async message => {
 	let testEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
 	.setDescription("Should we restart?")
+	.setFooter("The host will decide a restart!")
 	.setColor(6812512);
 	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
