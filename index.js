@@ -152,7 +152,7 @@ bot.on("message", async message => {
 	let startEmbed = new Discord.RichEmbed()
 	.setTitle("Waiting for Server IDs...")
 	.setDescription("**Please enter the last3 digits of your server!**")
-	.addField("\u200b", "When in game, find this at the top left corner of your screen.")
+	.setDescription("When in game, find this at the top left corner of your screen.")
 	.setColor(6812512);
 	message.channel.send(startEmbed);
 	message.delete().catch(O_o=>{});
@@ -311,7 +311,7 @@ bot.on("message", async message => {
 	.setThumbnail(nficon)
 	.addField("Alert!", "A scrim match is starting very soon! @everyone")
 	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
-	.setFooter("Match hosted by ${message.author} >> Today at ${message.createdAt}")
+	.setFooter(`Match hosted by ` + message.author ` >> Today at` + message.createdAt)
 	.setColor(6812512);
 
 	message.channel.send(startingEmbed);
