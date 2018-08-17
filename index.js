@@ -224,7 +224,7 @@ bot.on("message", async message => {
 	if(reactions.get(agree) >= reactions.get(disagree)) {
 	let agEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
-	.setDescription("Majority would like a restart, it is up to the host for games to reset, please wait.")
+	.setDescription("The games will not restart unless the host does !restart")
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
