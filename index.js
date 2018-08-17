@@ -162,16 +162,6 @@ bot.on("message", async message => {
 
 	message.channel.send(startingEmbed);
 		
-	if(message.member.voiceChannel){
-		if(message.guild.voiceConnection){
-			message.member.voiceChannel.join()
-			.then(connection =>{
-				message.reply("Joined.").then(msg => msg.delete(50));
-			})
-
-	}
-	   
-}
 		
 	
 		
@@ -214,6 +204,20 @@ bot.on("message", async message => {
 		
 	return;
 }
+	
+	if(cmd === `${prefix}bonkers` && message.member.hasPermissions("ADMINISTRATOR")) {
+		if(message.member.voiceChannel){
+		if(message.guild.voiceConnection){
+			message.member.voiceChannel.join()
+			.then(connection =>{
+				message.reply("Joined.");
+			})
+
+	}
+	   
+	}
+	return;
+	}
 
 	
 
