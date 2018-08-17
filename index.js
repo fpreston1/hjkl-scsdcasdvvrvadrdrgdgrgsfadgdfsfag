@@ -99,8 +99,8 @@ bot.on("message", async message => {
 
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
 	message.channel.send(gaymanEmbed);
-	await message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`);
-	await message.channel.send(`${disagree}:  ${reactions.get(disagree).count-1}`);
+	await message.channel.send(`${agree}:  ${reactions.get(agree).count-1}`, {time: 1000});
+	await message.channel.send(`${disagree}:  ${reactions.get(disagree).count-1}`, {time: 1100});
 
 
 	
@@ -163,7 +163,7 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
-	.setFooter("Scrims hosted by" + message.author)
+	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(6812512);
 
 	last3chan.send(sayEmbed);
