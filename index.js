@@ -304,20 +304,20 @@ bot.on("message", async message => {
 
 	
 
-	//if(cmd === `${prefix}starting` && message.member.hasPermissions("ADMINISTRATOR")) {
-	//let nficon = bot.user.displayAvatarURL;
-	//let startingEmbed = new Discord.RichEmbed()
-	//.setTitle("Small Scrims Discord")
-	//.setThumbnail(nficon)
-	//.addField("Alert!", "A scrim match is starting very soon! @everyone")
-	//.addField("Instructions", "In the "Snipe Countdown" channel, a countdown will be held, press Ready on "go".")
-	//.setFooter("Match hosted by ${message.author} >> Today at ${message.createdAt}")
-	//.setColor(6812512);
+	if(cmd === `${prefix}starting` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let nficon = bot.user.displayAvatarURL;
+	let startingEmbed = new Discord.RichEmbed()
+	.setTitle("Small Scrims Discord")
+	.setThumbnail(nficon)
+	.addField("Alert!", "A scrim match is starting very soon! @everyone")
+	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
+	.setFooter("Match hosted by ${message.author} >> Today at ${message.createdAt}")
+	.setColor(6812512);
 
-	//message.channel.send(startingEmbed);
+	message.channel.send(startingEmbed);
 	
-	//return;
-//}
+	return;
+}
 
 
 
