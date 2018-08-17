@@ -204,7 +204,7 @@ bot.on("message", async message => {
 	message.channel.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: true
 	})
-	message.channel.send("Chat is now unlocked!");
+	message.channel.send("*Chat is now unlocked!*");
 		
 	
 		
@@ -286,7 +286,7 @@ bot.on("message", async message => {
 	SEND_MESSAGES: false
 	})
 	await timeout(2000);
-	message.channel.send("Chat is now locked...");
+	message.channel.send("*Chat is now locked...*");
 	
 	
 
