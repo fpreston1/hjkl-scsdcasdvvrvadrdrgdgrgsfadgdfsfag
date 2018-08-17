@@ -195,7 +195,49 @@ bot.on("message", async message => {
 	message.delete()
 	.catch(console.error);
 
-	last3chan.send("Chat is now locked...");
+	const agree = "👍";
+	const disagree = "👎";
+
+	let testEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("Should we restart?")
+	.setFooter("Note: The host will decide a restart!")
+	.setColor(6812512);
+	let msg = await message.channel.send(testEmbed);
+	await msg.react(agree);
+	msg.react(disagree);
+		
+	
+
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
+	let gaymanEmbed = new Discord.RichEmbed()
+	.setTitle("Voting Completed!")
+	.setDescription("Here are the results!")
+	.addField("\u200b", `${agree}:  ${reactions.get(agree).count-1}`)
+	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
+	.setColor(6812512);
+	
+	message.channel.send(gaymanEmbed);
+		
+		
+		
+	if(reactions.get(agree) >= reactions.get(disagree)) {
+	let agEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("Majority would like a restart, it is up to the host for games to reset, please wait.")
+	.setFooter("Poll completed")
+	.setColor(6812512);
+		
+	message.channel.send(agEmbed);
+	}else{
+	let disEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("The match will NOT restart!")
+	.setFooter("Poll completed")
+	.setColor(6812512);
+		
+	message.channel.send(disEmbed);
+}
 
 
 
