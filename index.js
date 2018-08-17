@@ -322,7 +322,16 @@ bot.on("message", async message => {
 }
 
 	if(cmd === `${prefix}say` && message.member.hasPermissions("ADMINISTRATOR")) {
-	
+	let lastchann = message.guild.channels.find(`name`, "scrim-last3");
+	let ksenfEmbed = new Discord.RichEmbed()
+	.setTitle("Game Info")
+	.addField(`ID: ${args[0]}`, args[1])
+	.setFooter("Scrims hosted by Small Scrims Discord")
+	.setColor(13328335);
+
+	lastchann.send(ksenfEmbed);
+	message.delete()
+	.catch(console.error);
 	
 	return;	
 }	
