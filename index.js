@@ -155,7 +155,7 @@ bot.on("message", async message => {
 	.setThumbnail(nficon)
 	.addField("Alert!", "A scrim match is starting very soon! @everyone")
 	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
-	.setFooter(`Match hosted by ${message.author} >> Today at ${message.createdAt}`)
+	.setFooter(`Match hosted today at ${message.createdAt}`)
 	.setColor(6812512);
 
 	message.channel.send(startingEmbed);
@@ -170,7 +170,7 @@ bot.on("message", async message => {
 	let startEmbed = new Discord.RichEmbed()
 	.setTitle("Waiting for Server IDs...")
 	.setDescription("**Please enter the last3 digits of your server!**")
-	.setDescription("When in game, find this at the top left corner of your screen.")
+	.addField("\u200b", "When in game, find this at the top left corner of your screen.")
 	.setColor(6812512);
 	message.channel.send(startEmbed);
 	message.delete().catch(O_o=>{});
@@ -209,7 +209,7 @@ bot.on("message", async message => {
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
 	.setFooter("Scrims hosted by Small Scrims Discord")
-	.setColor(6812512);
+	.setColor(13328335);
 
 	last3chan.send(sayEmbed);
 	message.delete()
@@ -225,7 +225,7 @@ bot.on("message", async message => {
 	.setTitle("[Poll] Should We Restart?")
 	.setDescription("Please vote below.")
 	.setFooter("**Note: The host will decide a restart!**")
-	.setColor(6812512);
+	.setColor(16097625);
 	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
 	msg.react(disagree);
@@ -238,7 +238,7 @@ bot.on("message", async message => {
 	.setDescription("Here are the results!")
 	.addField("\u200b", `${agree}:  ${reactions.get(agree).count-1}`)
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
-	.setColor(6812512);
+	.setColor(2124763);
 	
 	message.channel.send(gaymanEmbed);
 		
