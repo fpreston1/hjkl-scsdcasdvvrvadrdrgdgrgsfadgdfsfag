@@ -91,10 +91,15 @@ bot.on("message", async message => {
 	let msg = await message.channel.send(testEmbed);
 	await msg.react(agree);
 	await msg.react(disagree);
+		
+	let gaymanEmbed = new Discord.RichEmbed()
+	.setTitle("Voting Completed!")
+	.addField(`${agree}: ${reactions.get(agree).count-1}`)
+	.addField(`${disagree}: ${reactions.get(disagree).count-1}`)
+	.setColor(6812512);
 
 	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
-	message.channel.send(`Voting completed \n\n${agree}: ${reactions.get(agree).count-1}`);
-	message.channel.send(`${disagree}: ${reactions.get(disagree).count-1}`);
+	message.channel.send(gaymanEmbed);
 
 
 	
