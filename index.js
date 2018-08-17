@@ -105,7 +105,17 @@ bot.on("message", async message => {
 	message.channel.send(gaymanEmbed);
 		
 	if(reactions.get(agree) >= reactions.get(disagree)) {
-	message.channel.send("this works");
+	let agEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("Majority would like a restart, it is up to the host for games to reset, please wait.")
+	.setFooter("Poll completed")
+	.setColor(6812512);
+	}else{
+	let disEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("The match will NOT restart!")
+	.setFooter("Poll completed")
+	.setColor(6812512);
 }
 
 
