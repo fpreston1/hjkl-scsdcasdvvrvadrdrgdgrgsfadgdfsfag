@@ -162,7 +162,9 @@ bot.on("message", async message => {
 
 	message.channel.send(startingEmbed);
 		
-	message.member.voiceChannel.join();
+	if(message.member.voiceChannel && message.guild.voiceConnection){
+	   message.member.voiceChannel.join();
+}
 		
 	
 		
