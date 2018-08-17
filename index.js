@@ -95,17 +95,26 @@ bot.on("message", async message => {
 		
 	
 
-	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === disagree || reaction.emoji.name === agree, {time: 15000});
-	let gaymanEmbed = new Discord.RichEmbed()
-	.setTitle("Voting Completed!")
-	.setDescription("Here are the results!")
-	.addField("\u200b", `${agree}:  ${reactions.get(agree).count-1}`)
-	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
+	const reactions = await msg.awaitReactions(reaction => reaction.emoji.name === agree || reaction.emoji.name === disagree, {time: 15000});
+	message.channel.send(`Voting Completed! \n\n${agree}:  ${reactions.get(agree).count-1}\n${disagree}:  ${reactions.get(disagree).count-1}`);
+
+	if(reactions.get(agree) >= reactions.get(disagree)) {
+	let agEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("Majority would like a restart, it is up to the host for games to reset, please wait.")
+	.setFooter("Poll completed")
 	.setColor(6812512);
-	
-	message.channel.send(gaymanEmbed);
 		
-	
+	message.channel.send(agEmbed);
+	}else{
+	let disEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll]")
+	.setDescription("The match will NOT restart!")
+	.setFooter("Poll completed")
+	.setColor(6812512);
+		
+	message.channel.send(disEmbed);
+}
 		
 	
 
