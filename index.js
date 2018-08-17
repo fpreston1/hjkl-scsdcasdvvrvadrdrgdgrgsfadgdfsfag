@@ -190,7 +190,6 @@ bot.on("message", async message => {
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
 	.addField(`ID: ${args[0]}`, args[1])
-	.addField(`ID: ${args[2]}`, args[3])
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(6812512);
 
