@@ -157,6 +157,7 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let nficon = bot.user.displayAvatarURL;
 	let startingEmbed = new Discord.RichEmbed()
 	.setTitle("Small Scrims Discord")
@@ -169,7 +170,7 @@ bot.on("message", async message => {
 		
 	
 
-	message.channel.send(startingEmbed);
+	scrimlast3chan.send(startingEmbed);
 		
 
 		
@@ -185,7 +186,7 @@ bot.on("message", async message => {
 	.setDescription("**Please enter the last3 digits of your server!**")
 	.addField("\u200b", "When in game, find this at the top left corner of your screen.")
 	.setColor(6812512);
-	message.channel.send(startEmbed);
+	scrimlast3chan.send(startEmbed);
 	message.delete().catch(O_o=>{});
 
 	
