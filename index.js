@@ -22,19 +22,18 @@ bot.on("message", async message => {
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
+	
+	if(message.channel.id === "478949150340153358") {
+	if(message.content) {
+			message.delete();
+		   }
+	}
 
 	
 	if(cmd === `${prefix}region`){
 	message.reply("Command not set - Ask Admin to set Region");
 
 	
-	if(message.channel.id === "478949150340153358") {
-		if(message.author.id === "478645969328668672") {
-			return;
-		}else if(message.content){
-		message.delete();
-		}
-	}
 	
 	
 
