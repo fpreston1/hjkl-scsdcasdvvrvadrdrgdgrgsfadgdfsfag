@@ -25,7 +25,22 @@ bot.on("message", async message => {
 	
 	if(message.channel.id === "478949150340153358") {
 	if(message.content) {
-			message.delete();
+	let lastUserargs = args[0];
+	if(!lastUserargs) return;
+	
+	let lasttttEmbed = new Discord.RichEmbed()
+	.setTitle(`${lastUserargs}`)
+	.setDescription(`${message.author}`)
+	.setColor(6812512);
+
+
+
+	let lastChannel3scrim = message.guild.channels.find(`name`, "last3-pulse");
+	if(!lastChannel3scrim) return;
+	
+	message.delete().catch(O_o=>{});
+	lastChannel3scrim.send(lasttttEmbed);
+	message.delete();
 		   }
 	}
 
