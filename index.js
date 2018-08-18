@@ -306,13 +306,13 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}ac` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let acEmbed = new Discord.RichEmbed()
 	.setTitle("Admin Commands")
-    	.addField(" ", "!last3")
-  	.addField(" ", "!starting")
-    	.addField(" ", "!cls")
-  	.addField(" ", "!start")
-    	.addField(" ", "!say")
-   	.addField(" ", "!end")
-   	.addField(" ", "!restart")
+    	.addField("\u200b", "!last3")
+  	.addField("\u200b", "!starting")
+    	.addField("\u200b", "!cls")
+  	.addField("\u200b", "!start")
+    	.addField("\u200b", "!say")
+   	.addField("\u200b", "!end")
+   	.addField("\u200b", "!restart")
 	.setFooter("All commands made by Pulse")
    	.setColor(6812512);
 
