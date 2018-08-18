@@ -409,12 +409,11 @@ bot.on("message", async message => {
 }
 	
 	if(cmd === `${prefix}l3`) {
-	let l3mes = message.guild.members.get(args[0]);
-	if(!l3mes) return message.channel.send("Please enter your last3 digits!");
+	if(!args[0]) return message.channel.send("Please enter your last3 digits!").then(msg => msg.delete(1000);
 	
 	let l3Embed = new Discord.RichEmbed()
 	.setColor(6812512)
-	.addField(`message.author`, `${l3mes}`);
+	.addField(`message.author`, `${args[0]}`);
 	let l3channel = message.guild.channels.find(`name`, "last3-pulse");
 	if(!l3channel) return message.channel.send("Couldn't find channel");
 	
