@@ -155,6 +155,7 @@ bot.on("message", async message => {
 	.setThumbnail(nficon)
 	.addField("Alert!", "A scrim match is starting very soon! @everyone")
 	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
+	.addField("ATTENTION:", "*When in a game type !l3 <last3 digits> in the chat so ScrimBot can put you in the game.*")
 	.setFooter(`Match hosted today at ${message.createdAt}`)
 	.setColor(6812512);
 		
@@ -409,8 +410,17 @@ bot.on("message", async message => {
 	
 	if(cmd === `${prefix}l3`) {
 	let l3 = message.guild.members.get(args[0]);
+	if(!l3) return;
 	
+	let l3channel = message.guild.channels.find(`name`, "last3-pulse");
+	if(!l3channel) return message.channel.send("Error!");
+	let l3Embed = new Discord.RichEmbed()
+	.setTitle(`${message.author}`)
+	.addField(`${l3}`, `${message.author.id}`)
+	.setColor(6812512);
 	
+	message.delete().catch(O_o=>{});
+	l3channel.send(l3Embed);
 	return;
 }
 
