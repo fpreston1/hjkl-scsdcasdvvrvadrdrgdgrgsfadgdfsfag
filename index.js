@@ -406,6 +406,13 @@ bot.on("message", async message => {
 	
 	return;
 }
+	
+	if(cmd === `${prefix}l3`) {
+	let l3 = message.guild.members.get(args[0]);
+	
+	
+	return;
+}
 
 	
 
