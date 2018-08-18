@@ -246,7 +246,7 @@ bot.on("message", async message => {
 	.setDescription("Please vote below.")
 	.setFooter("**Note: The host will decide a restart!**")
 	.setColor(16097625);
-	let msg = await message.channel.send(testEmbed);
+	let msg = await last3chan.send(testEmbed);
 	await msg.react(agree);
 	msg.react(disagree);
 		
@@ -260,7 +260,7 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`)
 	.setColor(2124763);
 	
-	message.channel.send(gaymanEmbed);
+	last3chan.send(gaymanEmbed);
 		
 		
 		
@@ -271,7 +271,7 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	message.channel.send(agEmbed);
+	last3chan.send(agEmbed);
 	}else if(reactions.get(disagree) >= reactions.get(agree)){
 	let disEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
@@ -279,7 +279,7 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	message.channel.send(disEmbed);
+	last3chan.send(disEmbed);
 }else if(reactions.get(agree) = reactions.get(disagree)){
 	let samexEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
@@ -287,14 +287,14 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 	
-	message.channel.send(samexEmbed);
+	last3chan.send(samexEmbed);
 
 }
 	message.channel.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: false
 	})
 	await timeout(2000);
-	message.channel.send("*Chat is now locked...*");
+	last3chan.send("*Chat is now locked...*");
 	
 	
 
