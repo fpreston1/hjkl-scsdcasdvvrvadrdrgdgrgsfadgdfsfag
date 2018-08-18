@@ -28,6 +28,15 @@ bot.on("message", async message => {
 	message.reply("Command not set - Ask Admin to set Region");
 
 	
+	if(message.channel.id === "478949150340153358") {
+		if(message.author.id === "478645969328668672") {
+			return;
+		}else if(message.content){
+		message.delete();
+		}
+	}
+	
+	
 
 	
 	return;
@@ -163,8 +172,7 @@ bot.on("message", async message => {
 
 	message.channel.send(startingEmbed);
 		
-		
-	
+
 		
 	
 	const startTimeout = ms => new Promise(res => setTimeout(res, ms))
