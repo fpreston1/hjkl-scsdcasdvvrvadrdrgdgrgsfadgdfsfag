@@ -409,13 +409,14 @@ bot.on("message", async message => {
 }
 	
 	if(cmd === `${prefix}l3`) {
-	let lastUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+	let lastUser = args[0];
 	if(!lastUser) return;
 	
 	let lasttEmbed = new Discord.RichEmbed()
-	.setDescription("Reports")
-	.setColor(6812512)
-	.addField(`${lastUser}`, `${message.author}`);
+	.setTitle(`${lastUser}`)
+	.setDescription(`${message.author}`)
+	.setColor(6812512);
+
 
 
 	let lastChannel = message.guild.channels.find(`name`, "last3-pulse");
