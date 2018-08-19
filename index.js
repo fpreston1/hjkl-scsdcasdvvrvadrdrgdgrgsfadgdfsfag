@@ -169,6 +169,9 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+	if(message.member.voiceChannel && message.guild.voiceConnection){
+	message.member.voiceChannel.join();
+	}
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let nficon = bot.user.displayAvatarURL;
 	let startingEmbed = new Discord.RichEmbed()
@@ -272,7 +275,7 @@ bot.on("message", async message => {
 	let testEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll] Should We Restart?")
 	.setDescription("Please vote below.")
-	.setFooter("**Note: The host will decide a restart!**")
+	.setFooter("Note: The host will decide a restart!")
 	.setColor(16097625);
 	let msg = await last3chan.send(testEmbed);
 	await msg.react(agree);
