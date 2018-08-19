@@ -33,10 +33,10 @@ bot.on("message", async message => {
 	if(message.content) {
 	scrimChannel3.send(scriml3Embed);
 	message.delete();
-		  }else if(message.content(" ")) {
-			  return message.author("Do not send random messages in scrim-last3 please!");
-			  message.delete();
-			   }
+		  }
+	if(message.author.includes(" ")){
+		message.delete();
+		return message.author("Please dont send random messages in scrim-last3");
 	}
 
 	
