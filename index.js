@@ -182,7 +182,7 @@ bot.on("message", async message => {
 		
 	scrimlast3chan.send(infoScrimEmbed);
 	const startinggeyTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await startinggeyTimeout(2000);
+	await startinggeyTimeout(8000);
 			
 	
 	let startingEmbed = new Discord.RichEmbed()
