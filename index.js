@@ -300,7 +300,7 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`, true)
 	.setColor(2124763);
 	
-	last3chan.send(gaymanEmbed).then(msg => msg.delete(10000);
+	last3chan.send(gaymanEmbed);
 		
 	
 		
