@@ -302,11 +302,12 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`, true)
 	.setColor(2124763);
 	
-	last3chan.send(gaymanEmbed).then(msg => {
-	setTimeout({
-	message.delete()
-	}, 10000)
-	})
+	last3chan.send(gaymanEmbed);
+		
+	const gaymanTimeout = ms => new Promise(res => setTimeout(res, ms))
+	await gaymanTimeout(7000);	
+	
+	message.edit({gaymanEmbed: null})
 		
 		
 		
@@ -318,11 +319,11 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	last3chan.send(agEmbed).then(msg => {
-	setTimeout({
-	msg.delete()
-	}, 10000)
-	})
+	last3chan.send(agEmbed);
+	const agTimeout = ms => new Promise(res => setTimeout(res, ms))
+	await agTimeout(7000);	
+	
+	message.edit({agEmbed: null})
 		
 
 		
@@ -333,12 +334,11 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	last3chan.send(disEmbed).then(msg => {
-	setTimeout({
-	msg.delete()
-	}, 10000)
-	})
+	last3chan.send(disEmbed);
+	const disTimeout = ms => new Promise(res => setTimeout(res, ms))
+	await disTimeout(7000);	
 	
+	message.edit({disEmbed: null})
 		
 
 }
