@@ -193,8 +193,8 @@ bot.on("message", async message => {
 		
 		
 	let startEmbed = new Discord.RichEmbed()
-	.setTitle("Waiting for server IDs...")
-	.addField("**Please enter the last 3 digits of your server!**", "When in-game you can find this in the top left corner of your screen.")
+	.setTitle("**Waiting for server IDs...**")
+	.addField("Please enter the last 3 digits of your server!", "When in-game you can find this in the top left corner of your screen.")
 	.setColor(6812512);
 	scrimlast3chan.send(startEmbed);
 	message.delete().catch(O_o=>{});
