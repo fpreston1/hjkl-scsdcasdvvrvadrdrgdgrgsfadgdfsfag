@@ -30,7 +30,7 @@ bot.on("message", async message => {
 	.setDescription(message.author)
 	.setFooter(message.createdAt)
 	.setColor(6812512);
-	if(message.content && !banMSG.includes(` `) && !banMSG.includes(`!`)) {
+	if(message.content && !banMSG.includes(` `) && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
 	scrimChannel3.send(scriml3Embed);
 	message.delete();
 	}else{
