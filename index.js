@@ -302,7 +302,7 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`, true)
 	.setColor(2124763);
 	
-	last3chan.send(gaymanEmbed);
+	last3chan.send(gaymanEmbed).then(gaymanEmbed => gaymanEmbed.delete(10000);
 		
 	
 		
@@ -315,13 +315,9 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	last3chan.send(agEmbed);
+	last3chan.send(agEmbed).then(agEmbed => agEmbed.delete(10000);
 		
-		
-	let awkd4Timeout = ms => new Promise(res => setTimeout(res, ms))
-	await awkd4Timeout(10000);
-	message.delete(agEmbed);
-		
+
 		
 	}else if(reactions.get(disagree) >= reactions.get(agree)){
 	let disEmbed = new Discord.RichEmbed()
@@ -330,23 +326,14 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	last3chan.send(disEmbed);
+	last3chan.send(disEmbed).then(disEmbed => disEmbed.delete(10000);
 		
 	
 		
-	let awkd3Timeout = ms => new Promise(res => setTimeout(res, ms))
-	await awkd3Timeout(10000);
-		
-	message.delete(disEmbed);
+
 }
 		
 		
-	let awkdTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await awkdTimeout(10000);
-		
-	message.delete(gaymanEmbed);
-	
-
 
 
 
