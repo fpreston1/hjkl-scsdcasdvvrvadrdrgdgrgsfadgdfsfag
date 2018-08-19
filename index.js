@@ -303,12 +303,7 @@ bot.on("message", async message => {
 	.setColor(2124763);
 	
 	last3chan.send(gaymanEmbed);
-		
-	const gaymanTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await gaymanTimeout(7000);	
-	
-	message.edit(message.content, {gaymanEmbed: null});
-		
+
 		
 		
 		
@@ -320,12 +315,6 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	last3chan.send(agEmbed);
-	const agTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await agTimeout(7000);	
-	
-	message.edit(message.content, {agEmbed: null});
-		
-
 		
 	}else if(reactions.get(disagree) >= reactions.get(agree)){
 	let disEmbed = new Discord.RichEmbed()
@@ -335,10 +324,6 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	last3chan.send(disEmbed);
-	const disTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await disTimeout(7000);	
-	
-	message.edit(message.content, {disEmbed: null});
 		
 
 }
