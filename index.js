@@ -252,7 +252,7 @@ bot.on("message", async message => {
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
-	.addField(`${args[0] || `\u200b`}`, `*${args[1] || `\u200b`}*`, true)
+	.addField(`${args[0].toUpperCase || `\u200b`}`, `*${args[1] || `\u200b`}*`, true)
 	.addField(`${args[2] || `\u200b`}`, `*${args[3] || `\u200b`}*`, true)
 	.addField(`${args[4] || `\u200b`}`, `*${args[5] || `\u200b`}*`, true)
 	.addField(`${args[6] || `\u200b`}`, `*${args[7] || `\u200b`}*`, true)
