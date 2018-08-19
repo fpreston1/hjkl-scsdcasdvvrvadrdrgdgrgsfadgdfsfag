@@ -30,7 +30,7 @@ bot.on("message", async message => {
 	.setDescription(message.author)
 	.setFooter(message.createdAt)
 	.setColor(6812512);
-	if(message.content && !banMSG.includes(` `) && !banMSG.includes(`!`) && banMSG.includes(`   `)) {
+	if(message.content && !banMSG.includes(` `) && !banMSG.includes(`!`)) {
 	scrimChannel3.send(scriml3Embed);
 	message.delete();
 	}else{
@@ -239,14 +239,14 @@ bot.on("message", async message => {
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let sayEmbed = new Discord.RichEmbed()
 	.setTitle("Game Info")
-	.addField(`${args[0] || `\u200b`}`, `${args[1] || `\u200b`}`, true)
-	.addField(`${args[2] || `\u200b`}`, `${args[3] || `\u200b`}`, true)
-	.addField(`${args[4] || `\u200b`}`, `${args[5] || `\u200b`}`, true)
-	.addField(`${args[6] || `\u200b`}`, `${args[7] || `\u200b`}`, true)
-	.addField(`${args[8] || `\u200b`}`, `${args[9] || `\u200b`}`, true)
-	.addField(`${args[10] || `\u200b`}`, `${args[11] || `\u200b`}`, true)
-	.addField(`${args[12] || `\u200b`}`, `${args[13] || `\u200b`}`, true)
-	.addField(`${args[14] || `\u200b`}`, `${args[15] || `\u200b`}`, true)
+	.addField(`${`args[0]` || `\u200b`}`, `${args[1] || `\u200b`}`, true)
+	.addField(`${`args[2]` || `\u200b`}`, `${args[3] || `\u200b`}`, true)
+	.addField(`${`args[4]` || `\u200b`}`, `${args[5] || `\u200b`}`, true)
+	.addField(`${`args[6]` || `\u200b`}`, `${args[7] || `\u200b`}`, true)
+	.addField(`${`args[8]`|| `\u200b`}`, `${args[9] || `\u200b`}`, true)
+	.addField(`${`args[10]` || `\u200b`}`, `${args[11] || `\u200b`}`, true)
+	.addField(`${`args[12]` || `\u200b`}`, `${args[13] || `\u200b`}`, true)
+	.addField(`${`args[14]` || `\u200b`}`, `${args[15] || `\u200b`}`, true)
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(13328335);
 
