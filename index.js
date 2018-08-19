@@ -23,6 +23,7 @@ bot.on("message", async message => {
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 	let banMSG = message.content.toUpperCase();
+	
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
@@ -173,10 +174,9 @@ bot.on("message", async message => {
 	let startingEmbed = new Discord.RichEmbed()
 	.setTitle("Small Scrims Discord")
 	.setThumbnail(nficon)
-	.addField("Alert!", "A scrim match is starting very soon! @everyone")
-	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
-	.addField("ATTENTION:", "**When in a game type your last3 in the chat so ScrimBot can put you in the game.**")
-	.setFooter(`Match hosted today at ${message.createdAt}`)
+	.addField("Alert:", "- A scrim match is starting very soon! @everyone")
+	.addField("Instructions:", "- We will countdown from 3 sec and you will ready up on go.")
+	.setFooter(`Match lead by ${message.author} 🔴 Today at ${message.createdTimestamp}`)
 	.setColor(6812512);
 		
 	
@@ -193,9 +193,8 @@ bot.on("message", async message => {
 		
 		
 	let startEmbed = new Discord.RichEmbed()
-	.setTitle("Waiting for Server IDs...")
-	.setDescription("**Please enter the last3 digits of your server!**")
-	.addField("\u200b", "When in game, find this at the top left corner of your screen.")
+	.addField("Waiting for server IDs...", "**Please enter the last 3 digits of your server!**")
+	.setDescription("When in-game, you can find this in the top left corner of your screen.")
 	.setColor(6812512);
 	scrimlast3chan.send(startEmbed);
 	message.delete().catch(O_o=>{});
