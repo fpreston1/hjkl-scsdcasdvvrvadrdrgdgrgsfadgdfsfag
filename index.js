@@ -302,9 +302,12 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`, true)
 	.setColor(2124763);
 	
-	last3chan.send(gaymanEmbed).then(msg => gaymanEmbed.delete(10000);
+	last3chan.send(gaymanEmbed).then(msg => {
+	setTimeout({
+		msg.delete()
+	}, 10000)
+	});
 		
-	
 		
 		
 		
@@ -315,7 +318,11 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	last3chan.send(agEmbed).then(msg => agEmbed.delete(10000);
+	last3chan.send(agEmbed).then(msg => {
+	setTimeout({
+		msg.delete()
+	}, 10000)
+	});
 		
 
 		
@@ -326,7 +333,11 @@ bot.on("message", async message => {
 	.setFooter("Poll completed")
 	.setColor(6812512);
 		
-	last3chan.send(disEmbed).then(msg => disEmbed.delete(10000);
+	last3chan.send(disEmbed).then(msg => {
+	setTimeout({
+		msg.delete()
+	}, 10000)
+	});
 		
 	
 		
