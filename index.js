@@ -33,11 +33,12 @@ bot.on("message", async message => {
 	if(message.content) {
 	scrimChannel3.send(scriml3Embed);
 	message.delete();
-		  }
-	if(message.author.includes(" ")){
+	}else if(message.includes(" ")) {
 		message.delete();
-		return message.author("Please dont send random messages in scrim-last3");
+		return message.author("Please ONLY send your last3 digits in the scrim-last3 channel!");
+		 }
 	}
+	
 
 	
 	if(cmd === `${prefix}region`){
