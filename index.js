@@ -24,12 +24,11 @@ bot.on("message", async message => {
 	let args = messageArray.slice(1);
 	
 	if(message.channel.id === "478949150340153358") {
+	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	if(message.content) {
-	let lastChannel3scrimYEET = message.guild.channels.find(`name`, "last3-pulse");
-	lastChannel3scrimYEET.send(`${message.author} is in`, `${message.content}`);
-
+	scrimChannel3.send(`${message.author} is in ${message.content}`);
 	message.delete();
-		   }
+		  }
 	}
 
 	
