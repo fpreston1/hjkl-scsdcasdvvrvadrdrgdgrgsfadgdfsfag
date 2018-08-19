@@ -25,8 +25,13 @@ bot.on("message", async message => {
 	
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
+	let scriml3Embed = new Discord.RichEmbed()
+	.setTitle(message.content)
+	.setDescription(message.author)
+	.setFooter(message.createdAt)
+	.setColor(6812512);
 	if(message.content) {
-	scrimChannel3.send(`${message.author} is in ${message.content}`);
+	scrimChannel3.send(scriml3Embed);
 	message.delete();
 		  }
 	}
@@ -166,7 +171,7 @@ bot.on("message", async message => {
 	.setThumbnail(nficon)
 	.addField("Alert!", "A scrim match is starting very soon! @everyone")
 	.addField("Instructions", "In the Snipe Countdown channel, a countdown will be held, press Ready on go.")
-	.addField("ATTENTION:", "*When in a game type !l3 <last3 digits> in the chat so ScrimBot can put you in the game.*")
+	.addField("ATTENTION:", "**When in a game type your last3 in the chat so ScrimBot can put you in the game.**")
 	.setFooter(`Match hosted today at ${message.createdAt}`)
 	.setColor(6812512);
 		
@@ -418,25 +423,25 @@ bot.on("message", async message => {
 	return;
 }
 	
-	if(cmd === `${prefix}l3`) {
-	let lastUser = args[0];
-	if(!lastUser) return;
+	//if(cmd === `${prefix}l3`) {
+	//let lastUser = args[0];
+	//if(!lastUser) return;
 	
-	let lasttEmbed = new Discord.RichEmbed()
-	.setTitle(`${lastUser}`)
-	.setDescription(`${message.author}`)
-	.setColor(6812512);
+	//let lasttEmbed = new Discord.RichEmbed()
+	//.setTitle(`${lastUser}`)
+	//.setDescription(`${message.author}`)
+	//.setColor(6812512);
 
 
 
-	let lastChannel = message.guild.channels.find(`name`, "last3-pulse");
-	if(!lastChannel) return message.channel.send("Couldn't find channel");
+	//let lastChannel = message.guild.channels.find(`name`, "last3-pulse");
+	//if(!lastChannel) return message.channel.send("Couldn't find channel");
 	
-	message.delete().catch(O_o=>{});
-	lastChannel.send(lasttEmbed);
+	//message.delete().catch(O_o=>{});
+	//lastChannel.send(lasttEmbed);
 
-	return;
-}
+	//return;
+//}
 
 	
 
