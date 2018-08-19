@@ -22,7 +22,7 @@ bot.on("message", async message => {
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
-	
+	let banMSG = message.content.toUpperCase();
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
@@ -30,12 +30,12 @@ bot.on("message", async message => {
 	.setDescription(message.author)
 	.setFooter(message.createdAt)
 	.setColor(6812512);
-	if(message.content && !message.includes(" ")) {
+	if(message.content && banMSG.includes(` `)) {
 	scrimChannel3.send(scriml3Embed);
 	message.delete();
 	}else{
 	message.delete();
-	message.author("Please ONLY send Last3 Digits in the Scrim-Last3 Channel!");
+	message.author.send("Please ONLY send Last3 Digits in the Scrim-Last3 Channel!");
 	}
 	}
 	
