@@ -304,6 +304,10 @@ bot.on("message", async message => {
 	
 	last3chan.send(gaymanEmbed);
 
+	
+	const tm = ms => new Promise(res => setTimeout(res, ms))
+	await tm(7000);
+	message.edit(message.content, {gaymanEmbed: null});
 		
 		
 		
@@ -329,10 +333,6 @@ bot.on("message", async message => {
 }
 		
 	
-	const tm = ms => new Promise(res => setTimeout(res, ms))
-	await tm(7000);
-	message.edit(message.content, {gaymanEmbed: null});
-		
 		
 
 
