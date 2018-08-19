@@ -177,7 +177,7 @@ bot.on("message", async message => {
 	.setThumbnail(nficon)
 	.addField("Alert:", "- A scrim match is starting very soon! @everyone")
 	.addField("Instructions:", "- We will countdown from 3 sec and you will ready up on go.")
-	.setFooter(`🔴 Match lead on ${message.createdAt}`)
+	.setAuthor(`Match lead by ${message.author.username}, ${message.author.avatarURL}`)
 	.setColor(6812512);
 		
 	
