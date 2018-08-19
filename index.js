@@ -169,12 +169,7 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
-	if(message.member.voiceChannel && !message.guild.voiceConnection){
-	message.member.voiceChannel.join()
-	.then(connection => {
-		message.author.send("Joined.");
-	})
-	}
+	
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let nficon = bot.user.displayAvatarURL;
 	let startingEmbed = new Discord.RichEmbed()
