@@ -179,6 +179,8 @@ bot.on("message", async message => {
 	.addField("Rules:", "Using C4, Clingers and Third Partying in top 10 are bannable, please obey the rules while scrimming. Also please report players with !report, and do not publicly announce it")
 	.setFooter("Bot by Pulse")
 	.setColor(4702463);
+		
+	scrimlast3chan.send(infoScrimEmbed);
 	const startinggeyTimeout = ms => new Promise(res => setTimeout(res, ms))
 	await startinggeyTimeout(2000);
 			
