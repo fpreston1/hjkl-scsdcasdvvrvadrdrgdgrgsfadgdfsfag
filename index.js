@@ -307,7 +307,7 @@ bot.on("message", async message => {
 	
 	const tm = ms => new Promise(res => setTimeout(res, ms))
 	await tm(7000);
-	message.edit(message.content, {gaymanEmbed: null});
+	message.edit(message.content, {embed: null});
 		
 		
 		
