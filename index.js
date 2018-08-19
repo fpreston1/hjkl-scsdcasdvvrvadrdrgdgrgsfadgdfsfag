@@ -334,9 +334,10 @@ bot.on("message", async message => {
 		
 	
 	await tm(20000);
-	last3chan.send("Next snipe in approx... 20 Minutes.");	
+	const massageEmbed = "Next snipe in approx... 20 minutes.";
+	const sendMassage = await message.channel.send(massageEmbed);
 	await tm(6000);
-	last3chan.edit("Next snipe in approx... 19 Minutes.");
+	sendMassage.edit("yeet");
 		
 		
 	
