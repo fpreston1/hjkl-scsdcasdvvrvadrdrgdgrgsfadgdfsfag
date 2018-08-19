@@ -171,12 +171,14 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let nficon = bot.user.displayAvatarURL;
+	let africanDate = new Date();
+	let africanIcon = message.user.displayAvatarURL;
 	let startingEmbed = new Discord.RichEmbed()
 	.setTitle("Small Scrims Discord")
 	.setThumbnail(nficon)
 	.addField("Alert:", "- A scrim match is starting very soon! @everyone")
 	.addField("Instructions:", "- We will countdown from 3 sec and you will ready up on go.")
-	.setFooter(`Match lead by ${message.author} 🔴 Today at ${message.createdTimestamp}`)
+	.setFooter(`🔴 Match lead Today at ${africanDate}`, africanIcon)
 	.setColor(6812512);
 		
 	
