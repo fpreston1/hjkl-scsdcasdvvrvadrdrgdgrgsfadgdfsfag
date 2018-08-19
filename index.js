@@ -307,7 +307,7 @@ bot.on("message", async message => {
 	const gaymanTimeout = ms => new Promise(res => setTimeout(res, ms))
 	await gaymanTimeout(7000);	
 	
-	message.edit({gaymanEmbed: null})
+	message.edit(message.content, {gaymanEmbed: null});
 		
 		
 		
@@ -323,7 +323,7 @@ bot.on("message", async message => {
 	const agTimeout = ms => new Promise(res => setTimeout(res, ms))
 	await agTimeout(7000);	
 	
-	message.edit({agEmbed: null})
+	message.edit(message.content, {agEmbed: null});
 		
 
 		
@@ -338,7 +338,7 @@ bot.on("message", async message => {
 	const disTimeout = ms => new Promise(res => setTimeout(res, ms))
 	await disTimeout(7000);	
 	
-	message.edit({disEmbed: null})
+	message.edit(message.content, {disEmbed: null});
 		
 
 }
