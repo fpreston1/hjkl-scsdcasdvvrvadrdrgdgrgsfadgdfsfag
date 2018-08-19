@@ -30,13 +30,13 @@ bot.on("message", async message => {
 	.setDescription(message.author)
 	.setFooter(message.createdAt)
 	.setColor(6812512);
-	if(message.content) {
+	if(message.content && !message.includes(" ")) {
 	scrimChannel3.send(scriml3Embed);
 	message.delete();
-	}else if(message.includes(" ")) {
-		message.delete();
-		return message.author("Please ONLY send your last3 digits in the scrim-last3 channel!");
-		 }
+	}else{
+	message.delete();
+	message.author("Please ONLY send Last3 Digits in the Scrim-Last3 Channel!");
+	}
 	}
 	
 
