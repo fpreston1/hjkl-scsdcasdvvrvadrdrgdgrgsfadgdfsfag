@@ -302,7 +302,7 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`, true)
 	.setColor(2124763);
 	
-	last3chan.send(gaymanEmbed);
+	last3chan.send(gaymanEmbed).delete(7000);
 
 	
 	
@@ -328,9 +328,9 @@ bot.on("message", async message => {
 
 }
 		
-	const tm = ms => new Promise(res => setTimeout(res, ms))
-	await tm(7000);
-	last3chan.bulkDelete(2);		
+	//const tm = ms => new Promise(res => setTimeout(res, ms))
+	//await tm(7000);
+	//last3chan.bulkDelete(2);		
 		
 		
 	
