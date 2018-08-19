@@ -335,7 +335,7 @@ bot.on("message", async message => {
 	
 	await tm(20000);
 	last3chan.send("Next snipe in approx... 20 Minutes.");	
-	await tm(60000);
+	await tm(6000);
 	last3chan.edit("Next snipe in approx... 19 Minutes.");
 		
 		
