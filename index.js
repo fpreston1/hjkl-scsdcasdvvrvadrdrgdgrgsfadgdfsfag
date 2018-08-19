@@ -316,6 +316,13 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	last3chan.send(agEmbed);
+		
+		
+	let awkd4Timeout = ms => new Promise(res => setTimeout(res, ms))
+	await awkd4Timeout(10000);
+	message.delete(agEmbed);
+		
+		
 	}else if(reactions.get(disagree) >= reactions.get(agree)){
 	let disEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll]")
@@ -324,16 +331,20 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	last3chan.send(disEmbed);
-}else if(reactions.get(agree) = reactions.get(disagree)){
-	let samexEmbed = new Discord.RichEmbed()
-	.setTitle("[Poll]")
-	.setDescription("The match will NOT restart, because votes are equal!")
-	.setFooter("Poll completed")
-	.setColor(6812512);
+		
 	
-	last3chan.send(samexEmbed);
-
+		
+	let awkd3Timeout = ms => new Promise(res => setTimeout(res, ms))
+	await awkd3Timeout(10000);
+		
+	message.delete(disEmbed);
 }
+		
+		
+	let awkdTimeout = ms => new Promise(res => setTimeout(res, ms))
+	await awkdTimeout(10000);
+		
+	message.delete(gaymanEmbed);
 	
 
 
