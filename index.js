@@ -254,6 +254,12 @@ bot.on("message", async message => {
 	message.delete()
 	.catch(console.error);
 		
+	let memeout = ms => new Promise(res => setTimeout(res, ms))
+	await memeout(2000);
+	last3chan.send("*Chat locked...*");
+	
+	
+		
 	last3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: false
 	})
@@ -316,10 +322,7 @@ bot.on("message", async message => {
 
 }
 	
-	await timeout(2000);
-	last3chan.send("*Chat is now locked...*");
-	
-	
+
 
 
 
