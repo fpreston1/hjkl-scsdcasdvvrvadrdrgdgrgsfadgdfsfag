@@ -305,11 +305,7 @@ bot.on("message", async message => {
 	last3chan.send(gaymanEmbed);
 
 	
-	const tm = ms => new Promise(res => setTimeout(res, ms))
-	await tm(7000);
-	message.edit(message.content, {embed: null});
-		
-		
+	
 		
 	if(reactions.get(agree).count >= reactions.get(disagree).count) {
 	let agEmbed = new Discord.RichEmbed()
@@ -331,6 +327,11 @@ bot.on("message", async message => {
 		
 
 }
+		
+	const tm = ms => new Promise(res => setTimeout(res, ms))
+	await tm(7000);
+	last3chan.bulkDelete(2);		
+		
 		
 	
 		
