@@ -254,6 +254,10 @@ bot.on("message", async message => {
 	message.delete()
 	.catch(console.error);
 		
+	last3chan.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: false
+	})
+		
 	const timeout = ms => new Promise(res => setTimeout(res, ms))
 	await timeout(7000);
 
@@ -281,9 +285,7 @@ bot.on("message", async message => {
 	
 	last3chan.send(gaymanEmbed);
 		
-	message.channel.overwritePermissions(message.guild.id, {
-	SEND_MESSAGES: false
-	})
+	
 		
 		
 		
