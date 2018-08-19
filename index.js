@@ -169,7 +169,7 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
-	if(message.member.voiceChannel && message.guild.voiceConnection){
+	if(message.member.voiceChannel && !message.guild.voiceConnection){
 	message.member.voiceChannel.join()
 	.then(connection => {
 		message.author.send("Joined.");
