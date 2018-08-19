@@ -172,6 +172,17 @@ bot.on("message", async message => {
 	
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
 	let nficon = bot.user.displayAvatarURL;
+	let infoScrimEmbed = new Discord.RichEmbed()
+	.setTitle("Small Scrims Community Scrim Info")
+	.addField("Hosted by:", message.author)
+	.addField("Loading Content", "Load content by pressing `Ready` wait for Loading Content to be at 100%, then press cancel.")
+	.addField("Rules:", "Using C4, Clingers and Third Partying in top 10 are bannable, please obey the rules while scrimming. Also please report players with !report, and do not publicly announce it")
+	.setFooter("Bot by Pulse")
+	.setColor(4702463);
+	const startinggeyTimeout = ms => new Promise(res => setTimeout(res, ms))
+	await startinggeyTimeout(2000);
+			
+	
 	let startingEmbed = new Discord.RichEmbed()
 	.setTitle("Small Scrims Discord")
 	.setThumbnail(nficon)
@@ -289,7 +300,7 @@ bot.on("message", async message => {
 	.addField("\u200b", `${disagree}:  ${reactions.get(disagree).count-1}`, true)
 	.setColor(2124763);
 	
-	last3chan.send(gaymanEmbed);
+	last3chan.send(gaymanEmbed).then(msg => msg.delete(10000);
 		
 	
 		
