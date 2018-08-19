@@ -330,7 +330,13 @@ bot.on("message", async message => {
 		
 	const tm = ms => new Promise(res => setTimeout(res, ms))
 	await tm(7000);
-	last3chan.bulkDelete(2);		
+	last3chan.bulkDelete(2);
+		
+	
+	await tm(20000);
+	last3chan.send("Next snipe in approx... 20 Minutes.");	
+	await tm(60000);
+	last3chan.edit("Next snipe in approx... 19 Minutes.");
 		
 		
 	
