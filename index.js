@@ -304,9 +304,9 @@ bot.on("message", async message => {
 	
 	last3chan.send(gaymanEmbed).then(msg => {
 	setTimeout({
-		msg.delete()
+	message.delete()
 	}, 10000)
-	});
+	})
 		
 		
 		
@@ -320,9 +320,9 @@ bot.on("message", async message => {
 		
 	last3chan.send(agEmbed).then(msg => {
 	setTimeout({
-		msg.delete()
+	msg.delete()
 	}, 10000)
-	});
+	})
 		
 
 		
@@ -335,10 +335,9 @@ bot.on("message", async message => {
 		
 	last3chan.send(disEmbed).then(msg => {
 	setTimeout({
-		msg.delete()
+	msg.delete()
 	}, 10000)
-	});
-		
+	})
 	
 		
 
