@@ -281,6 +281,10 @@ bot.on("message", async message => {
 	
 	last3chan.send(gaymanEmbed);
 		
+	message.channel.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: false
+	})
+		
 		
 		
 	if(reactions.get(agree).count >= reactions.get(disagree).count) {
@@ -309,9 +313,7 @@ bot.on("message", async message => {
 	last3chan.send(samexEmbed);
 
 }
-	message.channel.overwritePermissions(message.guild.id, {
-	SEND_MESSAGES: false
-	})
+	
 	await timeout(2000);
 	last3chan.send("*Chat is now locked...*");
 	
