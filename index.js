@@ -335,14 +335,14 @@ bot.on("message", async message => {
 	
 	await tm(10000);
 	let massageEmbed = new Discord.RichEmbed()
-	.setTitle("Next snipe in approx...")
-	.setDescription("20 Minutes.")
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*20 Minutes.*")
 	.setColor(10379708);
 	last3chan.send(massageEmbed);
 	
 	await tm(6000);	
-	let timeEmbed = new Discord.RichEmbed().setDescription("20 Minutes.");
-	message.edit(timeEmbed);
+	let timeEmbed = new Discord.RichEmbed().setDescription("*20 Minutes.*");
+	last3chan.edit(timeEmbed);
 		
 		
 		
