@@ -339,15 +339,147 @@ bot.on("message", async message => {
 	.setDescription("*20 Minutes.*")
 	.setColor(10379708);
 	last3chan.send(massageEmbed);
-	await tm(6000);
+	await tm(60000);
 	last3chan.bulkDelete(1);
 	let massageEmbed2 = new Discord.RichEmbed()
 	.setTitle("**Next snipe in approx...**")
 	.setDescription("*19 Minutes.*")
 	.setColor(10379708);
 	last3chan.send(massageEmbed2);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed3 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*18 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed3);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed4 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*17 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed4);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed5 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*16 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed5);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed6 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*15 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed6);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed7 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*14 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed7);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed8 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*13 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed8);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed9 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*12 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed9);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed10 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*11 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed10);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed11 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*10 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed11);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed12 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*9 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed12);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed13 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*8 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed13);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed14 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*7 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed14);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed15 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*6 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed15);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed16 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*5 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed16);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed17 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*4 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed17);	
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed18 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*3 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed18);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed19 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*2 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed19);
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed20 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*1 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed20);
 		
-		
+	await tm(60000);
+	last3chan.bulkDelete(1);
+	let massageEmbed21 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*Now*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed21);
 		
 	
 		
