@@ -339,10 +339,13 @@ bot.on("message", async message => {
 	.setDescription("*20 Minutes.*")
 	.setColor(10379708);
 	last3chan.send(massageEmbed);
-	
-	await tm(6000);	
-	let timeEmbed = new Discord.RichEmbed().setDescription("*20 Minutes.*");
-	last3chan.edit(timeEmbed);
+	await tm(6000);
+	last3chan.bulkDelete(1);
+	let massageEmbed2 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*19 Minutes.*")
+	.setColor(10379708);
+	last3chan.send(massageEmbed2);
 		
 		
 		
