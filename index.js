@@ -334,10 +334,18 @@ bot.on("message", async message => {
 		
 	
 	await tm(20000);
-	const massageEmbed = "Next snipe in approx... 20 minutes.";
-	const sendMassage = await message.channel.send(massageEmbed);
+	let massageEmbed = new Discord.RichEmbed()
+	const sendMassageEEE = await last3chan.send(massageEmbed);
+	.setTitle("Next snipe in approx...")
+	.setDescription("20 Minutes.")
+	.setColor(11829945);
+	last3chan.send(massageEmbed);
 	await tm(6000);
-	sendMassage.edit("yeet");
+	let newtestEmbed = new Discord.RichEmbed()
+	.setTitle("Next snipe in approx...")
+	.setDescription("19 Minutes.")
+	.setColor(11829945);
+	massageEmbed.edit(newtestEmbed);
 		
 		
 	
