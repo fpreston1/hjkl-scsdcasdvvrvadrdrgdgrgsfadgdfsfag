@@ -333,19 +333,17 @@ bot.on("message", async message => {
 	last3chan.bulkDelete(2);
 		
 	
-	await tm(20000);
+	await tm(10000);
 	let massageEmbed = new Discord.RichEmbed()
-	const sendMassageEEE = await last3chan.send(massageEmbed);
 	.setTitle("Next snipe in approx...")
 	.setDescription("20 Minutes.")
-	.setColor(11829945);
+	.setColor(10379708);
 	last3chan.send(massageEmbed);
-	await tm(6000);
-	let newtestEmbed = new Discord.RichEmbed()
-	.setTitle("Next snipe in approx...")
-	.setDescription("19 Minutes.")
-	.setColor(11829945);
-	massageEmbed.edit(newtestEmbed);
+	
+	await tm(6000);	
+	let timeEmbed = new Discord.RichEmbed().setDescription("20 Minutes.");
+	message.edit(timeEmbed);
+		
 		
 		
 	
