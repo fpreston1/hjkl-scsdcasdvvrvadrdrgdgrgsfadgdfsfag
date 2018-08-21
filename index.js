@@ -221,9 +221,12 @@ bot.on("message", async message => {
 	.setColor(10379708);
 	scrimlast3chan.send(twentyminEmbed);
 	await startTimeout(60000);
-	twentyminEmbed.edit {(
-	embed: new Discord.RichEmbed().setDescription("*23 Minutes*");
-			    })
+	.then(twentyminEmbed => {
+		twentyminEmbed.edit {(
+			embed: new Discord.RichEmbed()
+			.setTitle("**Next snipe in approx...**")
+			.setDescription("*23 Minutes*")
+			.setColor(10379708);
 			    
 
 	
