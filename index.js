@@ -213,8 +213,21 @@ bot.on("message", async message => {
 	.setColor(6812512);
 	scrimlast3chan.send(startEmbed);
 	message.delete().catch(O_o=>{});
-
-	
+		
+	let nextgameEmbed = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*25 Minutes*")
+	.setColor(6812512);
+		
+	scrimlast3chan.send(nextgameEmbed);
+		
+	await startTimeout(60000);
+	let nextgameEmbed1 = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*24 Minutes*")
+	.setColor(6812512);
+		
+	message.edit(nextgameEmbed1);
 	
 	return;
 }
