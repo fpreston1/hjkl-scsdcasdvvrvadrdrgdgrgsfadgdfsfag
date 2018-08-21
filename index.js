@@ -226,7 +226,7 @@ bot.on("message", async message => {
 	while( (now = Date.now()) < endTime ) {
 		let minsRemaining = (endTime - now) / (1000 * 60);
 		minsRemaining = Math.floor(minsRemaining);
-		nextgameEmbed.setDescription(minsRemaining)
+		nextgameEmbed.setDescription(`*${minsRemaining} Minutes.*`)
 		sentMessage.edit(nextgameEmbed);
 		await startTimeout(1000 * 60);
 	}
