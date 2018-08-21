@@ -257,11 +257,11 @@ bot.on("message", async message => {
 	.addField(`${args[0] || `\u200b`}`, `*${args[1] || `\u200b`}*`)
 	.addField(`${args[2] || `\u200b`}`, `*${args[3] || `\u200b`}*`)
 	.addField(`${args[4] || `\u200b`}`, `*${args[5] || `\u200b`}*`)
-	.addField(`${args[6] || `\u200b`}`, `*${args[7] || `\u200b`}*`)
-	.addField(`${args[8] || `\u200b`}`, `*${args[9] || `\u200b`}*`)
-	.addField(`${args[10] || `\u200b`}`, `*${args[11] || `\u200b`}*`)
-	.addField(`${args[12] || `\u200b`}`, `*${args[13] || `\u200b`}*`)
-	.addField(`${args[14] || `\u200b`}`, `*${args[15] || `\u200b`}*`)
+	.addField(`${args[6] || `\u200b`}`, `*${args[7] || `\u200b`}*`, true)
+	.addField(`${args[8] || `\u200b`}`, `*${args[9] || `\u200b`}*`, true)
+	.addField(`${args[10] || `\u200b`}`, `*${args[11] || `\u200b`}*`, true)
+	.addField(`${args[12] || `\u200b`}`, `*${args[13] || `\u200b`}*`, true)
+	.addField(`${args[14] || `\u200b`}`, `*${args[15] || `\u200b`}*`, true)
 	.setFooter("Scrims hosted by Small Scrims Discord")
 	.setColor(13328335);
 
