@@ -218,6 +218,7 @@ bot.on("message", async message => {
 	.setTitle("**Next snipe in approx...**")
 	.setDescription("*25 Minutes*")
 	.setColor(6812512);
+	
 		
 	const endTime = Date.now() + 1000 * 60 * 25;
 	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
@@ -225,7 +226,7 @@ bot.on("message", async message => {
 	while( (now = Date.now()) < endTime ) {
 		let minsRemaining = (endTime - now) / (1000 * 60);
 		minsRemaining = Math.floor(minsRemaining);
-		nextgameEmbed.setDescription("*24 Minutes.*")
+		nextgameEmbed.setDescription(minsRemaining)
 		sentMessage.edit(nextgameEmbed);
 		await startTimeout(1000 * 60);
 	}
