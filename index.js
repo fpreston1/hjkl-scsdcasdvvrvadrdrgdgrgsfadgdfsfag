@@ -175,11 +175,12 @@ bot.on("message", async message => {
 	let negicon = message.author.displayAvatarURL;
 	let todaysDate = new Date();
 	let infoScrimEmbed = new Discord.RichEmbed()
-	.setTitle("Small Scrims Community Scrim Info")
+	.setTitle("🔴 Small Scrims Community Scrim Info")
 	.addField("Hosted by:", message.author)
 	.addField("Loading Content", "Load content by pressing `Ready` wait for Loading Content to be at 100%, then press cancel.")
 	.addField("Rules:", "Using C4, Clingers and Third Partying in top 10 are bannable, please obey the rules while scrimming. Also please report players with !report, and do not publicly announce it")
-	.setFooter(`🔴 Match started on ${todaysDate}`, negicon)
+	.setFooter(`Match lead by ${message.author}`, negicon)
+	.setTimestamp()
 	.setColor(4702463);
 	
 	scrimlast3chan.send(infoScrimEmbed);
