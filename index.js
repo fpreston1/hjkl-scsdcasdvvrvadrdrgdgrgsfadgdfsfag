@@ -220,15 +220,15 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	scrimlast3chan.send(nextgameEmbed);
-	const endTime = Date.now() + 1000 * 60 * 25;
-	const sentMessageLOL = await scrimlast3chan.send(nextgameEmbed);
-	const countdownInterval = client.setInterval( () => {
-	if(endTime) > Date.now() ) return client.clearInterval(countdownInterval);
-	let minsRemaining = (endTime - Date.now()) / 1000 * 60);
-	minsRemaining = Math.floor(minsRemaining);
-	nextgameEmbed.setDescription("*24 Minutes.*")
-	sentMessage.edit(nextgameEmbed);
-	}, 1000 * 60 * 25);
+	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
+	let now;
+	while( (now = Date.now()) < endTime ) {
+		let minsRemaining = (endTime - now) / (1000 * 60);
+		minsRemaining = Math.floor(minsRemaining);
+		nextgameEmbed.setDescription("*24 Minutes.*")
+		sentMessage.edit(nextgameEmbed);
+		await startTimeout(1000 * 60);
+	}
 		
 	
 	return;
