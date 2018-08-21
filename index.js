@@ -220,6 +220,7 @@ bot.on("message", async message => {
 	.setColor(6812512);
 		
 	scrimlast3chan.send(nextgameEmbed);
+	const endTime = Date.now() + 1000 * 60 * 25;
 	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
 	let now;
 	while( (now = Date.now()) < endTime ) {
