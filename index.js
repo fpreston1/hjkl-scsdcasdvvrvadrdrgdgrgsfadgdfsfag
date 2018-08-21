@@ -214,10 +214,11 @@ bot.on("message", async message => {
 	scrimlast3chan.send(startEmbed);
 	message.delete().catch(O_o=>{});
 		
+	await startTimeout(15000);
 	let nextgameEmbed = new Discord.RichEmbed()
 	.setTitle("**Next snipe in approx...**")
 	.setDescription("*25 Minutes*")
-	.setColor(6812512);
+	.setColor(13859315);
 	
 		
 	const endTime = Date.now() + 1000 * 60 * 25;
