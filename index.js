@@ -169,8 +169,14 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+		
+
 	
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
+	scrimlast3chan.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: true
+	})
+	scrimlast3chan.send("*Chat is now unlocked!*");
 	let nficon = bot.user.displayAvatarURL;
 	let negicon = message.author.displayAvatarURL;
 	let todaysDate = new Date();
@@ -244,24 +250,24 @@ bot.on("message", async message => {
 }
 
 
-	if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
-	message.channel.bulkDelete(10);
-	message.channel.send(`Scrims Ended....`).then(msg => msg.delete(1000));
-	let endEmbed = new Discord.RichEmbed()
-	.addField("Game Info", "Games have now ended, please type !iWon if you Won your Match.")
-	.setColor(6812512);
+	//if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
+	//message.channel.bulkDelete(10);
+	//message.channel.send(`Scrims Ended....`).then(msg => msg.delete(1000));
+	//let endEmbed = new Discord.RichEmbed()
+	//.addField("Game Info", "Games have now ended, please type !iWon if you Won your Match.")
+	//.setColor(6812512);
 
-	message.channel.send(endEmbed);
+	//message.channel.send(endEmbed);
 
-	message.channel.overwritePermissions(message.guild.id, {
-	SEND_MESSAGES: true
-	})
-	message.channel.send("*Chat is now unlocked!*");
+	//message.channel.overwritePermissions(message.guild.id, {
+	//SEND_MESSAGES: true
+	//})
+	//message.channel.send("*Chat is now unlocked!*");
 		
 	
 		
-	return;
-}
+	//return;
+//}
 	
 
 	
