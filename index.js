@@ -219,7 +219,6 @@ bot.on("message", async message => {
 	.setDescription("*25 Minutes*")
 	.setColor(6812512);
 		
-	scrimlast3chan.send(nextgameEmbed);
 	const endTime = Date.now() + 1000 * 60 * 25;
 	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
 	let now;
