@@ -202,7 +202,7 @@ bot.on("message", async message => {
 		
 	
 	const startTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await startTimeout(10000);
+	await startTimeout(9000);
 		
 		
 		
