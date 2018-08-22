@@ -75,30 +75,11 @@ bot.on("message", async message => {
 	
 	return;
 }
-	if(cmd === `${prefix}nae`) {
-	message.author.addRole(bot.guild.roles.find("name", "Scrimmer"));
-	message.author.addRole(bot.guild.roles.find("name", "NAE"));
-	message.author.removeRole(bot.guild.roles.find("name", "Starter"));
+	if(cmd === `${prefix}nae` && message.channel.id === "481865517393510402") {
+	message.author.addRole(message.author.guild.roles.find("name", "Scrimmer"));
+	message.author.addRole(message.author.guild.roles.find("name", "NAE"));
+	message.author.removeRole(message.author.guild.roles.find("name", "Starter"));
 	message.author.send("Your region has been set to NAE");
-
-
-	return;
-	}
-	if(cmd === `${prefix}naw`) {
-	message.author.addRole(bot.guild.roles.find("name", "Scrimmer"));
-	message.author.addRole(bot.guild.roles.find("name", "NAW"));
-	message.author.removeRole(bot.guild.roles.find("name", "Starter"));
-	message.author.send("Your region has been set to NAW");
-	
-
-
-	return;
-	}
-	if(cmd === `${prefix}eu`) {
-	message.author.addRole(bot.guild.roles.find("name", "Scrimmer"));
-	message.author.addRole(bot.guild.roles.find("name", "EU"));
-	message.author.removeRole(bot.guild.roles.find("name", "Starter"));
-	message.author.send("Your region has been set to EU");
 
 
 	return;
