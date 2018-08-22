@@ -136,6 +136,8 @@ bot.on("message", async message => {
 	.addField('Time Played', data.lifetimeStats[13].value, true)
 	.addField('Average Survival Time', data.lifetimeStats[14].value, true)
 	.setColor(6812512);
+		
+	message.channel.send(fnEmbed);
 	})
 
 	.catch(error => {
