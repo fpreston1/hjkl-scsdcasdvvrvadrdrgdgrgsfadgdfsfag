@@ -115,19 +115,18 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}fortnite` && message.member.hasPermissions("ADMINISTRATOR")) {
 	let platform;
 	let username;
-	const Fortnite = require('fortnite');
 
 	if(!['pc', 'xbl', 'psn'].includes(args[0])) return message.channel.send("**Please include the platform < pc xbox psn >**");
 	if(!args[1]) return message.channel.send("**Please include the username**");
 
 	platform = args.shift();
 	username = args.join(' ');
+	const Fortnite = require('fortnite');
+
 	const stats = new Fortnite(process.env.APIKEY);
 
 	stats.getInfo(username, platform).then( data => { 
 	const fnEmbed = new Discord.RichEmbed()
-	.setColor(6812512);
-	.setTitle(`Stats for ${data.username}`)
 	.addField('Top Placement', `**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`)
 	.addField('Total Score', data.lifetimeStats[6].value)
 	.addField('Matches Played', data.lifetimeStats[7].value, true)
@@ -138,7 +137,7 @@ bot.on("message", async message => {
 	.addField('Kills Per Minute', data.lifetimeStats[12].value, true)
 	.addField('Time Played', data.lifetimeStats[13].value, true)
 	.addField('Average Survival Time', data.lifetimeStats[14].value, true)
-	.setFooter("Scrimbot by Pulse");
+	.setColor(6812512);
 	})
 
 	.catch(error => {
