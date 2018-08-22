@@ -91,6 +91,24 @@ bot.on("message", async message => {
 
 	return;
 	}
+	if(cmd === `${prefix}naw` && message.channel.id === "481865517393510402") {
+	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+	message.member.addRole(message.guild.roles.find("name", "NAW"));
+	message.member.removeRole(message.guild.roles.find("name", "Starter"));
+	message.author.send("Your region has been set to NAW");
+
+
+	return;
+	}
+	if(cmd === `${prefix}eu` && message.channel.id === "481865517393510402") {
+	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+	message.member.addRole(message.guild.roles.find("name", "EU"));
+	message.member.removeRole(message.guild.roles.find("name", "Starter"));
+	message.author.send("Your region has been set to EU");
+
+
+	return;
+	}
 
 	if(cmd === `${prefix}fortnite` && message.member.hasPermissions("ADMINISTRATOR")) {
 	message.reply("BOOM!");
