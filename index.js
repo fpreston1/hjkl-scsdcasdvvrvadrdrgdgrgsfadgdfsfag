@@ -23,6 +23,9 @@ bot.on("ready", async () => {
 //});
 
 bot.on('guildMemberAdd', member => {
+	member.guild.channels.find('name', 'choose-region').sendMessage(member.toString() + " Please set region!").then(msg => msg.delete(1000);
+	member.guild.channels.find('name', 'choose-platform').sendMessage(member.toString() + " Please set platform!").then(msg => msg.delete(1000);
+
 
 	var role = member.guild.roles.find('name', 'Starter');
 
