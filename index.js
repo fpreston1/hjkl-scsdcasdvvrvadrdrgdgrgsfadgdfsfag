@@ -109,6 +109,11 @@ bot.on("message", async message => {
 
 	return;
 	}
+	if(cmd === `${prefix}ftn`) {
+		if(!args[0]) return message.channel.send("Couldn't find user.");
+		message.channel.send("https://fortnitemaster.com/profile/" + args[0]);
+		return;
+	}
 	//if(cmd === `${prefix}fn`) {
 	//	message.delete();
 	//	const apikey = require(process.env.APIKEY);
