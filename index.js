@@ -54,7 +54,7 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
-	if(message.channel.id === 478949150340153358) {
+	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
 	.setTitle(message.content)
