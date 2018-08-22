@@ -76,9 +76,9 @@ bot.on("message", async message => {
 	return;
 }
 	if(cmd === `${prefix}nae` && message.channel.id === "481865517393510402") {
-	message.author.addRole(message.author.guild.roles.find("name", "Scrimmer"));
-	message.author.addRole(message.author.guild.roles.find("name", "NAE"));
-	message.author.removeRole(message.author.guild.roles.find("name", "Starter"));
+	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+	message.member.addRole(message.guild.roles.find("name", "NAE"));
+	message.member.removeRole(message.guild.roles.find("name", "Starter"));
 	message.author.send("Your region has been set to NAE");
 
 
