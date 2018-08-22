@@ -49,7 +49,7 @@ bot.on("message", async message => {
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 	let banMSG = message.content.toUpperCase();
-	if(message.channel.id === 481865517393510402) {
+	if(message.channel.id === "481865517393510402") {
 		if(message.content || banMSG.includes(`!`)) {
 			message.delete();
 		}
@@ -462,7 +462,7 @@ bot.on("message", async message => {
 	return;	
 }	
 
-	if(cmd === `${prefix}hacked` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}hacked` && message.channel.id != "478949150340153358") {
 	let hackedEmbed = new Discord.RichEmbed()
 	.addField("Hacked", "The reason the previous discord was hacked is because Pulse is an idiot and leaked the token :cry:")
 	.setColor(6812512);
@@ -493,7 +493,7 @@ bot.on("message", async message => {
 
 
 
-	if(cmd === `${prefix}invite` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}invite` && message.channel.id != "478949150340153358") {
 	let inviteEmbed = new Discord.RichEmbed()
 	.addField("Invite Link", "https://discord.gg/ggPntHV")
 	.setColor(6812512);
@@ -504,7 +504,7 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}help` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}help` && message.channel.id != "478949150340153358") {
 	
 	let helpEmbed = new Discord.RichEmbed()
 	.addField("Commands", "User Commands", true)
@@ -549,7 +549,7 @@ bot.on("message", async message => {
 	
 
 
-	if(cmd === `${prefix}report` && message.channel.id != 478949150340153358){
+	if(cmd === `${prefix}report` && message.channel.id != "478949150340153358"){
 	
 	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	if(!rUser) return message.channel.send("Couldn't find the specified user.");
@@ -581,7 +581,7 @@ bot.on("message", async message => {
 
 
 
-	if(cmd === `${prefix}info` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}info` && message.channel.id != "478949150340153358") {
 
 	let sicon = message.guild.iconURL;
 	let serverembed = new Discord.RichEmbed()
@@ -599,7 +599,7 @@ bot.on("message", async message => {
 }
 
 
-	if(cmd === `${prefix}botinfo` && message.channel.id != 478949150340153358){
+	if(cmd === `${prefix}botinfo` && message.channel.id != "478949150340153358"){
 		let bicon = bot.user.displayAvatarURL;
 		let botembed = new Discord.RichEmbed()
 		.setDescription("Bot Information")
