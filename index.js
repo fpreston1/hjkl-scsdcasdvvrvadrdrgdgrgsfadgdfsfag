@@ -22,20 +22,20 @@ bot.on("ready", async () => {
 //		
 //});
 
-bot.on('guildMemberAdd', member => {
-	let chooseregion = message.guild.channels.find(`name`, "choose-region");
-	let chooseplatform = message.guild.channels.find(`name`, "choose-platform");
-	var role = member.guild.roles.find('name', 'Starter');
-
-	member.guild.channels.find("name", "choose-region").sendMessage(member.toString() + " Please choose your region here!");
-	member.guild.channels.find("name", "choose-platform").sendMessage(member.toString() + " Please choose your platform!");
-	const starterrankTime = ms => new Promise(res => setTimeout(res, ms))
-	await starterrankTime(20);
-	chooseregion.bulkDelete(1);
-	chooseplatform.bulkDelete(1);
-	
-	member.addRole(role);
-});
+//bot.on('guildMemberAdd', member => {
+//	let chooseregion = message.guild.channels.find(`name`, "choose-region");
+//	let chooseplatform = message.guild.channels.find(`name`, "choose-platform");
+//	var role = member.guild.roles.find('name', 'Starter');
+//
+//	member.guild.channels.find("name", "choose-region").sendMessage(member.toString() + " Please choose your region here!");
+//	member.guild.channels.find("name", "choose-platform").sendMessage(member.toString() + " Please choose your platform!");
+//	const starterrankTime = ms => new Promise(res => setTimeout(res, ms))
+//	await starterrankTime(20);
+//	chooseregion.bulkDelete(1);
+//	chooseplatform.bulkDelete(1);
+//	
+//	member.addRole(role);
+//});
 
 
 
