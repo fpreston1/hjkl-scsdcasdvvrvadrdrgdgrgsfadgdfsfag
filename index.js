@@ -136,12 +136,7 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}iwon` && message.channel.id != 481865447613005824 && 481865517393510402) {
-	message.reply("won, is this true? (Y/N)");
-	
-	
-	return;
-}
+
 	
 	if(cmd === `${prefix}test` && message.member.hasPermissions("ADMINISTRATOR")) {
 	const agree = "👍";
