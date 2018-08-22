@@ -126,23 +126,23 @@ bot.on("message", async message => {
 	const stats = new Fortnite(process.env.APIKEY);
 
 	stats.getInfo(username, platform).then( data => { 
-	const fnEmbed = new Discord.RichEmbed()
-	.addField('Top Placement', `**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`)
-	.addField('Total Score', data.lifetimeStats[6].value)
-	.addField('Matches Played', data.lifetimeStats[7].value, true)
-	.addField('Wins', data.lifetimeStats[8].value, true)
-	.addField('Win Percentage', data.lifetimeStats[9].value, true)
-	.addField('Kills', data.lifetimeStats[10].value, true)
-	.addField('KD', data.lifetimeStats[11].value, true)
-	.addField('Kills Per Minute', data.lifetimeStats[12].value, true)
-	.addField('Time Played', data.lifetimeStats[13].value, true)
-	.addField('Average Survival Time', data.lifetimeStats[14].value, true)
-	.setColor(6812512);
+	//const fnEmbed = new Discord.RichEmbed()
+	//.addField('Top Placement', `**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`)
+	//.addField('Total Score', data.lifetimeStats[6].value)
+	//.addField('Matches Played', data.lifetimeStats[7].value, true)
+	//.addField('Wins', data.lifetimeStats[8].value, true)
+	//.addField('Win Percentage', data.lifetimeStats[9].value, true)
+	//.addField('Kills', data.lifetimeStats[10].value, true)
+	//.addField('KD', data.lifetimeStats[11].value, true)
+	//.addField('Kills Per Minute', data.lifetimeStats[12].value, true)
+	//.addField('Time Played', data.lifetimeStats[13].value, true)
+	//.addField('Average Survival Time', data.lifetimeStats[14].value, true)
+	//.setColor(6812512);
 	})
 
-	.catch(error => {
-	message.channel.send('Username not found!');
-	})
+	//.catch(error => {
+	//message.channel.send('Username not found!');
+	//})
 	return;
 }
 
