@@ -12,12 +12,12 @@ bot.on("guildMemberAdd", function(member) {
 
 	member.guild.channels.find("name", "choose-region").sendMessage(member.toString() + " Please choose your region here!");
 	member.guild.channels.find("name", "choose-platform").sendMessage(member.toString() + " Please choose your platform!");
-	const starterrankTime = ms => new Promise(res => setTimeout(res, ms))
-	await starterrankTime(20);
-	let chooseregion = message.guild.channels.find(`name`, "choose-region");
-	chooseregion.bulkDelete(1);
-	let chooseplatform = message.guild.channels.find(`name`, "choose-platform");
-	chooseplatform.bulkDelete(1);
+	//const starterrankTime = ms => new Promise(res => setTimeout(res, ms))
+	//await starterrankTime(20);
+	//let chooseregion = message.guild.channels.find(`name`, "choose-region");
+	//chooseregion.bulkDelete(1);
+	//let chooseplatform = message.guild.channels.find(`name`, "choose-platform");
+	//chooseplatform.bulkDelete(1);
 
 		
 });
