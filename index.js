@@ -8,7 +8,7 @@ bot.on("ready", async () => {
 });
 
 bot.on("guildMemberAdd", function(member) {
-	member.guild.channels.find("name", "chat").sendMessage(member.toString() + " Welcome to Small Scrims Discord!");
+	member.guild.channels.find("name", "chat").sendMessage(member.toString() + "Welcome to Small Scrims Discord!");
    member.addRole(bot.guild.roles.find("name", "Scrimmer"));
 });
 
