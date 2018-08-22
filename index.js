@@ -109,45 +109,45 @@ bot.on("message", async message => {
 
 	return;
 	}
-	if(cmd === `${prefix}fn`) {
-		message.delete();
-		const apikey = require(process.env.APIKEY);
-		const Fortnite = require("fortnite");
-		const ft = new Fortnite(process.env.APIKEY);
-		
-		let username = args[0];
-		let platform = args[1] || "pc";
-		
-		let data = ft.getInfo(username, platform).then(data => {
-			let stats = data.lifetimeStats;
-			let kills = stats.find(s => s.stat == 'kills');
-			let wins = stats.find(s => s.stat == 'wins');
-			let kd = stats.find(s => s.stat == 'kd');
-			let mPlayed = stats.find(s => s.stat == 'matchesPlayed');
-			let tPlayed = stats.find(s => s.stat == 'timePlayed');
-			let asTime = stats.find(s => s.stat == 'avgSurvivalTime');
-			
-			let fntEmbed = new Discord.RichEmbed()
-			.setTitle("Fortnite Stats")
-			.setAuthor(data.username)
-			.setColor(6812512)
-			.addField("Kills", kills.value, true)
-			.addField("Wins", wins.value, true)
-			.addField("KD", kd.value, true)
-			.addField("Matches Played", mPlayed.value, true)
-			.addField("Time Played", tPlayed.value, true)
-			.addField("Average Survival Time", asTime.value, true);
-			
-			message.channel.send(fntEmbed);
-			
-		}).catch(e => {
-			console.log(e);
-			message.channel.send("Couldn't find user");
-		});
-
-		
-		return;
-	}
+	//if(cmd === `${prefix}fn`) {
+	//	message.delete();
+	//	const apikey = require(process.env.APIKEY);
+	//	const Fortnite = require("fortnite");
+	//	const ft = new Fortnite(process.env.APIKEY);
+	//	
+	//	let username = args[0];
+	//	let platform = args[1] || "pc";
+	//	
+	//	let data = ft.getInfo(username, platform).then(data => {
+	//		let stats = data.lifetimeStats;
+	//		let kills = stats.find(s => s.stat == 'kills');
+	//		let wins = stats.find(s => s.stat == 'wins');
+	//		let kd = stats.find(s => s.stat == 'kd');
+	//		let mPlayed = stats.find(s => s.stat == 'matchesPlayed');
+	//		let tPlayed = stats.find(s => s.stat == 'timePlayed');
+	//		let asTime = stats.find(s => s.stat == 'avgSurvivalTime');
+	//		
+	//		let fntEmbed = new Discord.RichEmbed()
+	//		.setTitle("Fortnite Stats")
+	//		.setAuthor(data.username)
+	//		.setColor(6812512)
+	//		.addField("Kills", kills.value, true)
+	//		.addField("Wins", wins.value, true)
+	//		.addField("KD", kd.value, true)
+	//		.addField("Matches Played", mPlayed.value, true)
+	//		.addField("Time Played", tPlayed.value, true)
+	//		.addField("Average Survival Time", asTime.value, true);
+	//		
+	//		message.channel.send(fntEmbed);
+	//		
+	//	}).catch(e => {
+	//		console.log(e);
+	//		message.channel.send("Couldn't find user");
+	//	});
+//
+//		
+//		return;
+//	}
 
 //	if(cmd === `${prefix}fortnite` && message.member.hasPermissions("ADMINISTRATOR")) {
 //	let platform;
