@@ -23,14 +23,24 @@ bot.on("ready", async () => {
 //});
 
 bot.on('guildMemberAdd', member => {
-	member.guild.channels.find('name', 'choose-region').sendMessage(member.toString() + " Please set region!").then(msg => msg.delete(1000);
-	member.guild.channels.find('name', 'choose-platform').sendMessage(member.toString() + " Please set platform!").then(msg => msg.delete(1000);
-
-
-	var role = member.guild.roles.find('name', 'Starter');
+		let regionChannel = member.guild.channels.find('name', 'choose-region');
+		let platChannel = member.guild.channels.find('name', 'choose-platform');
+		var role = member.guild.roles.find('name', 'Starter');
 
 	
 	member.addRole(role);
+	
+	member.guild.channels.find('name', 'choose-region').sendMessage(member.toString() + " Set region!");
+	const regionTime = ms => new Promise(res => setTimeout(res, ms))
+	await regionTime(1000);
+	regionChannel.bulkDelete(1);
+	member.guild.channels.find('name', 'choose-platform').sendMessage(member.toString() + " Set platform!");
+	await regionTime(1000);
+	platChannel.bulkDelete(1);
+	
+
+	
+
 });
 
 
