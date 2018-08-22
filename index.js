@@ -7,10 +7,20 @@ bot.on("ready", async () => {
 	bot.user.setActivity("to your commands!", {type: "LISTENING"});
 });
 
-//bot.on("guildMemberAdd", function(member) {
-	//member.guild.channels.find("name", "chat").sendMessage(member.toString() + "Welcome to Small Scrims Discord!");
-  // member.addRole(bot.guild.roles.find("name", "Scrimmer"));
-//});
+bot.on("guildMemberAdd", function(member) {
+	   member.addRole(bot.guild.roles.find("name", "Starter"));
+
+	member.guild.channels.find("name", "choose-region").sendMessage(member.toString() + " Please choose your region here!");
+	member.guild.channels.find("name", "choose-platform").sendMessage(member.toString() + " Please choose your platform!");
+	const starterrankTime = ms => new Promise(res => setTimeout(res, ms))
+	await starterrankTime(20);
+	let chooseregion = message.guild.channels.find(`name`, "choose-region");
+	chooseregion.bulkDelete(1);
+	let chooseplatform = message.guild.channels.find(`name`, "choose-platform");
+	chooseplatform.bulkDelete(1);
+
+		
+});
 
 
 
@@ -24,7 +34,11 @@ bot.on("message", async message => {
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 	let banMSG = message.content.toUpperCase();
-	
+	if(message.channel.id === "481865447613005824" || "481865517393510402") {
+		if(message.content) {
+			message.delete();
+		}
+	}
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
@@ -44,7 +58,7 @@ bot.on("message", async message => {
 
 	
 	if(cmd === `${prefix}region`){
-	message.reply("Command not set - Ask Admin to set Region");
+	message.reply("Error.");
 
 	
 	
@@ -53,8 +67,36 @@ bot.on("message", async message => {
 	
 	return;
 }
+	if(cmd === `${prefix}nae`) {
+	message.author.addRole(bot.guild.roles.find("name", "Scrimmer"));
+	message.author.addRole(bot.guild.roles.find("name", "NAE"));
+	message.author.removeRole(bot.guild.roles.find("name", "Starter"));
+	message.author.send("Your region has been set to NAE");
 
-	if(cmd === `${prefix}fortnite`) {
+
+	return;
+	}
+	if(cmd === `${prefix}naw`) {
+	message.author.addRole(bot.guild.roles.find("name", "Scrimmer"));
+	message.author.addRole(bot.guild.roles.find("name", "NAW"));
+	message.author.removeRole(bot.guild.roles.find("name", "Starter"));
+	message.author.send("Your region has been set to NAW");
+	
+
+
+	return;
+	}
+	if(cmd === `${prefix}eu`) {
+	message.author.addRole(bot.guild.roles.find("name", "Scrimmer"));
+	message.author.addRole(bot.guild.roles.find("name", "EU"));
+	message.author.removeRole(bot.guild.roles.find("name", "Starter"));
+	message.author.send("Your region has been set to EU");
+
+
+	return;
+	}
+
+	if(cmd === `${prefix}fortnite` && message.member.hasPermissions("ADMINISTRATOR")) {
 	message.reply("BOOM!");
 	const apikey = require(process.env.APIKEY);
 	const fortnite = require("fortnite");
@@ -94,7 +136,7 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}iwon`) {
+	if(cmd === `${prefix}iwon` && message.channel.id != "481865447613005824" || "481865517393510402") {
 	message.reply("won, is this true? (Y/N)");
 	
 	
@@ -410,7 +452,7 @@ bot.on("message", async message => {
 	return;	
 }	
 
-	if(cmd === `${prefix}hacked` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}hacked` && message.channel.id != "478949150340153358" || "481865447613005824" || "481865517393510402") {
 	let hackedEmbed = new Discord.RichEmbed()
 	.addField("Hacked", "The reason the previous discord was hacked is because Pulse is an idiot and leaked the token :cry:")
 	.setColor(6812512);
@@ -441,7 +483,7 @@ bot.on("message", async message => {
 
 
 
-	if(cmd === `${prefix}invite` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}invite` && message.channel.id != "478949150340153358" || "481865447613005824" || "481865517393510402") {
 	let inviteEmbed = new Discord.RichEmbed()
 	.addField("Invite Link", "https://discord.gg/ggPntHV")
 	.setColor(6812512);
@@ -452,7 +494,7 @@ bot.on("message", async message => {
 	return;
 }
 
-	if(cmd === `${prefix}help` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}help` && message.channel.id != "478949150340153358" || "481865447613005824" || "481865517393510402") {
 	
 	let helpEmbed = new Discord.RichEmbed()
 	.addField("Commands", "User Commands", true)
@@ -497,7 +539,7 @@ bot.on("message", async message => {
 	
 
 
-	if(cmd === `${prefix}report` && message.channel.id != 478949150340153358){
+	if(cmd === `${prefix}report` && message.channel.id != "478949150340153358" || "481865447613005824" || "481865517393510402"){
 	
 	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	if(!rUser) return message.channel.send("Couldn't find the specified user.");
@@ -529,7 +571,7 @@ bot.on("message", async message => {
 
 
 
-	if(cmd === `${prefix}info` && message.channel.id != 478949150340153358) {
+	if(cmd === `${prefix}info` && message.channel.id != "478949150340153358" || "481865447613005824" || "481865517393510402") {
 
 	let sicon = message.guild.iconURL;
 	let serverembed = new Discord.RichEmbed()
@@ -547,7 +589,7 @@ bot.on("message", async message => {
 }
 
 
-	if(cmd === `${prefix}botinfo` && message.channel.id != 478949150340153358){
+	if(cmd === `${prefix}botinfo` && message.channel.id != "478949150340153358" || "481865447613005824" || "481865517393510402"){
 		let bicon = bot.user.displayAvatarURL;
 		let botembed = new Discord.RichEmbed()
 		.setDescription("Bot Information")
