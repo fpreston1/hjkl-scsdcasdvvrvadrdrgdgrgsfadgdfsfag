@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+const Fortnite = require('fortnite');
+const stats = new Fortnite(process.env.APIKEY);
 
 const bot = new Discord.Client({disableEveryone: true});
 
@@ -111,42 +113,37 @@ bot.on("message", async message => {
 	}
 
 	if(cmd === `${prefix}fortnite` && message.member.hasPermissions("ADMINISTRATOR")) {
-	message.reply("BOOM!");
-	const apikey = require(process.env.APIKEY);
-	const fortnite = require("fortnite");
-	const ft = new Fortnite(process.env.APIKEY);
-	
-	let username = args[0]
-	let platform = args[1] || "pc";
+	let platform;
+	let username;
+	const Fortnite = require('fortnite');
 
-	let data = ft.getInfo(username, platform).then(data => {
+	if(!['pc', 'xbl', 'psn'].includes(args[0])) return message.channel.send("**Please include the platform < pc xbox psn >**");
+	if(!args[1]) return message.channel.send("**Please include the username**");
 
-		let stats = data.lifetimeStats;
+	platform = args.shift();
+	username = args.join(' ');
+	const stats = new Fortnite(process.env.APIKEY);
 
-		let kills = stats.find(s => s.stat == "kills");
-		let wins = stats.find(s => s.stat == "wins");
-		let kd = stats.find(s => s.stat == "kd");
-		let mPlayed = stats.find(s => s.stat == "matchesPlayed");
-		let tPlayed = stats.find(s => s.stat == "timePlayed");
+	stats.getInfo(username, platform).then( data => { 
+	const fnEmbed = new Discord.RichEmbed()
+	.setColor(6812512);
+	.setTitle(`Stats for ${data.username}`)
+	.addField('Top Placement', `**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`)
+	.addField('Total Score', data.lifetimeStats[6].value)
+	.addField('Matches Played', data.lifetimeStats[7].value, true)
+	.addField('Wins', data.lifetimeStats[8].value, true)
+	.addField('Win Percentage', data.lifetimeStats[9].value, true)
+	.addField('Kills', data.lifetimeStats[10].value, true)
+	.addField('KD', data.lifetimeStats[11].value, true)
+	.addField('Kills Per Minute', data.lifetimeStats[12].value, true)
+	.addField('Time Played', data.lifetimeStats[13].value, true)
+	.addField('Average Survival Time', data.lifetimeStats[14].value, true)
+	.setFooter("Scrimbot by Pulse");
+	})
 
-		let fortniteEmbed = new Discord.RichEmbed()
-		.setTitle("Fortnite Stats")
-		.setAuthor(data.username)
-		.setColor(6812512)
-		.addField("Kills", kills.value, true)
-		.addField("Wins", wins.value, true)
-		.addField("KD", kd.value, true)
-		.addField("Matches Played", mPlayed.value, true)
-		.addField("Time Played", tPlayed.value, true);
-
-		message.channel.send(fortniteEmbed);
-
-	
-	}).catch(e => {
-	console.log(e);
-	message.channel.send("Couldnt find user");
-	});
-	
+	.catch(error => {
+	message.channel.send('Username not found!');
+	})
 	return;
 }
 
