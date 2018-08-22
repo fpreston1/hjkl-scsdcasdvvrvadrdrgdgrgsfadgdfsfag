@@ -7,19 +7,11 @@ bot.on("ready", async () => {
 	bot.user.setActivity("to your commands!", {type: "LISTENING"});
 });
 
-//bot.on("guildMemberAdd", function(member) {
-//	member.guild.channels.find("name", "chat").sendMessage(member.toString() + " Welcome to Small Scrims Discord!");
- //   member.addRole(member.guild.roles.find("name", "Scrimmer"));
-//});
-bot.on('guildMemberAdd', member => {
-
-	console.log(member.username + 'Welcome to Small Scrims Discord!')
-	
-	var autoRole = member.guild.roles.find('name', 'Scrimmer');
-	
-	member.addRole(autoRole)
-	
+bot.on("guildMemberAdd", function(member) {
+	member.guild.channels.find("name", "chat").sendMessage(member.toString() + " Welcome to Small Scrims Discord!");
+   member.addRole(member.guild.roles.find("name", "Scrimmer"));
 });
+
 
 
 
