@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
+const apikey = process.env.APIKEY;
+const Fortnite = require("fortnite");
 
 
 
@@ -120,14 +122,17 @@ bot.on("message", async message => {
 	}
 	
 	if(cmd === `${prefix}fn`) {
-		message.delete();
+		const Fortnite = require('fortnite');
 		const apikey = process.env.APIKEY;
-		const Fortnite = require("fortnite");
-		const ft = new Fortnite(apikey);
+		let ft = new Fortnite(apikey);
+
+		message.delete();
+		
 		
 		let username = args[0];
 		let platform = args[1] || "pc";
-		
+	
+
 		let data = ft.getInfo(username, platform).then(data => {
 			let stats = data.lifetimeStats;
 			let kills = stats.find(s => s.stat == 'kills');
