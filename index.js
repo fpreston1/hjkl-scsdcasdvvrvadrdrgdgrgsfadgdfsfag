@@ -268,6 +268,7 @@ bot.on("message", async message => {
 				var server = servers[message.guild.id];
 				message.member.voiceChannel.join()
 				.then(connection => {
+					var servers = {};
 					var server = servers[message.guild.id];
 					message.reply("Joined");
 					server.queue.push(args);
