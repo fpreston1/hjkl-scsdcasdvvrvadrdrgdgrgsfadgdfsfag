@@ -170,9 +170,9 @@ bot.on("message", async message => {
 
 		
 				return message.channel.send("Rank set sir!");
-			}else if(gamemode === `duo`){
-			return;
-		})
+			}	
+		});
+		
 	
 		return;
 	}
