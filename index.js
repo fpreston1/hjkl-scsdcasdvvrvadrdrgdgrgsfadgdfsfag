@@ -399,6 +399,7 @@ bot.on("message", async message => {
 	
 	function Play(connection, message) {
 	const YTDL = require("ytdl-core");
+		var servers = {};
 
 	var server = servers[message.guild.id];
 	
