@@ -120,8 +120,9 @@ bot.on("message", async message => {
 		let kd = stats.find(s => s.stat == "kd");
 			if(kd.value > 1) {
 			message.member.addRole(message.guild.roles.find("name", "Friend"));
-		}
-		}
+			}
+		});
+		
 
 		return;
 	}
