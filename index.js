@@ -151,25 +151,25 @@ bot.on("message", async message => {
 				let wins = solostats.wins;
 				let top3 = solostats.top_3;
 				
-				if(kd > 5){
-					message.member.addRole(message.guild.roles.find("name", "Great KD"));
-				}
-				if(kd < 5 && kd >= 3){
-					message.member.addRole(message.guild.roles.find("name", "Good KD"));
+				//if(kd > 5){
+				//	message.member.addRole(message.guild.roles.find("name", "Great KD"));
+				//}
+				//if(kd < 5 && kd >= 3){
+				//	message.member.addRole(message.guild.roles.find("name", "Good KD"));
+//
+				//}
+				//if(kd > 10){
+				//	message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
+//
+				//}
+				//if(kd < 1){
+				//	message.member.addRole(message.guild.roles.find("name", "Bad KD"));
 
-				}
-				if(kd > 10){
-					message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
+				//}
+				//if(kd >= 1 && kd < 3){
+				//	message.member.addRole(message.guild.roles.find("name", "Decent KD"));
 
-				}
-				if(kd < 1){
-					message.member.addRole(message.guild.roles.find("name", "Bad KD"));
-
-				}
-				if(kd >= 1 && kd < 3){
-					message.member.addRole(message.guild.roles.find("name", "Decent KD"));
-
-				}
+				//}
 			
 				
 				let soloEmbed = new Discord.RichEmbed()
