@@ -399,7 +399,7 @@ bot.on("message", async message => {
 	
 	function Play(connection, message) {
 	const YTDL = require("ytdl-core");
-		var servers = {};
+	var servers = {};
 
 	var server = servers[message.guild.id];
 	
@@ -422,18 +422,21 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
-		
+	var servers = {};
+	if(!message.member.voiceChannel) {
+		message.channel.send("You must be in a voice channel").then(msg => msg.delete(2000));
+	return;
+	}
+	if(!servers[message.guild.id]) servers[message.guild.id] = {
+		queue: []
+	};
+	var server = servers[message.guild.id];
 	
+	server.queue.push(args[0]);
 		
-	if(message.member.voiceChannel) {
-		message.member.voiceChannel.join()
-		.then(connection =>{
-			var server = servers[message.guild.id];
-			message.reply("Joined channel!");
-			server.queue.push(args);
-					Play(connection, message);
-		      })
-	  }
+	if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+		Play(connection, message);
+	});
 		
 		
 	
