@@ -132,9 +132,9 @@ bot.on("message", async message => {
 		
 
 
-		let username = message.author.username;
-		let platform = "pc";
-		let gamemode = "solo";
+		let username = args[0] || message.author.username;
+		let platform = args[2] || "pc";
+		let gamemode = args[1] || "solo";
 		
 		
 		if(!username) return message.reply("Please provide a username!);
@@ -151,27 +151,7 @@ bot.on("message", async message => {
 				let wins = solostats.wins;
 				let top3 = solostats.top_3;
 				
-				if(kd > 5){
-					message.member.addRole(message.guild.roles.find("name", "Great KD"));
-				}
-				if(kd < 5 && kd >= 3){
-					message.member.addRole(message.guild.roles.find("name", "Good KD"));
 
-				}
-				if(kd > 10){
-					message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
-
-				}
-				if(kd < 1){
-					message.member.addRole(message.guild.roles.find("name", "Bad KD"));
-
-				}
-				if(kd >= 1 && kd < 3){
-					message.member.addRole(message.guild.roles.find("name", "Decent KD"));
-
-				}
-			
-				
 				let soloEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Solo Stats")
 				.setAuthor(`Stats for ${data.username}`)
@@ -183,13 +163,13 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
-				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
-				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-				}
+				//if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
+				//message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+				//message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+			//	}
 
 		
-				return message.author.send("Rank set sir!");
+				return message.channel.send("Rank set sir!");
 			}
 		})
 	
