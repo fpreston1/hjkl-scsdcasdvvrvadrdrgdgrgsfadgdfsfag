@@ -53,11 +53,11 @@ bot.on("message", async message => {
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 	let banMSG = message.content.toUpperCase();
-	//if(message.channel.id === "481865517393510402") {
-	//	if(message.content || banMSG.includes(`!`)) {
-	//		message.delete();
-	//	}
-	//}
+	if(message.channel.id === "481865517393510402") {
+		if(message.content || banMSG.includes(`!`)) {
+			message.delete();
+		}
+	}
 	if(message.channel.id === "482044199504707584"){
 		if(message.content || banMSG.includes(`!`)){
 			message.delete();
