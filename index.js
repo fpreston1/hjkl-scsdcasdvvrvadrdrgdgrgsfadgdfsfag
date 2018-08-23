@@ -174,7 +174,7 @@ bot.on("message", async message => {
 				.addField("KD", kd, true);
 
 		
-				return message.channel.send(soloEmbed).then(msg => msg.delete(2000));
+				return message.channel.send(soloEmbed);
 				
 				
 			}else if(gamemode === `duo`) {
