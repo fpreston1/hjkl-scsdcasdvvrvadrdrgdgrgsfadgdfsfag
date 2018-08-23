@@ -261,9 +261,7 @@ bot.on("message", async message => {
 		{
 			if(!message.guild.voiceConnection)
 			{
-				if(!servers[message.guild.id]) {
-				servers[message.guild.id] = {queue: []}
-				}
+				
 				var server = servers[message.guild.id];
 				message.member.voiceChannel.join()
 				.then(connection => {
