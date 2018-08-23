@@ -120,6 +120,42 @@ bot.on("message", async message => {
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`);
 	return;
 	}
+	if(cmd === `${prefix}ftest`) {
+		const Fortnite = require("fortnite");
+		const fkey = process.env.APIKEY;
+		const fortnite = new Fortnite(fkey);
+		
+		let username = args[0];
+		let platform = args[2].toLowerCase() || "pc";
+		if(!username) return message.reply("Please enter a username!");
+		let data = fortnite.user(username, platform).then(data => {
+			let stats = data.stats;
+			
+			let lifetime = stats.lifetime;
+			let score = lifetime[6]["Score"];
+			let mplayed = lifetime[7]["Matches Played"];
+			let wins = lifetime[8]["Wins"];
+			let winper = lifetime[9]["Win %"];
+			let kills = lifetime[10]["Kills"];
+			let kd = lifetime[11]["KD"];
+			
+			let ftestEmbed = new Discord.RichEmbed()
+			.setTitle("Fortnite Lifetime Stats")
+			.setAuthor(data.username)
+			.setColor(6812512)
+			.addField("Wins", wins, true)
+			.addField("Kills", kills, true)
+			.addField("Score", score, true)
+			.addField("Matches Played", mplayed, true)
+			.addField("KD Ratio", kd, true)
+			.addField("Win Percentage", winper, true);
+			
+			return message.channel.send(ftestEmbed);
+		})
+		
+		
+		return;
+	}
 	
 	if(cmd === `${prefix}fn`) {
 		const Fortnite = require('fortnite');
