@@ -132,12 +132,12 @@ bot.on("message", async message => {
 		
 
 
-		let username = args[0] || message.author.username;
-		let platform = args[2] || "pc";
-		let gamemode = args[1] || "solo";
+		let username = message.author.username;
+		let platform = "pc";
+		let gamemode = "solo";
 		
 		
-		if(!username) return message.reply("Please provide a username!);
+		if(!username) return message.reply("Please set a CORRECT nickname!");
 
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
@@ -163,60 +163,14 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				//if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
-				//message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
-				//message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-				//}
+				if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
+				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+				}
 
 		
-				return message.channel.send("Rank set sir!");
-			}else if(gamemode === `duo`){
-				let duostats = stats.duo;
-				let score = duostats.score;
-				let kd = duostats.kd;
-				let wins = duostats.wins;
-				let matches = duostats.matches;
-				let kills = duostats.kills;
-				
-				let duoEmbed = new Discord.RichEmbed()
-				.setTitle(`Fortnite Tracker Duo Stats`)
-				.setAuthor(`Stats for ${data.username}`)
-				.setColor(6812512)
-				.addField("Wins", wins, true)
-				.addField("Kills", kills, true);
-				
-				return message.channel.send(duoEmbed);
-			}else if(gamemode === `squad`) {
-				let squadstats = stats.squad;
-				let score = squadstats.score;
-				let kd = squadstats.kd
-				let wins = squadstats.wins;
-				let kills = squadstats.kills;
-				
-				let squadEmbed = new Discord.RichEmbed()
-				.setTitle("Fortnite Tracker Squad Stats")
-				.setAuthor(`Stats for ${data.username}`)
-				.setColor(6812512)
-				.addField("Wins", wins, true)
-				.addField("Kills", kills, true);
-				
-				return message.channel.send(squadEmbed);
-			}else{
-				let lifetime = stats.lifetime;
-				let score = lifetime[6]['Score'];
-				let mplayed = lifetime[7]['Matches Played'];
-				let wins = lifetime[8]['Wins'];
-				let kills = lifetime[10]['Kills'];
-				let kd = lifetime[11]['KD'];
-				
-				let lifetimeEmbed = new Discord.RichEmbed()
-				.setTitle("Fortnite Tracker Lifetime Stats")
-				.setAuthor(`Stats for ${data.username}`)
-				.setColor(6812512)
-				.addField("Wins", wins true)
-				.addField("Kills", kills, true);
-				
-				return message.channel.send(lifetimeEmbed);
+				return message.reply(" Rank set sir!").then(msg => msg.delete(2000));
+			
 		}
 		})
 	
