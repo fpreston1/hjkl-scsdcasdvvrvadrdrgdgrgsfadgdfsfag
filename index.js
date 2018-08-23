@@ -396,15 +396,8 @@ bot.on("message", async message => {
 	
 	return;
 }
-
-
-
-
-	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
-		
+	
 	function Play(connection, message) {
-	var servers = {};
-
 	const YTDL = require("ytdl-core");
 
 	var server = servers[message.guild.id];
@@ -421,22 +414,27 @@ bot.on("message", async message => {
 		}
 
 	});
-	}
+}
+
+
+
+
+
+	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+		
+	
 		
 	if(message.member.voiceChannel) {
 		message.member.voiceChannel.join()
 		.then(connection =>{
-			message.reply("Joined channel!").then(msg => msg.delete(1000));
+			message.reply("Joined channel!");
 		      })
 	  }
 		
-	if(!message.guild.voiceConnection)
-			{
+	if(!message.guild.voiceConnection) {
 				
-				var server = servers[message.guild.id];
 				message.member.voiceChannel.join()
 				.then(connection => {
-					var server = servers[message.guild.id];
 					message.reply("Joined");
 					server.queue.push("https://www.youtube.com/watch?v=nyC0c6t7Vq0");
 					Play(connection, message);
@@ -444,7 +442,7 @@ bot.on("message", async message => {
 			}
 		}else{
 			message.reply("Please be in a voice channel").then(msg => msg.delete(2000));
-		}
+	}
 		
 
 	
