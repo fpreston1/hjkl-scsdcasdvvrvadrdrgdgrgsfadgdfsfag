@@ -121,7 +121,7 @@ bot.on("message", async message => {
 	
 	if(cmd === `${prefix}fn`) {
 		message.delete();
-		const apikey = require(process.env.APIKEY);
+		const apikey = process.env.APIKEY;
 		const Fortnite = require("fortnite");
 		const ft = new Fortnite(process.env.APIKEY);
 		
