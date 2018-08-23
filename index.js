@@ -271,7 +271,7 @@ bot.on("message", async message => {
 					var servers = {};
 					var server = servers[message.guild.id];
 					message.reply("Joined");
-					server.queue.push(args);
+					servers[message.guild.is].queue.push(args);
 					Play(connection, message);
 				})
 			}
