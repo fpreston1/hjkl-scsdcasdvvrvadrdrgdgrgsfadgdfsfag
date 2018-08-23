@@ -258,7 +258,7 @@ bot.on("message", async message => {
 }
 
 		const YTDL = require("ytdl-core");
-	const FFMPEG = require("ffmpeg");
+	const FFMPEG = require("ffmpeg-binaries");
 	const opusscript = require("opusscript");
 		if(message.member.voiceChannel)
 		{
