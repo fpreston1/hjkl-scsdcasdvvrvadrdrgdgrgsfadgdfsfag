@@ -128,7 +128,7 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		message.delete();
 		if(!args[0]) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
-		if(args[0].length > 16) return message.channel.send("Fortnite nicknames ONLY please.");
+		if(args[0].length > 16) return message.channel.send("Fortnite nicknames ONLY please.").then(msg => msg.delete(2000));
 		message.member.setNickname(args[0]);
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`).then(msg => msg.delete(2000));
 	return;
@@ -144,7 +144,7 @@ bot.on("message", async message => {
 		let gamemode = "solo";
 		
 		
-		if(!username) return message.reply("Please set a CORRECT nickname!");
+		if(!username) return message.reply("Please set a CORRECT nickname!").then(msg => msg.delete(2000));
 
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
