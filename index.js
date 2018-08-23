@@ -154,7 +154,7 @@ bot.on("message", async message => {
 				if(kd > 5){
 					message.member.addRole(message.guild.roles.find("name", "Great KD"));
 				}
-				if(kd < 5 && kd > 3){
+				if(kd < 5 && kd >= 3){
 					message.member.addRole(message.guild.roles.find("name", "Good KD"));
 
 				}
@@ -166,7 +166,7 @@ bot.on("message", async message => {
 					message.member.addRole(message.guild.roles.find("name", "Bad KD"));
 
 				}
-				if(kd > 1 && kd < 3){
+				if(kd >= 1 && kd < 3){
 					message.member.addRole(message.guild.roles.find("name", "Decent KD"));
 
 				}
@@ -183,9 +183,9 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				if(message.member.roles.has(message.guild.roles.find("name", "Decent KD")) || message.member.roles.has(message.guild.roles.find("name", "Good KD")) || message.member.roles.has(message.guild.roles.find("name", "Bad KD")) || message.member.roles.has(message.guild.roles.find("name", "Excellent KD")) || message.member.roles.has(message.guild.roles.find("name", "Great KD"))) {
-			message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
-			message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+				if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
+				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 				}
 
 		
