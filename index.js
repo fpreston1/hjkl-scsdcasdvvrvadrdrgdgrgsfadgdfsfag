@@ -123,7 +123,7 @@ bot.on("message", async message => {
 		message.delete();
 		const apikey = process.env.APIKEY;
 		const Fortnite = require("fortnite");
-		const ft = new Fortnite(process.env.APIKEY);
+		const ft = new Fortnite(apikey);
 		
 		let username = args[0];
 		let platform = args[1] || "pc";
