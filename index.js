@@ -183,10 +183,10 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
-				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
-				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-				}
+			//	if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
+			//	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+			//	message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+			//	}
 
 		
 				return message.reply(" Rank has been set").then(msg => msg.delete(2000));
