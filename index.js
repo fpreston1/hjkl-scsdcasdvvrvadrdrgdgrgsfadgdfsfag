@@ -43,6 +43,21 @@ bot.on('guildMemberAdd', member => {
 
 });
 
+function play(connection, message) {
+	const YTDL = require("ytdl-core");
+
+	var server = servers[message.guild.id];
+	
+	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+	
+	server.queue.shift();
+	
+	server.dispatcher.on("end", function() {
+		if(server.queue[0]) play(connection, message);
+		else connection.disconnect();
+	});
+}
+
 
 
 
@@ -127,49 +142,7 @@ bot.on("message", async message => {
 	
 	return;
 	}
-	if(cmd === `${prefix}yt` && message.member.hasPermissions("ADMINISTRATOR")) {
-		var servers = {};
-		if(!args[0]) {
-			message.channel.send("Please provide a link");
-			return;
-		}
-		if(!message.member.voiceChannel){
-			message.channel.send("Please be in voice channel");
-			return;
-		}
-		if(!servers[message.guild.id]) servers[message.guild.id] = {
-		queue: []
-		};
-		var server = servers[message.guild.id];
-		server.queue.push(args[1]);
-		
-		const YTDL = require("ytdl-core");
 	
-		function play(connection, message) {
-			var server = servers[message.guild.id];
-			server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-			
-			server.queue.shift();
-			server.dispatcher.on("end", function() {
-				if(server.queue[0]) play(connection, message);
-				else connection.disconnect();
-			});;
-			
-		}
-		
-		
-		if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-			play(connection, message);
-		});
-		
-		return;
-	}
-	if(cmd === `${prefix}st`) {
-		var server = servers[message.guild.id];
-		
-		if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-		return;
-	}
 	
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		message.delete();
@@ -247,6 +220,51 @@ bot.on("message", async message => {
 	
 		
 	
+		return;
+	}
+	
+	if(cmd === `${prefix}pl` && message.member.hasPermissions("ADMINISTRATOR")) {
+		var servers = {};
+		function play(connection, message) {
+	const YTDL = require("ytdl-core");
+
+	var server = servers[message.guild.id];
+	
+	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+	
+	server.queue.shift();
+	
+	server.dispatcher.on("end", function() {
+		if(server.queue[0]) play(connection, message);
+		else connection.disconnect();
+	});
+	}
+		if(!args[1]) {
+			message.channel.send("Provide link pls");
+			return;
+		}
+		if(!message.member.voiceChannel) {
+			message.channel.send("You must be in a voice channel");
+			return;
+		}
+		if(!servers[message.guild.id]) servers[message.guild.id] = {
+			queue: []
+		};
+		var server = servers[message.guild.id];
+		
+		server.queue.push(args[1]);
+		
+		if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+			play(connection, message);
+		});
+		
+		return;
+	}
+	if(cmd === `${prefix}st` && message.member.hasPermissions("ADMINISTRATOR")){
+		var server = servers[message.guild.id];
+		
+		if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+		
 		return;
 	}
 	
