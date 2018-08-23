@@ -233,97 +233,97 @@ bot.on("message", async message => {
 	}
 	
 	
-	if(cmd === `${prefix}pee`){
-			var servers = {};
+	//if(cmd === `${prefix}pee`){
+	//		var servers = {};
 
-		function Play(connection, message) {
-	const YTDL = require("ytdl-core");
-
-	var server = servers[message.guild.id];
+	//	function Play(connection, message) {
+//	const YTDL = require("ytdl-core");
+//
+//	var server = servers[message.guild.id];
 	
-	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+//	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+//	
+//	server.queue.shift();
+//	
+//	server.dispatcher.on("end", function() {
+//		if(server.queue[0]){
+//			Play(connection, message)
+//		}else{
+//	 connection.disconnect();
+//		}
+//
+//	});
+//}
+//
+//		const YTDL = require("ytdl-core");
+//	const FFMPEG = require("ffmpeg");
+//	const opusscript = require("opusscript");
+//		if(message.member.voiceChannel)
+//		{
+//			if(!message.guild.voiceConnection)
+//			{
+//				
+//				var server = servers[message.guild.id];
+//				message.member.voiceChannel.join()
+//				.then(connection => {
+//					var server = servers[message.guild.id];
+//					message.reply("Joined");
+//					server.queue.push(args);
+//					Play(connection, message);
+//				})
+//			}
+//		}else{
+//			message.reply("Please be in a voice channel");
+//		}
+//	
+//		return;
+//	}
 	
-	server.queue.shift();
 	
-	server.dispatcher.on("end", function() {
-		if(server.queue[0]){
-			Play(connection, message)
-		}else{
-	 connection.disconnect();
-		}
-
-	});
-}
-
-		const YTDL = require("ytdl-core");
-	const FFMPEG = require("ffmpeg");
-	const opusscript = require("opusscript");
-		if(message.member.voiceChannel)
-		{
-			if(!message.guild.voiceConnection)
-			{
-				
-				var server = servers[message.guild.id];
-				message.member.voiceChannel.join()
-				.then(connection => {
-					var server = servers[message.guild.id];
-					message.reply("Joined");
-					server.queue.push(args);
-					Play(connection, message);
-				})
-			}
-		}else{
-			message.reply("Please be in a voice channel");
-		}
-	
-		return;
-	}
-	
-	
-	if(cmd === `${prefix}pl` && message.member.hasPermissions("ADMINISTRATOR")) {
-		var servers = {};
-		function play(connection, message) {
-	const YTDL = require("ytdl-core");
-
-	var server = servers[message.guild.id];
-	
-	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-	
-	server.queue.shift();
-	
-	server.dispatcher.on("end", function() {
-		if(server.queue[0]) play(connection, message);
-		else connection.disconnect();
-	});
-	}
-		if(!args[0]) {
-			message.channel.send("Provide link pls");
-			return;
-		}
-		if(!message.member.voiceChannel) {
-			message.channel.send("You must be in a voice channel");
-			return;
-		}
-		if(!servers[message.guild.id]) servers[message.guild.id] = {
-			queue: []
-		};
-		var server = servers[message.guild.id];
-		
-		server.queue.push(args[0]);
-		
-		if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-			play(connection, message);
-		});
-		
-		return;
-	}
-	if(cmd === `${prefix}st` && message.member.hasPermissions("ADMINISTRATOR")){
-		var server = servers[message.guild.id];
-		
-		if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-		
-		return;
-	}
+//	if(cmd === `${prefix}pl` && message.member.hasPermissions("ADMINISTRATOR")) {
+//		var servers = {};
+//		function play(connection, message) {
+//	const YTDL = require("ytdl-core");
+//
+//	var server = servers[message.guild.id];
+//	
+//	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+//	
+//	server.queue.shift();
+//	
+//	server.dispatcher.on("end", function() {
+//		if(server.queue[0]) play(connection, message);
+//		else connection.disconnect();
+//	});
+//	}
+//		if(!args[0]) {
+//			message.channel.send("Provide link pls");
+//			return;
+//		}
+//		if(!message.member.voiceChannel) {
+//			message.channel.send("You must be in a voice channel");
+//			return;
+//		}
+//		if(!servers[message.guild.id]) servers[message.guild.id] = {
+//			queue: []
+//		};
+//		var server = servers[message.guild.id];
+//		
+//		server.queue.push(args[0]);
+//		
+//		if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+//			play(connection, message);
+//		});
+//		
+//		return;
+//	}
+//	if(cmd === `${prefix}st` && message.member.hasPermissions("ADMINISTRATOR")){
+//		var server = servers[message.guild.id];
+//		
+//		if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+//		
+//		return;
+//	}
 	
 	
 	
@@ -651,7 +651,103 @@ bot.on("message", async message => {
 	
 	return;
 }
+	if(cmd === `${prefix}fn` || cmd === `${prefix}stats` && message.channel.id != "478949150340153358") {
+	if(message.channel.id === "482044199504707584") return;
+
+	if(message.channel.id === "481865517393510402") return;
+		
+	let username = args[0] || message.author.username;
+	let platform = "pc";
+	let gamemode = args[1] || "solo";
 	
+	if(!username) return message.reply("Format !fn <username> <solo, duo, squad, lifetime>");
+		
+		let data = fortnite.user(username, platform).then(data =>{
+			let stats = data.stats;
+			
+			if(gamemode === `solo`) {
+				let solostats = stats.solo;
+				let score = solostats.score;
+				let kd = solostats.kd
+				let matches = solostats.matches;
+				let kills = solostats.kills;
+				let wins = solostats.wins;
+				
+				let soloEmbed = new Discord.RichEmbed()
+				.setTitle("**TRN Solo Stats**")
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins ,true)
+				.addField("Kills", kills ,true)
+				.addField("Score", score ,true)
+				.addField("Matches Played", matches ,true)
+				.addField("KD Ratio", kd ,true);
+				
+				return message.channel.send(soloEmbed);
+			}else if(gamemode === `duo`){
+				let duostats = stats.duo;
+				let score = duostats.score;
+				let kd = duostats.kd;
+				let matches = duostats.matches;
+				let kills = duostats.kills;
+				let wins = duostats.wins;
+				
+				let duoEmbed = new Discord.RichEmbed()
+				.setTitle("**TRN Duo Stats**")
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins ,true)
+				.addField("Kills", kills ,true)
+				.addField("Score", score ,true)
+				.addField("Matches Played", matches ,true)
+				.addField("KD Ratio", kd ,true);
+				
+				return message.channel.send(duoEmbed);
+			}else if(gamemode === `squad`) {
+				let squadstats = stats.squad;
+				let score = squadstats.score;
+				let kd = squadstats.kd;
+				let matches = squadstats.matches;
+				let kills = squadstats.kills;
+				let wins = squadstats.wins;
+				
+				let squadEmbed = new Discord.RichEmbed()
+				.setTitle("**TRN Squad Stats**")
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins ,true)
+				.addField("Kills", kills ,true)
+				.addField("Score", score ,true)
+				.addField("Matches Played", matches ,true)
+				.addField("KD Ratio", kd ,true);
+				
+				return message.channel.send(squadEmbed);
+			}else{
+				let lifetime = stats.lifetime;
+				let score = lifetime[6]["Score"];
+				let mplayed = lifetime[7]["Matches Played"];
+				let wins = lifetime[8]["Wins"];
+				let winper = lifetime[9]["Win Percentage"];
+				let kills = lifetime[10]["Kills"];
+				let kd = lifetime[11]["KD Ratio"];
+				
+				let lifetimeEmbed = new Discord.RichEmbed()
+				.setTitle("**TRN Lifetime Stats**")
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true)
+				.addField("Score", score, true)
+				.addField("Matches Played", mplayed, true)
+				.addField("KD Ratio", kd, true)
+				.addField("Win Percentage", winper, true);
+				
+				return message.channel.send(lifetimeEmbed);
+			}
+		})
+				
+		return;
+	}
 	
 
 	
