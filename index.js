@@ -235,52 +235,52 @@ bot.on("message", async message => {
 	}
 	
 	
-	if(cmd === `${prefix}pee`){
-			var servers = {};
-
-		function Play(connection, message) {
-	const YTDL = require("ytdl-core");
-
-	var server = servers[message.guild.id];
-	
-	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-	
-	server.queue.shift();
-	
-	server.dispatcher.on("end", function() {
-		if(server.queue[0]){
-			Play(connection, message)
-		}else{
-	 connection.disconnect();
-		}
-
-	});
-}
-
-		const YTDL = require("ytdl-core");
-	const FFMPEG = require("ffmpeg-binaries");
-	const opusscript = require("opusscript");
-		if(message.member.voiceChannel)
-		{
-			if(!message.guild.voiceConnection)
-			{
-				
-				var server = servers[message.guild.id];
-				message.member.voiceChannel.join()
-				.then(connection => {
-					var servers = {};
-					var server = servers[message.guild.id];
-					message.reply("Joined");
-					servers[message.guild.is].queue.push(args);
-					Play(connection, message);
-				})
-			}
-		}else{
-			message.reply("Please be in a voice channel");
-		}
-	
-		return;
-	}
+	//if(cmd === `${prefix}pee`){
+	//		var servers = {};
+//
+//		function Play(connection, message) {
+//	const YTDL = require("ytdl-core");
+//
+//	var server = servers[message.guild.id];
+//	
+//	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+//	
+//	server.queue.shift();
+//	
+//	server.dispatcher.on("end", function() {
+//		if(server.queue[0]){
+//			Play(connection, message)
+//		}else{
+//	 connection.disconnect();
+//		}
+//
+//	});
+//}
+//
+//		const YTDL = require("ytdl-core");
+//	const FFMPEG = require("ffmpeg-binaries");
+//	const opusscript = require("opusscript");
+//		if(message.member.voiceChannel)
+//		{
+//			if(!message.guild.voiceConnection)
+//			{
+//				
+//				var server = servers[message.guild.id];
+//				message.member.voiceChannel.join()
+//				.then(connection => {
+//					var servers = {};
+//					var server = servers[message.guild.id];
+//					message.reply("Joined");
+//					servers[message.guild.is].queue.push(args);
+//					Play(connection, message);
+//				})
+//			}
+//		}else{
+//			message.reply("Please be in a voice channel");
+//		}
+//	
+//		return;
+//	}
 	
 	
 //	if(cmd === `${prefix}pl` && message.member.hasPermissions("ADMINISTRATOR")) {
@@ -421,6 +421,37 @@ bot.on("message", async message => {
 
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+		
+		if(message.member.voiceChannel)
+		{
+			if(!message.guild.voiceConnection)
+			{
+				
+				var server = servers[message.guild.id];
+				message.member.voiceChannel.join()
+				.then(connection => {
+					
+					message.reply("Joined").then(msg => msg.delete(1000));
+					const startTimeout = ms => new Promise(res => setTimeout(res, ms))
+					await startTimeout(2000);
+					
+					
+					let privateChan = message.guild.channel.find(`name`, "private");
+					privateChan.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+				})
+			}
+		}else{
+			message.reply("Please be in a voice channel");
+		}
+		
+	const startTimeout = ms => new Promise(res => setTimeout(res, ms))
+	await startTimeout(9000);
+	if(message.guild.voiceConnection){
+			message.guild.voiceConnection.disconnect();
+		}else{
+		message.reply("Cannot do that.").then(msg => msg.delete(2000));
+	}
+	
 
 	
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
