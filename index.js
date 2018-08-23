@@ -121,36 +121,103 @@ bot.on("message", async message => {
 	return;
 	}
 	if(cmd === `${prefix}ftest`) {
-		const Fortnite = require("fortnite");
-		const fkey = process.env.APIKEY;
-		const fortnite = new Fortnite(fkey);
+		const Client = require("fortnite");
+		const fortnite = new Client(process.env.APIKEY);
 		
-		let username = args[0];
+		let username = args[0] || message.author.username;
 		let platform = args[2].toLowerCase() || "pc";
-		if(!username) return message.reply("Please enter a username!");
+		let gamemode = args[1].toLowerCase() || "lifetime";
+		
+		if(!username) return message.reply("Please provide a username!");
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
 			
-			let lifetime = stats.lifetime;
-			let score = lifetime[6]["Score"];
-			let mplayed = lifetime[7]["Matches Played"];
-			let wins = lifetime[8]["Wins"];
-			let winper = lifetime[9]["Win %"];
-			let kills = lifetime[10]["Kills"];
-			let kd = lifetime[11]["KD"];
-			
-			let ftestEmbed = new Discord.RichEmbed()
-			.setTitle("Fortnite Lifetime Stats")
-			.setAuthor(data.username)
-			.setColor(6812512)
-			.addField("Wins", wins, true)
-			.addField("Kills", kills, true)
-			.addField("Score", score, true)
-			.addField("Matches Played", mplayed, true)
-			.addField("KD Ratio", kd, true)
-			.addField("Win Percentage", winper, true);
-			
-			return message.channel.send(ftestEmbed);
+			if(gamemode === `solo`) {
+				let solostats = stats.solo;
+				let score = solostats.score;
+				let kd = solostats.kd;
+				let matches = solostats.matches;
+				let kills = solostats.kills;
+				let wins = solostats.wins;
+				let top3 = solostats.top_3;
+				
+				let soloEmbed = new Discord.RichEmbed()
+				.setTitle("Fortnite Tracker Solo Stats")
+				.setAuthor(data.username)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true)
+				.addField("Score", score, true)
+				.addField("Matches Played", matches, true)
+				.addField("Top 3s", top3, true)
+				.addField("KD", kd, true);
+				
+				return message.channel.send(soloEmbed);
+			}else if(gamemode === `duo`) {
+				let duostats = stats.duo;
+				let score = duostats.score;
+				let kd = duostats.kd;
+				let matches = duostats.matches;
+				let kills = duostats.kills;
+				let wins = duostats.wins;
+				let top3 = duostats.top_3;
+				
+				let duoEmbed = new Discord.RichEmbed()
+				.setTitle("Fortnite Tracker Duo Stats")
+				.setAuthor(data.username)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true)
+				.addField("Score", score, true)
+				.addField("Matches Played", matches, true)
+				.addField("Top 3s", top3, true)
+				.addField("KD", kd, true);
+				
+				return message.channel.send(duoEmbed);
+			}else if(gamemode === `squad`) {
+				let squadstats = stats.squad;
+				let score = squadstats.score;
+				let kd = squadstats.kd;
+				let matches = squadstats.matches;
+				let kills = squadstats.kills;
+				let wins = squadstats.wins;
+				let top3 = squadstats.top_3;
+				
+				let squadEmbed = new Discord.RichEmbed()
+				.setTitle("Fortnite Tracker Squad Stats")
+				.setAuthor(data.username)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true)
+				.addField("Score", score, true)
+				.addField("Matches Played", matches, true)
+				.addField("Top 3s", top3, true)
+				.addField("KD", kd, true);
+				
+				return message.channel.send(squadEmbed);
+				
+			}else{
+				let lifetime = stats.lifetime;
+				let score = lifetime[6][`Score`];
+				let mplayed = lifetime[7][`Matches Played`];
+				let wins = lifetime[8][`Wins`];
+				let winper = lifetime[9][`Win Percentage`];
+				let kills = lifetime[10][`Kills`];
+				let kd = lifetime[11][`KD`];
+				
+				let lifetimeEmbed = new Discord.RichEmbed()
+				.setTitle("Fortnite Tracker Lifetime Stats")
+				.setAuthor(data.username)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true)
+				.addField("Score", score, true)
+				.addField("Matches Played", mplayed, true)
+				.addField("KD", kd, true)
+				.addField("Win Percentage", winper, true);
+				
+				return message.channel.send(lifetimeEmbed);
+			}
 		})
 		
 		
