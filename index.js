@@ -402,12 +402,48 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 		
+		function Play(connection, message) {
+	const YTDL = require("ytdl-core");
+
+	var server = servers[message.guild.id];
+	
+	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+	
+	server.queue.shift();
+	
+	server.dispatcher.on("end", function() {
+		if(server.queue[0]){
+			Play(connection, message)
+		}else{
+	 connection.disconnect();
+		}
+
+	});
+}
+		
 	if(message.member.voiceChannel) {
 		message.member.voiceChannel.join()
 		.then(connection =>{
 			message.reply("Joined channel!").then(msg => msg.delete(1000));
 		      })
 	  }
+		
+	if(!message.guild.voiceConnection)
+			{
+				var servers = {};
+				
+				var server = servers[message.guild.id];
+				message.member.voiceChannel.join()
+				.then(connection => {
+					var server = servers[message.guild.id];
+					message.reply("Joined");
+					server.queue.push("https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+					Play(connection, message);
+				})
+			}
+		}else{
+			message.reply("Please be in a voice channel").then(msg => msg.delete(2000));
+		}
 		
 
 	
