@@ -808,7 +808,7 @@ bot.on("message", async message => {
     	.addField("!botinfo", "Show Bot Info")
     	.addField("!hacked", "Old Discord")
     	.addField("!region", "Sets ur region")
-    	.addField("!fortnite", "Tracks a user")
+    	.addField("!fn", "Tracks a user")
 	.setFooter("You executed the !help command with ScrimBot!")
    	.setColor(6812512);
 
