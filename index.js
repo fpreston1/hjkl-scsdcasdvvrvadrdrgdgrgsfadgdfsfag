@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const apikey = process.env.APIKEY;
 const Fortnite = require("fortnite");
+const YTDL = require("ytdl-core");
+
 
 
 
@@ -125,6 +127,50 @@ bot.on("message", async message => {
 	
 	return;
 	}
+	if(cmd === `${prefix}yt` && message.member.hasPermissions("ADMINISTRATOR")) {
+		var servers = {};
+		if(!args[1]) {
+			message.channel.send("Please provide a link");
+			return;
+		}
+		if(!message.member.voiceChannel){
+			message.channel.send("Please be in voice channel");
+			return;
+		}
+		if(!servers[message.guild.id]) servers[message.guild.id] = {
+		queue: []
+		};
+		var server = servers[message.guild.id];
+		server.queue.push(args[1]);
+		
+		const YTDL = require("ytdl-core");
+	
+		function play(connection, message) {
+			var server = servers[message.guild.id];
+			server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+			
+			server.queue.shift();
+			server.dispatcher.on("end", function() {
+				if(server.queue[0]) play(connection, message);
+				else connection.disconnect();
+			});;
+			
+		}
+		
+		
+		if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+			play(connection, message);
+		});
+		
+		return;
+	}
+	if(cmd === `${prefix}st`) {
+		var server = servers[message.guild.id];
+		
+		if(message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+		return;
+	}
+	
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		message.delete();
 		if(!args[0]) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
