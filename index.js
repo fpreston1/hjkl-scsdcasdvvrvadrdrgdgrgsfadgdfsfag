@@ -676,6 +676,7 @@ bot.on("message", async message => {
 				let matches = solostats.matches;
 				let kills = solostats.kills;
 				let wins = solostats.wins;
+				let player = data.username;
 				
 				let soloEmbed = new Discord.RichEmbed()
 				.setTitle("**TRN Solo Stats**")
@@ -685,7 +686,10 @@ bot.on("message", async message => {
 				.addField("Kills", kills ,true)
 				.addField("Score", score ,true)
 				.addField("Matches Played", matches ,true)
-				.addField("KD Ratio", kd ,true);
+				.addField("KD Ratio", kd ,true)
+				.addField("Player", player, true);
+				
+				message.reply();
 				
 				return message.channel.send(soloEmbed);
 			}else if(gamemode === `duo`){
