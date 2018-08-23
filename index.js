@@ -155,7 +155,7 @@ bot.on("message", async message => {
 				
 				let soloEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Solo Stats")
-				.setAuthor(data.username)
+				.setAuthor(`Stats for ${data.username}`)
 				.setColor(6812512)
 				.addField("Wins", wins, true)
 				.addField("Kills", kills, true)
@@ -176,7 +176,7 @@ bot.on("message", async message => {
 				
 				let duoEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Duo Stats")
-				.setAuthor(data.username)
+				.setAuthor(`Stats for ${data.username}`)
 				.setColor(6812512)
 				.addField("Wins", wins, true)
 				.addField("Kills", kills, true)
@@ -197,7 +197,7 @@ bot.on("message", async message => {
 				
 				let squadEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Squad Stats")
-				.setAuthor(data.username)
+				.setAuthor(`Stats for ${data.username}`)
 				.setColor(6812512)
 				.addField("Wins", wins, true)
 				.addField("Kills", kills, true)
@@ -219,7 +219,7 @@ bot.on("message", async message => {
 				
 				let lifetimeEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Lifetime Stats")
-				.setAuthor(data.username)
+				.setAuthor(`Stats for ${data.username}`)
 				.setColor(6812512)
 				.addField("Wins", wins, true)
 				.addField("Kills", kills, true)
