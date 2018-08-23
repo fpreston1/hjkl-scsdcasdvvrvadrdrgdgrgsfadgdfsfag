@@ -120,7 +120,7 @@ bot.on("message", async message => {
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`);
 	return;
 	}
-	if(cmd === `${prefix}fn` || `${prefix}fortnite` || `${prefix}track` && message.channel.id === "482044199504707584") {
+	if(cmd === `${prefix}fn` && message.channel.id === "482044199504707584") {
 		const Client = require("fortnite");
 		const fortnite = new Client(process.env.APIKEY);
 		message.channel.send(`${message.author}`);
