@@ -121,8 +121,10 @@ bot.on("message", async message => {
 	return;
 	}
 	if(cmd === `${prefix}ftest`) {
+		message.delete();
 		const Client = require("fortnite");
 		const fortnite = new Client(process.env.APIKEY);
+		message.channel.send(`${message.author}`);
 		
 		let username = args[0] || message.author.username;
 		let platform = args[2] || "pc";
