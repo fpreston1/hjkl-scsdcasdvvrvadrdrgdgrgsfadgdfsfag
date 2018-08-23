@@ -431,18 +431,7 @@ bot.on("message", async message => {
 		      })
 	  }
 		
-	if(!message.guild.voiceConnection) {
-				
-				message.member.voiceChannel.join()
-				.then(connection => {
-					message.reply("Joined");
-					server.queue.push("https://www.youtube.com/watch?v=nyC0c6t7Vq0");
-					Play(connection, message);
-				})
-			}
-		}else{
-			message.reply("Please be in a voice channel").then(msg => msg.delete(2000));
-	}
+	
 		
 
 	
