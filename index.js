@@ -655,7 +655,8 @@ bot.on("message", async message => {
 	if(message.channel.id === "482044199504707584") return;
 
 	if(message.channel.id === "481865517393510402") return;
-		
+	const apikey = process.env.APIKEY;
+	const fortnite = require("fortnite");
 	let username = args[0] || message.author.username;
 	let platform = "pc";
 	let gamemode = args[1] || "solo";
