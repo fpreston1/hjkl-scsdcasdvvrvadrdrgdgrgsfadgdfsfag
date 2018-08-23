@@ -235,6 +235,8 @@ bot.on("message", async message => {
 	
 	
 	if(cmd === `${prefix}pee`){
+			var servers = {};
+
 		function Play(connection, message) {
 	const YTDL = require("ytdl-core");
 
