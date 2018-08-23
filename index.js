@@ -170,8 +170,56 @@ bot.on("message", async message => {
 
 		
 				return message.channel.send("Rank set sir!");
-			}	
-		});
+			}else if(gamemode === `duo`){
+				let duostats = stats.duo;
+				let score = duostats.score;
+				let kd = duostats.kd;
+				let wins = duostats.wins;
+				let matches = duostats.matches;
+				let kills = duostats.kills;
+				
+				let duoEmbed = new Discord.RichEmbed()
+				.setTitle(`Fortnite Tracker Duo Stats`)
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true);
+				
+				return message.channel.send(duoEmbed);
+			}else if(gamemode === `squad`) {
+				let squadstats = stats.squad;
+				let score = squadstats.score;
+				let kd = squadstats.kd
+				let wins = squadstats.wins;
+				let kills = squadstats.kills;
+				
+				let squadEmbed = new Discord.RichEmbed()
+				.setTitle("Fortnite Tracker Squad Stats")
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins, true)
+				.addField("Kills", kills, true);
+				
+				return message.channel.send(squadEmbed);
+			}else{
+				let lifetime = stats.lifetime;
+				let score = lifetime[6]['Score'];
+				let mplayed = lifetime[7]['Matches Played'];
+				let wins = lifetime[8]['Wins'];
+				let kills = lifetime[10]['Kills'];
+				let kd = lifetime[11]['KD'];
+				
+				let lifetimeEmbed = new Discord.RichEmbed()
+				.setTitle("Fortnite Tracker Lifetime Stats")
+				.setAuthor(`Stats for ${data.username}`)
+				.setColor(6812512)
+				.addField("Wins", wins true)
+				.addField("Kills", kills, true);
+				
+				return message.channel.send(lifetimeEmbed);
+		}
+		})
+	
 		
 	
 		return;
