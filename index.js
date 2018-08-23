@@ -174,10 +174,8 @@ bot.on("message", async message => {
 				.addField("KD", kd, true);
 
 		
-				return message.channel.send(soloEmbed);
-				const startTimeout = ms => new Promise(res => setTimeout(res, ms))
-				await startTimeout(1000);
-				message.channel.bulkDelete(1);
+				return message.channel.send(soloEmbed).then(msg => msg.delete(2000));
+				
 				
 			}else if(gamemode === `duo`) {
 				let duostats = stats.duo;
