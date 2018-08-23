@@ -5,6 +5,7 @@ const apikey = process.env.APIKEY;
 const Fortnite = require("fortnite");
 const YTDL = require("ytdl-core");
 const FFMPEG = require("ffmpeg");
+const opusscript = require("opusscript");
 
 
 
