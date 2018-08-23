@@ -432,20 +432,22 @@ bot.on("message", async message => {
 				.then(connection => {
 					
 					message.reply("Joined").then(msg => msg.delete(1000));
-					const startTimeout = ms => new Promise(res => setTimeout(res, ms))
-					await startTimeout(2000);
+		
 					
 					
-					let privateChan = message.guild.channel.find(`name`, "private");
-					privateChan.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+					
 				})
 			}
 		}else{
 			message.reply("Please be in a voice channel");
 		}
 		
-	const startTimeout = ms => new Promise(res => setTimeout(res, ms))
-	await startTimeout(9000);
+	const yeetTim = ms => new Promise(res => setTimeout(res, ms))
+	await yeetTim(2000);
+	let privateChan = message.guild.channel.find(`name`, "private");
+	privateChan.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+		
+	await yeetTim(9000);
 	if(message.guild.voiceConnection){
 			message.guild.voiceConnection.disconnect();
 		}else{
