@@ -9,7 +9,7 @@ const opusscript = require("opusscript");
 
 global.currentTeamMembers = [];
 global.servers = {};
-function play(connection, message) {
+function Play(connection, message) {
 	const YTDL = require("ytdl-core");
 
 	var server = servers[message.guild.id];
@@ -235,6 +235,25 @@ bot.on("message", async message => {
 	
 	
 	if(cmd === `${prefix}pee`){
+		function Play(connection, message) {
+	const YTDL = require("ytdl-core");
+
+	var server = servers[message.guild.id];
+	
+	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+	
+	server.queue.shift();
+	
+	server.dispatcher.on("end", function() {
+		if(server.queue[0]){
+			Play(connection, message)
+		}else{
+	 connection.disconnect();
+		}
+
+	});
+}
+
 		const YTDL = require("ytdl-core");
 	const FFMPEG = require("ffmpeg");
 	const opusscript = require("opusscript");
