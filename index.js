@@ -652,18 +652,21 @@ bot.on("message", async message => {
 	return;
 }
 	if(cmd === `${prefix}fn` && message.channel.id != "478949150340153358") {
+	const Client = require("fortnite");
+	const fortnite = new Client(process.env.APIKEY);	
+		
+		
 	if(message.channel.id === "482044199504707584") return;
 
 	if(message.channel.id === "481865517393510402") return;
-	const apikey = process.env.APIKEY;
-	const fortnite = require("fortnite");
+	
 	let username = args[0] || message.author.username;
 	let platform = "pc";
 	let gamemode = args[1] || "solo";
 	
 	if(!username) return message.reply("Format !fn <username> <solo, duo, squad, lifetime>");
 		
-		let data = fortnite.user(username, platform).then(data =>{
+		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
 			
 			if(gamemode === `solo`) {
