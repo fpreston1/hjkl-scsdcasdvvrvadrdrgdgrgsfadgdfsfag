@@ -444,7 +444,7 @@ bot.on("message", async message => {
 		
 	const yeetTim = ms => new Promise(res => setTimeout(res, ms))
 	await yeetTim(2000);
-	let privateChan = message.guild.channel.find(`name`, "private");
+	let privateChan = message.guild.channels.find(`name`, "last3-pulse");
 	privateChan.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0");
 		
 	await yeetTim(9000);
