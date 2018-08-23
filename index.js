@@ -118,6 +118,13 @@ bot.on("message", async message => {
 
 	return;
 	}
+	if(cmd === `${prefix}helpme` && message.channel.id === "482044199504707584"){
+		message.author.send("Your name and rank have not been set, please contact an admin for assistance.");
+		message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+	
+	return;
+	}
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		message.delete();
 		if(!args[0]) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
