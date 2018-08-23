@@ -171,6 +171,8 @@ bot.on("message", async message => {
 		let platform = "pc";
 		let gamemode = "solo";
 		
+		if(args[0] === "ninja" || args[0] === "tsm_myth" || args[0] === "tsm_hamlinz" || args[0] === "tsm_daequan") return message.author.send("Stop that!");
+		
 		
 		if(!username) return message.reply("Please set a CORRECT nickname!").then(msg => msg.delete(2000));
 
@@ -664,7 +666,7 @@ bot.on("message", async message => {
 	let platform = "pc";
 	let gamemode = args[1] || "solo";
 	
-	if(!username) return message.reply("Format !fn <username> <solo, duo, squad, lifetime>");
+	if(args[0] === "help") return message.reply("Format !fn <username> <solo, duo, squad, lifetime>");
 		
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
