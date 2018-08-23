@@ -139,7 +139,7 @@ bot.on("message", async message => {
 		
 
 
-		let username = message.author.username;
+		let username = "Ninja";
 		let platform = "pc";
 		let gamemode = "solo";
 		
