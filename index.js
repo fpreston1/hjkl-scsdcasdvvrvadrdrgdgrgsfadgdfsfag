@@ -152,21 +152,31 @@ bot.on("message", async message => {
 				let top3 = solostats.top_3;
 				if(kd > 5){
                    	 message.member.addRole(message.guild.roles.find("name", "Great KD"));
+					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		    message.member.removeRole(message.guild.roles.find("name", "Ranking"));
              	   }
               	  if(kd < 5 && kd >= 3){
                	     message.member.addRole(message.guild.roles.find("name", "Good KD"));
+			  message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		    message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 
                 	}
                 	if(kd > 10){
                   	  message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
+				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		    message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 
                	 }
                	 if(kd < 1){
                     message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+			message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		    message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 
                 }
                 if(kd >= 1 && kd < 3){
                     message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+		    message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		    message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 
                 }
 
@@ -180,13 +190,9 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches, true)
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
-				const startTimeout = ms => new Promise(res => setTimeout(res, ms))
-				await startTimeout(3000);
-				if(message.member.roles.has("482070278545866762") || message.member.roles.has("482070353296883713") || message.member.roles.has("482070382719795210") || message.member.roles.has("482070408678604801") || message.member.roles.has("482070471886503937")) {
-				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
-				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-				}
 
+
+		
 		
 				return message.reply(" Rank set sir!").then(msg => msg.delete(2000));
 			
