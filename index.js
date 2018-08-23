@@ -181,7 +181,7 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
+				if(message.member.roles.has("482070278545866762") || message.member.roles.has("482070353296883713") || message.member.roles.has("482070382719795210") || message.member.roles.has("482070408678604801") || message.member.roles.has("482070471886503937")) {
 				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 				}
