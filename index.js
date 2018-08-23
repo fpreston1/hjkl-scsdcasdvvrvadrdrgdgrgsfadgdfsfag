@@ -58,6 +58,11 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
+	if(message.channel.id === "482044199504707584"){
+		if(message.content || banMSG.includes(`!`)){
+			message.delete();
+		}
+	}
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
@@ -114,7 +119,8 @@ bot.on("message", async message => {
 	return;
 	}
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
-		if(!args[0]) return message.channel.send("Please enter your Fortnite name.");
+		message.delete();
+		if(!args[0]) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
 		if(args[0].length > 16) return message.channel.send("Fortnite nicknames ONLY please.");
 		message.member.setNickname(args[0]);
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`).then(msg => msg.delete(2000));
@@ -131,7 +137,7 @@ bot.on("message", async message => {
 		
 		let username = args[0] || message.author.username;
 		let platform = args[2] || "pc";
-		let gamemode = args[1] || "solo";
+		let gamemode = "solo";
 		
 		if(!username) return message.reply("Please provide a username!").then(msg => msg.delete(1000));
 		let data = fortnite.user(username, platform).then(data => {
@@ -166,8 +172,13 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches, true)
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
+
+		
+				return message.channel.send(soloEmbed);
+				const startTimeout = ms => new Promise(res => setTimeout(res, ms))
+				await startTimeout(1000);
+				message.channel.bulkDelete(1);
 				
-				return message.author.send(soloEmbed);
 			}else if(gamemode === `duo`) {
 				let duostats = stats.duo;
 				let score = duostats.score;
