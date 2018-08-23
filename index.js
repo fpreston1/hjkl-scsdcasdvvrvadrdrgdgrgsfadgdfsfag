@@ -4,7 +4,6 @@ const bot = new Discord.Client({disableEveryone: true});
 const apikey = process.env.APIKEY;
 const Fortnite = require("fortnite");
 const YTDL = require("ytdl-core");
-const FFMPEG = require("ffmpeg-binaries");
 const opusscript = require("opusscript");
 
 global.currentTeamMembers = [];
