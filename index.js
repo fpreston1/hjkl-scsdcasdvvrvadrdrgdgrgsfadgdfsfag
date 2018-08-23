@@ -58,11 +58,11 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
-	//if(message.channel.id === "482044199504707584"){
-	//	if(message.content || banMSG.includes(`!`)){
-	//		message.delete();
-	//	}
-	//}
+	if(message.channel.id === "482044199504707584"){
+		if(message.content || banMSG.includes(`!`)){
+			message.delete();
+		}
+	}
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
@@ -126,7 +126,7 @@ bot.on("message", async message => {
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`).then(msg => msg.delete(2000));
 	return;
 	}
-	if(cmd === `${prefix}rankme`){
+	if(cmd === `${prefix}rankme` && message.channel.id === "482044199504707584"){
 		const Client = require("fortnite");
 		const fortnite = new Client(process.env.APIKEY);
 		
@@ -180,7 +180,8 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches, true)
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
-				
+				const startTimeout = ms => new Promise(res => setTimeout(res, ms))
+				await startTimeout(3000);
 				if(message.member.roles.has("482070278545866762") || message.member.roles.has("482070353296883713") || message.member.roles.has("482070382719795210") || message.member.roles.has("482070408678604801") || message.member.roles.has("482070471886503937")) {
 				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
