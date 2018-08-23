@@ -126,7 +126,7 @@ bot.on("message", async message => {
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`).then(msg => msg.delete(2000));
 	return;
 	}
-	if(cmd === `${prefix}rankme` && message.channel.id === "482044199504707584"){
+	if(cmd === `${prefix}rankme`){
 		const Client = require("fortnite");
 		const fortnite = new Client(process.env.APIKEY);
 		
