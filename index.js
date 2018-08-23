@@ -239,7 +239,7 @@ bot.on("message", async message => {
 		else connection.disconnect();
 	});
 	}
-		if(!args[1]) {
+		if(!args[0]) {
 			message.channel.send("Provide link pls");
 			return;
 		}
@@ -252,7 +252,7 @@ bot.on("message", async message => {
 		};
 		var server = servers[message.guild.id];
 		
-		server.queue.push(args[1]);
+		server.queue.push(args[0]);
 		
 		if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
 			play(connection, message);
