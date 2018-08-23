@@ -126,74 +126,74 @@ bot.on("message", async message => {
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`).then(msg => msg.delete(2000));
 	return;
 	}
-	if(cmd === `${prefix}rankme` && message.channel.id === "482044199504707584"){
-		const Client = require("fortnite");
-		const fortnite = new Client(process.env.APIKEY);
-		
-
-
-		let username = message.author.username;
-		let platform = "pc";
-		let gamemode = "solo";
-		
-		
-		if(!username) return message.reply("Please provide a username!);
-
-		let data = fortnite.user(username, platform).then(data => {
-			let stats = data.stats;
-			
-			if(gamemode === `solo`) {
-				let solostats = stats.solo;
-				let score = solostats.score;
-				let kd = solostats.kd;
-				let matches = solostats.matches;
-				let kills = solostats.kills;
-				let wins = solostats.wins;
-				let top3 = solostats.top_3;
-				
-				if(kd > 5){
-					message.member.addRole(message.guild.roles.find("name", "Great KD"));
-				}
-				if(kd < 5 && kd >= 3){
-					message.member.addRole(message.guild.roles.find("name", "Good KD"));
-
-				}
-				if(kd > 10){
-					message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
-
-				}
-				if(kd < 1){
-					message.member.addRole(message.guild.roles.find("name", "Bad KD"));
-
-				}
-				if(kd >= 1 && kd < 3){
-					message.member.addRole(message.guild.roles.find("name", "Decent KD"));
-
-				}
-			
-				
-				let soloEmbed = new Discord.RichEmbed()
-				.setTitle("Fortnite Tracker Solo Stats")
-				.setAuthor(`Stats for ${data.username}`)
-				.setColor(6812512)
-				.addField("Wins", wins, true)
-				.addField("Kills", kills, true)
-				.addField("Score", score, true)
-				.addField("Matches Played", matches, true)
-				.addField("Top 3s", top3, true)
-				.addField("KD", kd, true);
+	//if(cmd === `${prefix}rankme` && message.channel.id === "482044199504707584"){
+	//	const Client = require("fortnite");
+	//	const fortnite = new Client(process.env.APIKEY);
+	//	
+//
+//
+//		let username = message.author.username;
+//		let platform = "pc";
+//		let gamemode = "solo";
+//		
+//		
+//		if(!username) return message.reply("Please provide a username!);
+//
+//		let data = fortnite.user(username, platform).then(data => {
+//			let stats = data.stats;
+//			
+//			if(gamemode === `solo`) {
+//				let solostats = stats.solo;
+//				let score = solostats.score;
+//				let kd = solostats.kd;
+//				let matches = solostats.matches;
+//				let kills = solostats.kills;
+//				let wins = solostats.wins;
+//				let top3 = solostats.top_3;
+//				
+//				if(kd > 5){
+//					message.member.addRole(message.guild.roles.find("name", "Great KD"));
+//				}
+//				if(kd < 5 && kd >= 3){
+//					message.member.addRole(message.guild.roles.find("name", "Good KD"));
+//
+//				}
+//				if(kd > 10){
+//					message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
+//
+//				}
+//				if(kd < 1){
+//					message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+//
+//				}
+//				if(kd >= 1 && kd < 3){
+//					message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+//
+//				}
+//			
+//				
+//				let soloEmbed = new Discord.RichEmbed()
+//				.setTitle("Fortnite Tracker Solo Stats")
+//				.setAuthor(`Stats for ${data.username}`)
+//				.setColor(6812512)
+//				.addField("Wins", wins, true)
+//				.addField("Kills", kills, true)
+//				.addField("Score", score, true)
+//				.addField("Matches Played", matches, true)
+//				.addField("Top 3s", top3, true)
+//				.addField("KD", kd, true);
 				
 			//	if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
 			//	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 			//	message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 			//	}
 
-		
+		//
 				return message.reply(" Rank has been set").then(msg => msg.delete(2000));
-			}
-		})
-		return;
-	}
+		//	}
+		//})
+		//return;
+	//}
 	
 	if(cmd === `${prefix}fn`) {
 		const Client = require("fortnite");
