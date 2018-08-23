@@ -109,23 +109,7 @@ bot.on("message", async message => {
 
 	return;
 	}
-	if(cmd === `${prefix}ftn`) {
-		const Fortnite = require("fortnite");
-		let username = args[0];
-		let platform = "pc";
-		const ft = new Fortnite(process.env.APIKEY);
-		let data = ft.getInfo(username, platform).then(data => {
-		
-		let stats = data.lifetimeStats
-		let kd = stats.find(s => s.stat == "kd");
-			if(kd.value > 1) {
-			message.member.addRole(message.guild.roles.find("name", "Friend"));
-			}
-		});
-		
-
-		return;
-	}
+	
 	//if(cmd === `${prefix}fn`) {
 	//	message.delete();
 	//	const apikey = require(process.env.APIKEY);
