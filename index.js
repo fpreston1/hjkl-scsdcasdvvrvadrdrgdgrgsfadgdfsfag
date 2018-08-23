@@ -87,7 +87,7 @@ bot.on("message", async message => {
 	return;
 }
 	if(cmd === `${prefix}nae` && message.channel.id === "481865517393510402") {
-	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+	message.member.addRole(message.guild.roles.find("name", "Ranking"));
 	message.member.addRole(message.guild.roles.find("name", "NAE"));
 	message.member.removeRole(message.guild.roles.find("name", "Starter"));
 	message.author.send("Your region has been set to NAE");
@@ -96,7 +96,7 @@ bot.on("message", async message => {
 	return;
 	}
 	if(cmd === `${prefix}naw` && message.channel.id === "481865517393510402") {
-	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+	message.member.addRole(message.guild.roles.find("name", "Ranking"));
 	message.member.addRole(message.guild.roles.find("name", "NAW"));
 	message.member.removeRole(message.guild.roles.find("name", "Starter"));
 	message.author.send("Your region has been set to NAW");
@@ -105,7 +105,7 @@ bot.on("message", async message => {
 	return;
 	}
 	if(cmd === `${prefix}eu` && message.channel.id === "481865517393510402") {
-	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+	message.member.addRole(message.guild.roles.find("name", "Ranking"));
 	message.member.addRole(message.guild.roles.find("name", "EU"));
 	message.member.removeRole(message.guild.roles.find("name", "Starter"));
 	message.author.send("Your region has been set to EU");
@@ -117,19 +117,23 @@ bot.on("message", async message => {
 		if(!args[0]) return message.channel.send("Please enter your Fortnite name.");
 		if(args[0].length > 16) return message.channel.send("Fortnite nicknames ONLY please.");
 		message.member.setNickname(args[0]);
-		message.reply(` All set! Your nickname has been changed to "${args[0]}"`);
+		message.reply(` All set! Your nickname has been changed to "${args[0]}"`).then(msg => msg.delete(2000));
 	return;
 	}
 	if(cmd === `${prefix}fn` && message.channel.id === "482044199504707584") {
 		const Client = require("fortnite");
 		const fortnite = new Client(process.env.APIKEY);
-		message.channel.send(`${message.author}`);
+		
+		message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+		
+		
 		
 		let username = args[0] || message.author.username;
 		let platform = args[2] || "pc";
 		let gamemode = args[1] || "solo";
 		
-		if(!username) return message.reply("Please provide a username!");
+		if(!username) return message.reply("Please provide a username!").then(msg => msg.delete(1000));
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
 			
@@ -163,7 +167,7 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				return message.channel.send(soloEmbed);
+				return message.author.send(soloEmbed);
 			}else if(gamemode === `duo`) {
 				let duostats = stats.duo;
 				let score = duostats.score;
