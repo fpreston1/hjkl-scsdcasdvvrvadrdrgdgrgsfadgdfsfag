@@ -58,11 +58,11 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
-	if(message.channel.id === "482044199504707584"){
-		if(message.content || banMSG.includes(`!`)){
-			message.delete();
-		}
-	}
+	//if(message.channel.id === "482044199504707584"){
+	//	if(message.content || banMSG.includes(`!`)){
+	//		message.delete();
+	//	}
+	//}
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
