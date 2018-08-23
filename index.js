@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
+
+
 bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
 	bot.user.setActivity("to your commands!", {type: "LISTENING"});
@@ -107,6 +109,13 @@ bot.on("message", async message => {
 	message.author.send("Your region has been set to EU");
 
 
+	return;
+	}
+	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
+		if(!args[0]) return message.channel.send("Please enter your Fortnite name.");
+		if(args[0].length > 16) return message.channel.send("Fortnite nicknames ONLY please.");
+		message.member.setNickname(args[0]);
+		message.channel.send(`All set! Your nickname has been changed to ${args[0]}`);
 	return;
 	}
 	
