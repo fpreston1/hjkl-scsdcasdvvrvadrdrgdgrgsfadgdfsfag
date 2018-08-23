@@ -402,7 +402,9 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 		
-		function Play(connection, message) {
+	function Play(connection, message) {
+	var servers = {};
+
 	const YTDL = require("ytdl-core");
 
 	var server = servers[message.guild.id];
@@ -419,7 +421,7 @@ bot.on("message", async message => {
 		}
 
 	});
-}
+	}
 		
 	if(message.member.voiceChannel) {
 		message.member.voiceChannel.join()
@@ -430,7 +432,6 @@ bot.on("message", async message => {
 		
 	if(!message.guild.voiceConnection)
 			{
-				var servers = {};
 				
 				var server = servers[message.guild.id];
 				message.member.voiceChannel.join()
