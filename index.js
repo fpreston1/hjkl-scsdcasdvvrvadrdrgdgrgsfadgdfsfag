@@ -428,8 +428,11 @@ bot.on("message", async message => {
 		message.member.voiceChannel.join()
 		.then(connection =>{
 			message.reply("Joined channel!");
+			server.queue.push(args);
+					Play(connection, message);
 		      })
 	  }
+		
 		
 	
 		
