@@ -125,8 +125,8 @@ bot.on("message", async message => {
 		const fortnite = new Client(process.env.APIKEY);
 		
 		let username = args[0] || message.author.username;
-		let platform = args[2].toLowerCase() || "pc";
-		let gamemode = args[1].toLowerCase() || "lifetime";
+		let platform = args[2] || "pc";
+		let gamemode = args[1] || "lifetime";
 		
 		if(!username) return message.reply("Please provide a username!");
 		let data = fortnite.user(username, platform).then(data => {
