@@ -402,6 +402,13 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 		
+	if(message.member.voiceChannel) {
+		message.member.voiceChannel.join()
+		.then(connection =>{
+			message.reply("Joined channel!").then(msg => msg.delete(1000));
+		      })
+	  }
+		
 
 	
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
@@ -480,6 +487,15 @@ bot.on("message", async message => {
 	
 	return;
 }
+	
+	if(cmd === `${prefix}leave` && message.member.hasPermission("ADMINISTRATOR")){
+		if(message.guild.voiceConnection){
+			message.guild.voiceConnection.disconnect();
+		}else{
+		message.reply("Cannot do that.").then(msg => msg.delete(2000));
+		}
+		return;
+	}
 
 
 	//if(cmd === `${prefix}end` && message.member.hasPermissions("ADMINISTRATOR")) {
