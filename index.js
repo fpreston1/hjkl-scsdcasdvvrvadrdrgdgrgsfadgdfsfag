@@ -183,10 +183,10 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-			//	if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
-			//	message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
-			//	message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-			//	}
+				if(message.member.hasRole(message.guild.roles.find("name", "Decent KD")) || message.member.hasRole(message.guild.roles.find("name", "Good KD")) || message.member.hasRole(message.guild.roles.find("name", "Bad KD")) || message.member.hasRole(message.guild.roles.find("name", "Excellent KD")) || message.member.hasRole(message.guild.roles.find("name", "Great KD"))) {
+				message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+				message.member.removeRole(message.guild.roles.find("name", "Ranking"));
+				}
 
 		
 				return message.reply(" Rank has been set").then(msg => msg.delete(2000));
@@ -198,84 +198,6 @@ bot.on("message", async message => {
 	
 	
 	
-	//if(cmd === `${prefix}fn`) {
-	//	const Fortnite = require('fortnite');
-	//	const apikey = process.env.APIKEY;
-	//	let ft = new Fortnite(apikey);
-//
-//		message.delete();
-//		
-//		
-//		let username = args[0];
-//		let platform = args[1] || "pc";
-//	
-//
-//		let data = ft.user(username, platform).then(data => {
-//			let stats = data.lifetimeStats;
-//			let kills = stats.find(s => s.stat == 'kills');
-//			let wins = stats.find(s => s.stat == 'wins');
-//			let kd = stats.find(s => s.stat == 'kd');
-//			let mPlayed = stats.find(s => s.stat == 'matchesPlayed');
-//			let tPlayed = stats.find(s => s.stat == 'timePlayed');
-//			let asTime = stats.find(s => s.stat == 'avgSurvivalTime');
-//			
-//			let fntEmbed = new Discord.RichEmbed()
-//			.setTitle("Fortnite Stats")
-//			.setAuthor(data.username)
-//			.setColor(6812512)
-//			.addField("Kills", kills.value, true)
-//			.addField("Wins", wins.value, true)
-//			.addField("KD", kd.value, true)
-//			.addField("Matches Played", mPlayed.value, true)
-//			.addField("Time Played", tPlayed.value, true)
-//			.addField("Average Survival Time", asTime.value, true);
-//			
-//			message.channel.send(fntEmbed);
-//			
-//		}).catch(e => {
-//			console.log(e);
-//			message.channel.send("Couldn't find user");
-//		});
-//
-//		
-//		return;
-//	}
-
-//	if(cmd === `${prefix}fortnite` && message.member.hasPermissions("ADMINISTRATOR")) {
-//	let platform;
-//	let username;
-//
-//	if(!['pc', 'xbl', 'psn'].includes(args[0])) return message.channel.send("**Please include the platform < pc xbox psn >**");
-//	if(!args[1]) return message.channel.send("**Please include the username**");
-//
-//	platform = args.shift();
-//	username = args.join(' ');
-//	const Fortnite = require('fortnite');
-//
-//	const stats = new Fortnite(process.env.APIKEY);
-//
-//	stats.getInfo(username, platform).then( data => { 
-//	const fnEmbed = new Discord.RichEmbed()
-//	.addField('Top Placement', `**Top 3s:** *${data.lifetimeStats[0].value}*\n**Top 5s** *${data.lifetimeStats[1].value}*\n**Top6s:** *${data.lifetimeStats[3].value}*\n**Top 12s:** *${data.lifetimeStats[4].value}*\n**Top 25s:** *${data.lifetimeStats[5].value}*`)
-//	.addField('Total Score', data.lifetimeStats[6].value)
-//	.addField('Matches Played', data.lifetimeStats[7].value, true)
-//	.addField('Wins', data.lifetimeStats[8].value, true)
-//	.addField('Win Percentage', data.lifetimeStats[9].value, true)
-//	.addField('Kills', data.lifetimeStats[10].value, true)
-//	.addField('KD', data.lifetimeStats[11].value, true)
-//	.addField('Kills Per Minute', data.lifetimeStats[12].value, true)
-//	.addField('Time Played', data.lifetimeStats[13].value, true)
-//	.addField('Average Survival Time', data.lifetimeStats[14].value, true)
-//	.setColor(6812512);
-//		
-//	message.channel.send(fnEmbed);
-//	})
-//
-//	.catch(error => {
-//	message.channel.send('Username not found!');
-//	})
-//	return;
-//}
 
 
 	
