@@ -7,6 +7,26 @@ const YTDL = require("ytdl-core");
 const FFMPEG = require("ffmpeg");
 const opusscript = require("opusscript");
 
+global.currentTeamMembers = [];
+global.servers = {};
+function play(connection, message) {
+	const YTDL = require("ytdl-core");
+
+	var server = servers[message.guild.id];
+	
+	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+	
+	server.queue.shift();
+	
+	server.dispatcher.on("end", function() {
+		if(server.queue[0]){
+			Play(connection, message)
+		}else{
+	 connection.disconnect();
+		}
+
+	});
+}
 
 
 bot.on("ready", async () => {
@@ -44,20 +64,9 @@ bot.on('guildMemberAdd', member => {
 
 });
 
-function play(connection, message) {
-	const YTDL = require("ytdl-core");
 
-	var server = servers[message.guild.id];
-	
-	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-	
-	server.queue.shift();
-	
-	server.dispatcher.on("end", function() {
-		if(server.queue[0]) play(connection, message);
-		else connection.disconnect();
-	});
-}
+
+
 
 
 
@@ -223,6 +232,35 @@ bot.on("message", async message => {
 	
 		return;
 	}
+	
+	
+	if(cmd === `${prefix}pee`){
+		const YTDL = require("ytdl-core");
+	const FFMPEG = require("ffmpeg");
+	const opusscript = require("opusscript");
+		if(message.member.voiceChannel)
+		{
+			if(!message.guild.voiceConnection)
+			{
+				if(!servers[message.guild.id]) {
+				servers[message.guild.id] = {queue: []}
+				}
+				var server = servers[message.guild.id];
+				message.member.voiceChannel.join()
+				.then(connection => {
+					var server = servers[message.guild.id];
+					message.reply("Joined");
+					server.queue.push(args);
+					Play(connection, message);
+				})
+			}
+		}else{
+			message.reply("Please be in a voice channel");
+		}
+	
+		return;
+	}
+	
 	
 	if(cmd === `${prefix}pl` && message.member.hasPermissions("ADMINISTRATOR")) {
 		var servers = {};
