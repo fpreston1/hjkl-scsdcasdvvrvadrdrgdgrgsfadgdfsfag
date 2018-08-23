@@ -203,7 +203,7 @@ bot.on("message", async message => {
 				let wins = lifetime[8][`Wins`];
 				let winper = lifetime[9][`Win Percentage`];
 				let kills = lifetime[10][`Kills`];
-				let kd = lifetime[11][`KD`];
+				let kd = lifetime[11][`KD Ratio`];
 				
 				let lifetimeEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Lifetime Stats")
@@ -211,10 +211,8 @@ bot.on("message", async message => {
 				.setColor(6812512)
 				.addField("Wins", wins, true)
 				.addField("Kills", kills, true)
-				.addField("Score", score, true)
 				.addField("Matches Played", mplayed, true)
-				.addField("KD", kd, true)
-				.addField("Win Percentage", winper, true);
+				.addField("KD Ratio", kd, true)
 				
 				return message.channel.send(lifetimeEmbed);
 			}
