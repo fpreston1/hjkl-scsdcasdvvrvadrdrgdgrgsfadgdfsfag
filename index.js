@@ -129,7 +129,7 @@ bot.on("message", async message => {
 	}
 	if(cmd === `${prefix}yt` && message.member.hasPermissions("ADMINISTRATOR")) {
 		var servers = {};
-		if(!args[1]) {
+		if(!args[0]) {
 			message.channel.send("Please provide a link");
 			return;
 		}
