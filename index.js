@@ -137,9 +137,11 @@ bot.on("message", async message => {
 		
 		let username = args[0] || message.author.username;
 		let platform = args[2] || "pc";
-		let gamemode = "solo";
+		let gamemode = args[1] || "solo";
 		
 		if(!username) return message.reply("Please provide a username!").then(msg => msg.delete(1000));
+		let botComms = message.guild.channels.find(`name`, "bot-commands");
+
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
 			
@@ -174,7 +176,7 @@ bot.on("message", async message => {
 				.addField("KD", kd, true);
 
 		
-				return message.channel.send(soloEmbed);
+				return botComms.send(soloEmbed);
 				
 				
 			}else if(gamemode === `duo`) {
@@ -185,7 +187,16 @@ bot.on("message", async message => {
 				let kills = duostats.kills;
 				let wins = duostats.wins;
 				let top3 = duostats.top_3;
-				
+				if(kd >= 5) {
+					message.member.addRole(message.guild.roles.find("name", "Great KD"));
+				   }else if(kd >= 3 && kd < 5) {
+					   message.member.addRole(message.guild.roles.find("name", "Good KD"));
+					    }else if(kd > 1 && kd < 3) {
+					   message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+						     }else if(kd <= 1) {
+					   message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+
+							      }
 				let duoEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Duo Stats")
 				.setAuthor(`Stats for ${data.username}`)
@@ -197,7 +208,7 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				return message.channel.send(duoEmbed);
+				return botComms.send(duoEmbed);
 			}else if(gamemode === `squad`) {
 				let squadstats = stats.squad;
 				let score = squadstats.score;
@@ -206,7 +217,16 @@ bot.on("message", async message => {
 				let kills = squadstats.kills;
 				let wins = squadstats.wins;
 				let top3 = squadstats.top_3;
-				
+				if(kd >= 5) {
+					message.member.addRole(message.guild.roles.find("name", "Great KD"));
+				   }else if(kd >= 3 && kd < 5) {
+					   message.member.addRole(message.guild.roles.find("name", "Good KD"));
+					    }else if(kd > 1 && kd < 3) {
+					   message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+						     }else if(kd <= 1) {
+					   message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+
+							      }
 				let squadEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Squad Stats")
 				.setAuthor(`Stats for ${data.username}`)
@@ -218,7 +238,7 @@ bot.on("message", async message => {
 				.addField("Top 3s", top3, true)
 				.addField("KD", kd, true);
 				
-				return message.channel.send(squadEmbed);
+				return botComms.send(squadEmbed);
 				
 			}else{
 				let lifetime = stats.lifetime;
@@ -228,7 +248,16 @@ bot.on("message", async message => {
 				let wins = lifetime[8][`Wins`];
 				let winper = lifetime[9][`Win Percentage`];
 				let kills = lifetime[10][`Kills`];
-				
+				if(kd >= 5) {
+					message.member.addRole(message.guild.roles.find("name", "Great KD"));
+				   }else if(kd >= 3 && kd < 5) {
+					   message.member.addRole(message.guild.roles.find("name", "Good KD"));
+					    }else if(kd > 1 && kd < 3) {
+					   message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+						     }else if(kd <= 1) {
+					   message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+
+							      }
 				let lifetimeEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Lifetime Stats")
 				.setAuthor(`Stats for ${data.username}`)
@@ -240,7 +269,7 @@ bot.on("message", async message => {
 				.addField("Win Percentage", winper, true)
 				.addField("Score", score, true);
 				
-				return message.channel.send(lifetimeEmbed);
+				return botComms.send(lifetimeEmbed);
 			}
 		})
 		
