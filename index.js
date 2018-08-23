@@ -651,7 +651,7 @@ bot.on("message", async message => {
 	
 	return;
 }
-	if(cmd === `${prefix}fn` || cmd === `${prefix}stats` && message.channel.id != "478949150340153358") {
+	if(cmd === `${prefix}fn` && message.channel.id != "478949150340153358") {
 	if(message.channel.id === "482044199504707584") return;
 
 	if(message.channel.id === "481865517393510402") return;
