@@ -114,8 +114,8 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		if(!args[0]) return message.channel.send("Please enter your Fortnite name.");
 		if(args[0].length > 16) return message.channel.send("Fortnite nicknames ONLY please.");
-		message.member.setNickname(args[0]);
-		message.channel.send(`All set! Your nickname has been changed to ${args[0]}`);
+		message.author.setNickname(args[0]);
+		message.reply(` All set! Your nickname has been changed to "${args[0]}"`);
 	return;
 	}
 	
