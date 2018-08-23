@@ -120,15 +120,14 @@ bot.on("message", async message => {
 		message.reply(` All set! Your nickname has been changed to "${args[0]}"`);
 	return;
 	}
-	if(cmd === `${prefix}fn` || `${prefix}fortnite` || `${prefix}track`) {
-		message.delete();
+	if(cmd === `${prefix}fn` || `${prefix}fortnite` || `${prefix}track` && message.channel.id === "482044199504707584") {
 		const Client = require("fortnite");
 		const fortnite = new Client(process.env.APIKEY);
 		message.channel.send(`${message.author}`);
 		
 		let username = args[0] || message.author.username;
 		let platform = args[2] || "pc";
-		let gamemode = args[1] || "lifetime";
+		let gamemode = args[1] || "solo";
 		
 		if(!username) return message.reply("Please provide a username!");
 		let data = fortnite.user(username, platform).then(data => {
