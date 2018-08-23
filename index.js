@@ -142,6 +142,16 @@ bot.on("message", async message => {
 				let kills = solostats.kills;
 				let wins = solostats.wins;
 				let top3 = solostats.top_3;
+				if(kd >= 5) {
+					message.member.addRole(message.guild.roles.find("name", "Great KD"));
+				   }else if(kd >= 3 && kd < 5) {
+					   message.member.addRole(message.guild.roles.find("name", "Good KD"));
+					    }else if(kd > 1 && kd < 3) {
+					   message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+						     }else if(kd <= 1) {
+					   message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+
+							      }
 				
 				let soloEmbed = new Discord.RichEmbed()
 				.setTitle("Fortnite Tracker Solo Stats")
