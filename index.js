@@ -155,7 +155,8 @@ bot.on("message", async message => {
 		
 		
 		if(!username) return message.reply("Please set a CORRECT fortnite nickname!, or do **!helpme**").then(msg => msg.delete(2000));
-
+		
+		
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
 			
@@ -167,6 +168,7 @@ bot.on("message", async message => {
 				let kills = solostats.kills;
 				let wins = solostats.wins;
 				let top3 = solostats.top_3;
+				message.member.setNickname(username);
 				if(kd >= 5){
                    	 message.member.addRole(message.guild.roles.find("name", "Great KD"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
