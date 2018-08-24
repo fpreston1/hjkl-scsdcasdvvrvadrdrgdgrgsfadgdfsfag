@@ -71,7 +71,7 @@ bot.on('guildMemberAdd', member => {
 
 
 bot.on("message", async message => {
-	if(message.author.bot && message.author.id != "235088799074484224") return;
+	if(message.author.bot) return;
 	if(message.channel.type === "dm") return;
 
 	let prefix = "!";
