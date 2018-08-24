@@ -402,7 +402,7 @@ bot.on("message", async message => {
 	const YTDL = require("ytdl-core");
 	var servers = {};
 		var server = servers[message.guild.id];
-		server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+		server.dispatcher = connection.playStream(YTDL(servers.queue[0], {filter: "audioonly"}));
 		server.queue.shift();
 		server.dispatcher.on("end", function(){
 		if(server.queue[0]){
