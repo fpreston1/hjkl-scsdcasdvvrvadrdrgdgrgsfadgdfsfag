@@ -147,14 +147,14 @@ bot.on("message", async message => {
 		
 
 
-		let username = args[0] || message.member.nickname;
+		let username = args.slice(0).join(" ") || message.author.username;
 		let platform = "pc";
 		let gamemode = "solo";
 		
 		if(args[0] === "ninja" || args[0] === "tsm_myth" || args[0] === "tsm_hamlinz" || args[0] === "tsm_daequan") return message.author.send("Stop that!");
 		
 		
-		if(!username) return message.reply("Please set a CORRECT nickname!").then(msg => msg.delete(2000));
+		if(!username) return message.reply("Please set a CORRECT fortnite nickname!, or do **!helpme**").then(msg => msg.delete(2000));
 
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
@@ -735,11 +735,13 @@ bot.on("message", async message => {
 	
 	let username = args.slice(1).join(" ") || message.author.username;
 	let platform = "pc";
-	let gamemode = args[1] || "lifetime";
+	let gamemode = args[0] || "lifetime";
 		
 	if(!args[0]) return message.channel.send("Format !fn <solo,duo,squad,lifetime> <username>");
 	
 	if(args[0] === "help") return message.reply("Format !fn <solo, duo, squad, lifetime> <username>");
+	
+	
 		
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
@@ -827,7 +829,10 @@ bot.on("message", async message => {
 				
 				return message.channel.send(lifetimeEmbed);
 			}
-		})
+		}else{
+			return message.channel.send("Username not found!").then(msg => msg.delete(2000));
+								  
+			})
 				
 		return;
 	}
