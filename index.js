@@ -829,11 +829,12 @@ bot.on("message", async message => {
 				
 				return message.channel.send(lifetimeEmbed);
 			}
-		}else{
-			return message.channel.send("Username not found!").then(msg => msg.delete(2000));
-	}
+		
 								  
-			})
+		})else{
+			return message.channel.send("Username not found!").then(msg => msg.delete(2000));
+		}
+		
 				
 		return;
 	}
