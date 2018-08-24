@@ -831,6 +831,7 @@ bot.on("message", async message => {
 			}
 		}else{
 			return message.channel.send("Username not found!").then(msg => msg.delete(2000));
+	}
 								  
 			})
 				
