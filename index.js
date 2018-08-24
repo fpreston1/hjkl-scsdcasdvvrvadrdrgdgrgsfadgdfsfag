@@ -448,7 +448,7 @@ bot.on("message", async message => {
 			.then(connection => {
 				var server = servers[message.guild.id];
 				message.reply("Joined!!").then(msg => msg.delete(1000));
-				server.queue.push(args[0] || "https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+				server.queue.push(args[0] || "https://www.youtube.com/watch?v=erKU_Ro-poM&feature=youtu.be");
 				Play(connection, message);
 			})
 		}
@@ -456,7 +456,7 @@ bot.on("message", async message => {
 	message.reply("You must be in a voice channel!").then(msg => msg.delete(1000));
 	}
 		
-	await yeetTim(9000);
+	await yeetTim(15000);
 	if(message.guild.voiceConnection){
 			message.guild.voiceConnection.disconnect();
 		}else{
