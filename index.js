@@ -733,7 +733,7 @@ bot.on("message", async message => {
 	if(message.channel.id === "481865517393510402") return;
 	
 	
-	let args[0] = args.join(" ");
+	let args = args.join(" ");
 	let username = args[0] || message.author.username;
 	let platform = "pc";
 	let gamemode = "lifetime";
