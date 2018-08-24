@@ -6,26 +6,6 @@ const Fortnite = require("fortnite");
 const YTDL = require("ytdl-core");
 const opusscript = require("opusscript");
 
-global.currentTeamMembers = [];
-global.servers = {};
-function Play(connection, message) {
-	const YTDL = require("ytdl-core");
-
-	var server = servers[message.guild.id];
-	
-	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
-	
-	server.queue.shift();
-	
-	server.dispatcher.on("end", function() {
-		if(server.queue[0]){
-			Play(connection, message)
-		}else{
-	 connection.disconnect();
-		}
-
-	});
-}
 
 
 bot.on("ready", async () => {
@@ -397,12 +377,13 @@ bot.on("message", async message => {
 	
 	return;
 }
+		var servers = {};
+
 	
 	function Play(connection, message) {
 	const YTDL = require("ytdl-core");
-	var servers = {};
 		var server = servers[message.guild.id];
-		server.dispatcher = connection.playStream(YTDL(servers.queue[0], {filter: "audioonly"}));
+		server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
 		server.queue.shift();
 		server.dispatcher.on("end", function(){
 		if(server.queue[0]){
