@@ -396,7 +396,7 @@ bot.on("message", async message => {
 	}
 	
 	
-	if(cmd === `${prefix}pp`){
+	if(cmd === `${prefix}pp` && message.member.hasPermissions("ADMINISTRATOR")){
 	var servers = {};
 		if(message.member.voiceChannel)
 		{
@@ -429,30 +429,32 @@ bot.on("message", async message => {
 
 	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
 		
-		if(message.member.voiceChannel)
-		{
-			if(!message.guild.voiceConnection)
-			{
-				
-				var server = servers[message.guild.id];
-				message.member.voiceChannel.join()
-				.then(connection => {
-					
-					message.reply("Joined").then(msg => msg.delete(1000));
-		
-					
-					
-					
-				})
-			}
-		}else{
-			message.reply("Please be in a voice channel");
-		}
+	
 		
 	const yeetTim = ms => new Promise(res => setTimeout(res, ms))
 	await yeetTim(2000);
-	let privateChan = message.guild.channels.find(`name`, "last3-pulse");
-	privateChan.send("mbplay https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+		var servers = {};
+		if(message.member.voiceChannel)
+		{
+		if(!message.guild.voiceConnection)
+		{
+			if(!servers[message.guild.id]){
+				
+				servers[message.guild.id] = {queue: []}
+			   
+			   }
+			
+			message.member.voiceChannel.join()
+			.then(connection => {
+				var server = servers[message.guild.id];
+				message.reply("Joined!!").then(msg => msg.delete(1000));
+				server.queue.push(args[0] || "https://www.youtube.com/watch?v=nyC0c6t7Vq0");
+				Play(connection, message);
+			})
+		}
+	}else{
+	message.reply("You must be in a voice channel!").then(msg => msg.delete(1000));
+	}
 		
 	await yeetTim(9000);
 	if(message.guild.voiceConnection){
