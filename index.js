@@ -734,9 +734,9 @@ bot.on("message", async message => {
 	
 	
 	let username = args[1] || message.author.username;
-	args[1].join(" ");
+	args.join(" ");
 	let platform = "pc";
-	let gamemode = args[0];
+	let gamemode = args[0] || "lifetime";
 		
 	if(!args[0]) return message.channel.send("Format !fn <solo,duo,squad,lifetime> <username>");
 	
