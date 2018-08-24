@@ -732,11 +732,15 @@ bot.on("message", async message => {
 
 	if(message.channel.id === "481865517393510402") return;
 	
-	let username = args[0] || message.author.username;
-	let platform = "pc";
-	let gamemode = args[1] || "solo";
 	
-	if(args[0] === "help") return message.reply("Format !fn <username> <solo, duo, squad, lifetime>");
+	let username = args[1] || message.author.username;
+	args[1].join(" ");
+	let platform = "pc";
+	let gamemode = args[0];
+		
+	if(!args[0]) return message.channel.send("Format !fn <solo,duo,squad,lifetime> <username>");
+	
+	if(args[0] === "help") return message.reply("Format !fn <solo, duo, squad, lifetime> <username>");
 		
 		let data = fortnite.user(username, platform).then(data => {
 			let stats = data.stats;
