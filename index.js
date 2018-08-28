@@ -777,15 +777,15 @@ bot.on("message", async message => {
 				
 						if(kd >= 5 && kd < 10){
 				
-                   	 message.reply(" You are in the **INSANE** rank!");
+                   	 message.reply(`${data.username} is in the **INSANE** rank!`);
              	   	}else if(kd >= 10) {
-				message.reply(" You are in the **PRO** rank!");
+				message.reply(`${data.username} is in the **PRO** rank!`);
 				 }else if(kd >= 2 && kd < 3) {
-					 message.reply(" You are in the **SKILLED** rank!");
+					 message.reply(`${data.username} is in the **SKILLED** rank!`);
 					  }else if(kd < 2 && kd > 1)  {
-						 message.reply(" You are in the **DECENT** rank!");
+						 message.reply(`${data.username} is in the **DECENT** rank!`);
 						   }else if(kd <= 1) {
-							  message.reply(" You are in the **NOOB** rank!");
+							  message.reply(`${data.username} is in the **NOOB** rank!`);
 							    }else if(kd >= 3 && kd < 5){
 								   message.reply(" You are in the **GREAT** rank!");
 								     
