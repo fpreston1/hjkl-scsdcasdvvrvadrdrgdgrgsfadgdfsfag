@@ -772,70 +772,115 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches ,true)
 				.addField("KD Ratio", kd ,true)
 				.addField("Player", player, true);
-				if(message.author.nickname === username){
-				   if(kd >= 10){
-					   const proRole = message.guild.roles.find(r => r.name === "Pro");
-				      if(message.member.roles.has(proRole)){
-					      return;
-					 }else{
-					 message.member.addRole(message.guild.roles.find("name", "Pro"));
-					message.member.removeRole(message.guild.roles.find("name", "Noob"));
-						message.member.removeRole(message.guild.roles.find("name", "Decent"));
-						message.member.removeRole(message.guild.roles.find("name", "Great"));
-						message.member.removeRole(message.guild.roles.find("name", "Insane"));
-						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
-					 }
-				      }else if(kd >= 2 && kd < 3){
-				      const skilledRole = message.guild.roles.find(r => r.name === "Skilled");
-					      if(message.member.roles.has(skilledRole)){
-						 return;
-						 }else{
-						 message.member.addRole(message.guild.roles.find("name", "Skilled"));
-						message.member.removeRole(message.guild.roles.find("name", "Noob"));
-						message.member.removeRole(message.guild.roles.find("name", "Decent"));
-						message.member.removeRole(message.guild.roles.find("name", "Great"));
-						message.member.removeRole(message.guild.roles.find("name", "Insane"));
-							message.member.removeRole(message.guild.roles.find("name", "Pro"));
-						 }
-				      }else if(kd < 2 && kd > 1){
-					       const decentRole = message.guild.roles.find(r => r.name === "Decent");
-					      if(message.member.roles.has(decentRole)){
-						 return;
-						 }else{
-						 message.member.addRole(message.guild.roles.find("name", "Decent"));
-						message.member.removeRole(message.guild.roles.find("name", "Noob"));
-						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
-						message.member.removeRole(message.guild.roles.find("name", "Great"));
-						message.member.removeRole(message.guild.roles.find("name", "Insane"));
-							message.member.removeRole(message.guild.roles.find("name", "Pro"));
-						 }
-					       }else if(kd <= 1){
-						       const noobRole = message.guild.roles.find(r => r.name === "Noob");
-						       if(message.member.roles.has(noobRole)){
-							  return;
-							  }else{
-							   message.member.addRole(message.guild.roles.find("name", "Noob"));
-						message.member.removeRole(message.guild.roles.find("name", "Decent"));
-						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
-						message.member.removeRole(message.guild.roles.find("name", "Great"));
-						message.member.removeRole(message.guild.roles.find("name", "Insane"));
-							message.member.removeRole(message.guild.roles.find("name", "Pro"));
-							  }
+// 				if(message.author.nickname === username){
+// 				   if(kd >= 10){
+// 					   const proRole = message.guild.roles.find(r => r.name === "Pro");
+// 				      if(message.member.roles.has(proRole)){
+// 					      return;
+// 					 }else{
+// 					 message.member.addRole(message.guild.roles.find("name", "Pro"));
+// 					message.member.removeRole(message.guild.roles.find("name", "Noob"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Decent"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Great"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Insane"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+// 					 }
+// 				      }else if(kd >= 2 && kd < 3){
+// 				      const skilledRole = message.guild.roles.find(r => r.name === "Skilled");
+// 					      if(message.member.roles.has(skilledRole)){
+// 						 return;
+// 						 }else{
+// 						 message.member.addRole(message.guild.roles.find("name", "Skilled"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Noob"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Decent"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Great"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Insane"));
+// 							message.member.removeRole(message.guild.roles.find("name", "Pro"));
+// 						 }
+// 				      }else if(kd < 2 && kd > 1){
+// 					       const decentRole = message.guild.roles.find(r => r.name === "Decent");
+// 					      if(message.member.roles.has(decentRole)){
+// 						 return;
+// 						 }else{
+// 						 message.member.addRole(message.guild.roles.find("name", "Decent"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Noob"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Great"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Insane"));
+// 							message.member.removeRole(message.guild.roles.find("name", "Pro"));
+// 						 }
+// 					       }else if(kd <= 1){
+// 						       const noobRole = message.guild.roles.find(r => r.name === "Noob");
+// 						       if(message.member.roles.has(noobRole)){
+// 							  return;
+// 							  }else{
+// 							   message.member.addRole(message.guild.roles.find("name", "Noob"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Decent"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Great"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Insane"));
+// 							message.member.removeRole(message.guild.roles.find("name", "Pro"));
+// 							  }
 							
-							}else if(kd >= 3 && kd < 5){
-							const greatRole = message.guild.roles.find(r => r.name === "Great");
-								if(message.member.roles.has(greatRole)){
-								   return;
-								   }else{
+// 							}else if(kd >= 3 && kd < 5){
+// 							const greatRole = message.guild.roles.find(r => r.name === "Great");
+// 								if(message.member.roles.has(greatRole)){
+// 								   return;
+// 								   }else{
+// 								    message.member.addRole(message.guild.roles.find("name", "Great"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Decent"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Noob"));
+// 						message.member.removeRole(message.guild.roles.find("name", "Insane"));
+// 							message.member.removeRole(message.guild.roles.find("name", "Pro"));
+// 								   }
+// 							}
+// 				}
+				
+				if(kd >= 5 && kd < 10 && username === message.author.username){
+                   	 message.member.addRole(message.guild.roles.find("name", "Insane"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+			message.member.removeRole(message.guild.roles.find("name", "Great"));
+			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+			message.member.removeRole(message.guild.roles.find("name", "Decent"));
+			message.member.removeRole(message.guild.roles.find("name", "Noob"));
+             	   	}else if(kd >= 10 && username === message.author.username) {
+				 message.member.addRole(message.guild.roles.find("name", "Pro"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Insane"));
+			message.member.removeRole(message.guild.roles.find("name", "Great"));
+			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+			message.member.removeRole(message.guild.roles.find("name", "Decent"));
+			message.member.removeRole(message.guild.roles.find("name", "Noob"));
+				 }else if(kd >= 2 && kd < 3 && username === message.author.username) {
+					  message.member.addRole(message.guild.roles.find("name", "Skilled"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+			message.member.removeRole(message.guild.roles.find("name", "Insane"));
+			message.member.removeRole(message.guild.roles.find("name", "Great"));
+			message.member.removeRole(message.guild.roles.find("name", "Decent"));
+			message.member.removeRole(message.guild.roles.find("name", "Noob"));
+					  }else if(kd < 2 && kd > 1 && username === message.author.username)  {
+						   message.member.addRole(message.guild.roles.find("name", "Decent"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+			message.member.removeRole(message.guild.roles.find("name", "Insane"));
+			message.member.removeRole(message.guild.roles.find("name", "Great"));
+			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+			message.member.removeRole(message.guild.roles.find("name", "Noob"));
+						   }else if(kd <= 1 && username === message.author.username) {
+							    message.member.addRole(message.guild.roles.find("name", "Noob"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+			message.member.removeRole(message.guild.roles.find("name", "Insane"));
+			message.member.removeRole(message.guild.roles.find("name", "Great"));
+			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+			message.member.removeRole(message.guild.roles.find("name", "Decent"));
+							    }else if(kd >= 3 && kd < 5 && username === message.author.username){
 								    message.member.addRole(message.guild.roles.find("name", "Great"));
-						message.member.removeRole(message.guild.roles.find("name", "Decent"));
-						message.member.removeRole(message.guild.roles.find("name", "Skilled"));
-						message.member.removeRole(message.guild.roles.find("name", "Noob"));
-						message.member.removeRole(message.guild.roles.find("name", "Insane"));
-							message.member.removeRole(message.guild.roles.find("name", "Pro"));
-								   }
-							}
-				}
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+			message.member.removeRole(message.guild.roles.find("name", "Insane"));
+			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
+			message.member.removeRole(message.guild.roles.find("name", "Decent"));
+			message.member.removeRole(message.guild.roles.find("name", "Noob"));
+								     
+								     }
 			
 			
 				
