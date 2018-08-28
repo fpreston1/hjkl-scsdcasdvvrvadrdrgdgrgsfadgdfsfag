@@ -747,9 +747,8 @@ bot.on("message", async message => {
 	let platform = "pc";
 	let gamemode = args[0] || "lifetime";
 		
-	if(!args[0]) return message.reply("Format !fn <solo,duo,squad,lifetime> <username>");
+	if(!args[0]) return message.reply("Format !fn <solo,duo,squad,lifetime> <username>") && message.channel.send("To set your rank type !fn solo (your fortnite name) WITHOUT the brackets!");
 		
-	if(!gamemode) return message.channel.send("To set your rank type !fn solo (your fortnite name) WITHOUT brackets!");
 
 		
 	
