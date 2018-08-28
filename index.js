@@ -840,7 +840,7 @@ bot.on("message", async message => {
 // 							}
 // 				}
 				
-				if(kd >= 5 && kd < 10 && username === message.author.nickname){
+				if(kd >= 5 && kd < 10 && username === message.member.nickname){
                    	 message.member.addRole(message.guild.roles.find("name", "Insane"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
