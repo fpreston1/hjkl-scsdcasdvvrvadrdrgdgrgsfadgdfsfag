@@ -847,41 +847,49 @@ bot.on("message", async message => {
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
 			message.member.removeRole(message.guild.roles.find("name", "Noob"));
-             	   	}else if(kd >= 10 && username === message.author.username) {
+			message.author.send("Your rank has been set to **Insane**!");
+
+             	   	}else if(kd >= 10 && username === message.member.nickname) {
 				 message.member.addRole(message.guild.roles.find("name", "Pro"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
 			message.member.removeRole(message.guild.roles.find("name", "Noob"));
-				 }else if(kd >= 2 && kd < 3 && username === message.author.username) {
+			message.author.send("Your rank has been set to **Pro**!");
+
+				 }else if(kd >= 2 && kd < 3 && username === message.member.nickname) {
 					  message.member.addRole(message.guild.roles.find("name", "Skilled"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
 			message.member.removeRole(message.guild.roles.find("name", "Noob"));
-					  }else if(kd < 2 && kd > 1 && username === message.author.username)  {
+			message.author.send("Your rank has been set to **Skilled**!");
+					  }else if(kd < 2 && kd > 1 && username === message.member.nickname)  {
 						   message.member.addRole(message.guild.roles.find("name", "Decent"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Noob"));
-						   }else if(kd <= 1 && username === message.author.username) {
+			message.author.send("Your rank has been set to **Decent**!");
+						   }else if(kd <= 1 && username === message.member.nickname) {
 							    message.member.addRole(message.guild.roles.find("name", "Noob"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
-							    }else if(kd >= 3 && kd < 5 && username === message.author.username){
+			message.author.send("Your rank has been set to **Noob**!");
+							    }else if(kd >= 3 && kd < 5 && username === message.member.nickname){
 								    message.member.addRole(message.guild.roles.find("name", "Great"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
 			message.member.removeRole(message.guild.roles.find("name", "Noob"));
+			message.author.send("Your rank has been set to **Great**!");
 								     
 								     }
 			
