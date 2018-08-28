@@ -775,6 +775,23 @@ bot.on("message", async message => {
 				
 				message.reply();
 				
+						if(kd >= 5 && kd < 10){
+				
+                   	 message.reply(" You are in the **INSANE** rank!");
+             	   	}else if(kd >= 10) {
+				message.reply(" You are in the **PRO** rank!");
+				 }else if(kd >= 2 && kd < 3) {
+					 message.reply(" You are in the **SKILLED** rank!");
+					  }else if(kd < 2 && kd > 1)  {
+						 message.reply(" You are in the **DECENT** rank!");
+						   }else if(kd <= 1) {
+							  message.reply(" You are in the **NOOB** rank!");
+							    }else if(kd >= 3 && kd < 5){
+								   message.reply(" You are in the **GREAT** rank!");
+								     
+								     }
+              	 
+				
 				return message.channel.send(soloEmbed);
 			}else if(gamemode === `duo`){
 				let duostats = stats.duo;
@@ -794,6 +811,7 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches ,true)
 				.addField("KD Ratio", kd ,true);
 				
+				message.channel.send("Your rank is set based on **SOLO** stats.").then(msg => msg.delete(5000));
 				return message.channel.send(duoEmbed);
 			}else if(gamemode === `squad`) {
 				let squadstats = stats.squad;
@@ -813,6 +831,8 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches ,true)
 				.addField("KD Ratio", kd ,true);
 				
+				message.channel.send("Your rank is set based on **SOLO** stats.").then(msg => msg.delete(5000));
+
 				return message.channel.send(squadEmbed);
 			}else{
 				let lifetime = stats.lifetime;
@@ -833,6 +853,9 @@ bot.on("message", async message => {
 				.addField("Matches Played", mplayed, true)
 				.addField("KD Ratio", kd, true)
 				.addField("Win Percentage", winper, true);
+				
+				message.channel.send("Your rank is set based on **SOLO** stats.").then(msg => msg.delete(5000));
+
 				
 				return message.channel.send(lifetimeEmbed);
 			}
