@@ -169,27 +169,32 @@ bot.on("message", async message => {
 				let wins = solostats.wins;
 				let top3 = solostats.top_3;
 				message.member.setNickname(username);
-				if(kd >= 5){
-                   	 message.member.addRole(message.guild.roles.find("name", "Great KD"));
+				if(kd >= 5 && kd < 10){
+                   	 message.member.addRole(message.guild.roles.find("name", "Insane"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
              	   	}else if(kd >= 10) {
-				 message.member.addRole(message.guild.roles.find("name", "Excellent KD"));
+				 message.member.addRole(message.guild.roles.find("name", "Pro"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-				 }else if(kd >= 3 && kd < 5) {
-					  message.member.addRole(message.guild.roles.find("name", "Good KD"));
+				 }else if(kd >= 2 && kd < 3) {
+					  message.member.addRole(message.guild.roles.find("name", "Skilled"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-					  }else if(kd < 3 && kd > 1)  {
-						   message.member.addRole(message.guild.roles.find("name", "Decent KD"));
+					  }else if(kd < 2 && kd > 1)  {
+						   message.member.addRole(message.guild.roles.find("name", "Decent"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 						   }else if(kd <= 1) {
-							    message.member.addRole(message.guild.roles.find("name", "Bad KD"));
+							    message.member.addRole(message.guild.roles.find("name", "Noob"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-							    }
+							    }else if(kd >= 3 && kd < 5){
+								    message.member.addRole(message.guild.roles.find("name", "Great"));
+					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking")); 
+								     
+								     }
               	 
 
 				let soloEmbed = new Discord.RichEmbed()
