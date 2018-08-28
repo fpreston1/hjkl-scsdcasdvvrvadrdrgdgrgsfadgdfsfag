@@ -811,7 +811,7 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches ,true)
 				.addField("KD Ratio", kd ,true);
 				
-				message.channel.send("Your rank is set based on **SOLO** stats.");
+				message.reply("Your rank is set based on **SOLO** stats.");
 				return message.channel.send(duoEmbed);
 			}else if(gamemode === `squad`) {
 				let squadstats = stats.squad;
@@ -831,7 +831,7 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches ,true)
 				.addField("KD Ratio", kd ,true);
 				
-				message.channel.send("Your rank is set based on **SOLO** stats.");
+				message.reply("Your rank is set based on **SOLO** stats.");
 
 				return message.channel.send(squadEmbed);
 			}else{
@@ -854,7 +854,7 @@ bot.on("message", async message => {
 				.addField("KD Ratio", kd, true)
 				.addField("Win Percentage", winper, true);
 				
-				message.channel.send("Your rank is set based on **SOLO** stats.");
+				message.reply("Your rank is set based on **SOLO** stats.");
 
 				
 				return message.channel.send(lifetimeEmbed);
