@@ -772,7 +772,7 @@ bot.on("message", async message => {
 				.addField("Matches Played", matches ,true)
 				.addField("KD Ratio", kd ,true)
 				.addField("Player", player, true);
-				if(message.author.username === username){
+				if(message.author.nickname === username){
 				   if(kd >= 10){
 					   const proRole = message.guild.roles.find(r => r.name === "Pro");
 				      if(message.member.roles.has(proRole)){
