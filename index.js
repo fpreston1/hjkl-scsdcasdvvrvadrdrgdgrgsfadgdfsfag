@@ -835,7 +835,8 @@ bot.on("message", async message => {
 							message.member.removeRole(message.guild.roles.find("name", "Pro"));
 								   }
 							}
-				   }
+				//}
+			
 				
 				
 						if(kd >= 5 && kd < 10){
