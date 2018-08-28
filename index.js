@@ -773,7 +773,6 @@ bot.on("message", async message => {
 				.addField("KD Ratio", kd ,true)
 				.addField("Player", player, true);
 				
-				message.reply();
 				
 						if(kd >= 5 && kd < 10){
 				
