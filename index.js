@@ -544,21 +544,6 @@ bot.on("message", async message => {
 	
 	return;
 }
-	if(cmd === `${prefix}l` && message.member.hasPermissions("ADMINISTRATOR")){
-	if(!args[0]) return;
-	let scrim3chan = message.guild.channels.find("name", `scrim-last3`);
-	let lEmbed = new Discord.RichEmbed()
-	.setTitle("Last 3 Leaderboard")
-	.addField(`${args[0]}`, message.member.nickname)
-	.setColor(6812512);
-	   const sentMassage = await scrim3chan.send(lEmbed);
-		
-		      lEmbed.setDescription(`${args[0]}`, message.member.nickname);
-		      sentMassage.edit(lEmbed);
-		      
-
-	   return;
-	   }
 	
 
 	if(cmd === `${prefix}cls` && message.member.hasPermissions("ADMINISTRATOR")) {
