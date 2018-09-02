@@ -184,7 +184,7 @@ bot.on("message", async message => {
 					  message.member.addRole(message.guild.roles.find("name", "Skilled"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
-					  }else if(kd < 2 && kd > 1)  {
+					  }else if(kd > 1 && kd < 2)  {
 						   message.member.addRole(message.guild.roles.find("name", "Decent"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
