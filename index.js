@@ -1029,6 +1029,7 @@ bot.on("message", async message => {
 	
 	return;
 }
+	
 
 	if(cmd === `${prefix}help` && message.channel.id != "478949150340153358") {
 			if(message.channel.id === "481865517393510402") return;
