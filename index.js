@@ -137,13 +137,13 @@ bot.on("message", async message => {
 		}
 		let rolename = code;
 		const codeRoles = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
+		let eb = new Discord.RichEmbed()
+		.setColor(6812512);
 		codeRoles.forEach( role => {
 			const membersString = role.members.map(m => m.user.tag).join("\n");
-			let eb = new Discord.RichEmbed()
-			.addField(role.name, membersString, true)
-			.setColor(6812512);
-			message.channel.send(eb);
+			eb.addField(role.name, membersString, true)
 		})
+		message.channel.send(eb);
 		let memberrrs = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
 		let membersWithRole = message.guild.members.filter(member => {
 			return member.roles.find("name", rolename);
