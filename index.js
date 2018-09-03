@@ -670,7 +670,7 @@ bot.on("message", async message => {
 		for(const codeRoles of splitCodeRoles) {
 			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter("Small Scrims Discord").setTimestamp();
 			for(const role of codeRoles) {
-				const membersString = role.members.map(m => m.userObject.toString().tag).join("\n");
+				const membersString = role.members.map(m => m.user.tag).join("\n");
 				eb.addField(`ID: ${role.name}`, membersString, true);
 			}
 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
