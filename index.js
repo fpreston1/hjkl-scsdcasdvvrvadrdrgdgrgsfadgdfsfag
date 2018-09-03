@@ -1205,6 +1205,7 @@ bot.on("message", async message => {
 		message.member.setNickname(nickname);
 
 		}
+	}
 	   
 	   return;
 	   }
