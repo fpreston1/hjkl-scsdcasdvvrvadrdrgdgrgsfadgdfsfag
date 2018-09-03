@@ -643,12 +643,7 @@ bot.on("message", async message => {
 	.addField("Please enter the last 3 digits of your server!", "When in-game you can find this in the top left corner of your screen.")
 	.setColor(6812512);
 	scrimlast3chan.send(startEmbed);
-	scrimlast3chan.overwritePermissions(message.guild.id, {
-	SEND_MESSAGES: true
-	})
-	message.delete().catch(O_o=>{});
-		
-	await startTimeout(30000);
+	await startTimeout(10000);
 	const allCodeRoles = message.guild.roles
 		.filter(r => (/^\w{3}$/).test(r.name))
 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
@@ -674,6 +669,12 @@ bot.on("message", async message => {
 			})
 			
 		}
+	scrimlast3chan.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: true
+	})
+	message.delete().catch(O_o=>{});
+		
+
 		
 
 	await startTimeout(15000);
