@@ -115,7 +115,7 @@ bot.on("message", async message => {
 		await eOut(10000);
 
 		message.member.setNickname(nickname);
-		role.delete(code);
+		role.delete(scrimrole);
 
 		}
 		return;
