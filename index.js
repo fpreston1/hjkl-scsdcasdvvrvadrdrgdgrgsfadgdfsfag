@@ -6,8 +6,6 @@ const Fortnite = require("fortnite");
 const YTDL = require("ytdl-core");
 const opusscript = require("opusscript");
 
-process.on('uncaughtException', console.error);
-process.on('unhandledRejection', console.error);
 
 bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
