@@ -70,7 +70,7 @@ bot.on("message", async message => {
 	}
 	
 	if(message.channel.id === "478949150340153358"){
-	if(message.content === "!start"){
+	if(message.content === "!start" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.reply("Please use the #scrim-chat channel for that!").then(msg => msg.delete(2000));
 		
 		return;
@@ -88,7 +88,7 @@ bot.on("message", async message => {
 	}
 	//yeet
 	let code = message.content;
-	if(message.content === "!cls" && message.member.hasPermissions("ADMINISTRATOR")){
+	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.channel.bulkDelete(10);
 	}
 	
@@ -561,7 +561,7 @@ bot.on("message", async message => {
 
 
 
-	if(cmd === `${prefix}start` && message.member.hasPermissions("ADMINISTRATOR")) {
+	if(cmd === `${prefix}start` && message.member.roles.find(r => r.name === "Scrim Staff")) {
 		
 	
 		
