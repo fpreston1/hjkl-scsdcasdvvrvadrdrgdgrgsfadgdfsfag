@@ -149,7 +149,7 @@ bot.on("message", async message => {
 		.setTimestamp()
 		.setColor(6812512);
 		
-		return;
+		return message.channel.send(rolesEmbed);
 	}
 	   
 // 	if(message.channel.id === "478949150340153358") {
