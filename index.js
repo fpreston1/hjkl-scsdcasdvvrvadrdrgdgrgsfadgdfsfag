@@ -143,7 +143,7 @@ bot.on("message", async message => {
 		})
 		let rolesEmbed = new Discord.RichEmbed()
 		.setTitle("Game Information")
-		.setDescription("*Loading...*")
+		.addField(code ,membersWithRole.join("\n"))
 		.addField(code ,membersWithRole.join("\n"))
 		.setFooter("Hosted with Small Scrims Discord")
 		.setTimestamp()
