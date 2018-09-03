@@ -190,18 +190,18 @@ bot.on("message", async message => {
 }
 	if(cmd === `${prefix}nae` && message.channel.id === "481865517393510402") {
 	message.member.addRole(message.guild.roles.find("name", "Ranking"));
-	message.member.addRole(message.guild.roles.find("name", "NAE"));
+	message.member.addRole(message.guild.roles.find("name", "NA-E"));
 	message.member.removeRole(message.guild.roles.find("name", "Starter"));
-	message.author.send("Your region has been set to NAE");
+	message.author.send("Your region has been set to NA-E");
 
 
 	return;
 	}
 	if(cmd === `${prefix}naw` && message.channel.id === "481865517393510402") {
 	message.member.addRole(message.guild.roles.find("name", "Ranking"));
-	message.member.addRole(message.guild.roles.find("name", "NAW"));
+	message.member.addRole(message.guild.roles.find("name", "NA-W"));
 	message.member.removeRole(message.guild.roles.find("name", "Starter"));
-	message.author.send("Your region has been set to NAW");
+	message.author.send("Your region has been set to NA-W");
 
 
 	return;
@@ -268,7 +268,7 @@ bot.on("message", async message => {
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
              	   	}else if(kd >= 10) {
-				 message.member.addRole(message.guild.roles.find("name", "Pro"));
+				 message.member.addRole(message.guild.roles.find("name", "Pros"));
 					message.member.addRole(message.guild.roles.find("name", "Scrimmer"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Ranking"));
 				 }else if(kd >= 2 && kd < 3) {
@@ -939,7 +939,7 @@ bot.on("message", async message => {
 				
 				if(kd >= 5 && kd < 10 && username === message.member.nickname){
                    	 message.member.addRole(message.guild.roles.find("name", "Insane"));
-		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pros"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
@@ -947,17 +947,17 @@ bot.on("message", async message => {
 			message.author.send("Your rank has been set to **Insane**!");
 
              	   	}else if(kd >= 10 && username === message.member.nickname) {
-				 message.member.addRole(message.guild.roles.find("name", "Pro"));
+				 message.member.addRole(message.guild.roles.find("name", "Pros"));
 		   	 message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
 			message.member.removeRole(message.guild.roles.find("name", "Noob"));
-			message.author.send("Your rank has been set to **Pro**!");
+			message.author.send("Your rank has been set to **Pros**!");
 
 				 }else if(kd >= 2 && kd < 3 && username === message.member.nickname) {
 					  message.member.addRole(message.guild.roles.find("name", "Skilled"));
-		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pros"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
@@ -965,7 +965,7 @@ bot.on("message", async message => {
 			message.author.send("Your rank has been set to **Skilled**!");
 					  }else if(kd < 2 && kd > 1 && username === message.member.nickname)  {
 						   message.member.addRole(message.guild.roles.find("name", "Decent"));
-		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pros"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
@@ -973,7 +973,7 @@ bot.on("message", async message => {
 			message.author.send("Your rank has been set to **Decent**!");
 						   }else if(kd <= 1 && username === message.member.nickname) {
 							    message.member.addRole(message.guild.roles.find("name", "Noob"));
-		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pros"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Great"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
@@ -981,7 +981,7 @@ bot.on("message", async message => {
 			message.author.send("Your rank has been set to **Noob**!");
 							    }else if(kd >= 3 && kd < 5 && username === message.member.nickname){
 								    message.member.addRole(message.guild.roles.find("name", "Great"));
-		   	 message.member.removeRole(message.guild.roles.find("name", "Pro"));
+		   	 message.member.removeRole(message.guild.roles.find("name", "Pros"));
 			message.member.removeRole(message.guild.roles.find("name", "Insane"));
 			message.member.removeRole(message.guild.roles.find("name", "Skilled"));
 			message.member.removeRole(message.guild.roles.find("name", "Decent"));
@@ -997,7 +997,7 @@ bot.on("message", async message => {
 				
                    	 message.reply(`${data.username} is in the **INSANE** rank!`);
              	   	}else if(kd >= 10) {
-				message.reply(`${data.username} is in the **PRO** rank!`);
+				message.reply(`${data.username} is in the **PROs** rank!`);
 				 }else if(kd >= 2 && kd < 3) {
 					 message.reply(`${data.username} is in the **SKILLED** rank!`);
 					  }else if(kd < 2 && kd > 1)  {
