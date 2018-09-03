@@ -162,7 +162,7 @@ bot.on("message", async message => {
 			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
 		}
 		for(const codeRoles of splitCodeRoles) {
-			let eb = new Discord.MessageEmbed().setColor(16776960).setTitle("Game Information").setFooter("Small Scrims Discord");
+			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter("Small Scrims Discord");
 			for(const role of codeRoles) {
 				const membersString = role.members.map(m => m.user.tag).join("\n");
 				eb.addField(role.name, membersString, true);
