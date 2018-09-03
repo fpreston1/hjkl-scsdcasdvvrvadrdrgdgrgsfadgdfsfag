@@ -117,7 +117,8 @@ bot.on("message", async message => {
 		message.member.setNickname(nickname);
 		message.guild.roles.find(role => role.name === code).delete("yeet");
 		
-		if(cmd === `${prefix}finish` && message.member.hasPermissions("ADMINISTRATOR")) return message.member.setNickname(nickname) message.guild.roles.find(role => role.name === code).delete("yeet");
+		if(cmd === `${prefix}finish` && message.member.hasPermissions("ADMINISTRATOR")) return message.member.setNickname(nickname)
+		 message.guild.roles.find(role => role.name === code).delete("yeet");
 		
 		
 		}
