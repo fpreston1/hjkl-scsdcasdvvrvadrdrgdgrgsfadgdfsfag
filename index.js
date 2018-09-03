@@ -103,6 +103,8 @@ bot.on("message", async message => {
 					SEND_MESSAGES: false,
 					ADD_REACTIONS: false
 				});
+					message.member.setNickname(`[${code.toLowerCase()}] ${message.member.nickname}`);
+
 			});
 					message.member.addRole(message.guild.roles.find("name", code));
 
@@ -110,7 +112,6 @@ bot.on("message", async message => {
 			console.log(e.stack);
 		}
 
-		message.member.setNickname(`[${code.toLowerCase()}] ${message.member.nickname}`);
 
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
 		await eOut(10000);
