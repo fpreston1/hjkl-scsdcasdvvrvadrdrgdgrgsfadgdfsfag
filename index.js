@@ -152,7 +152,10 @@ bot.on("message", async message => {
 // 			eb.addField(role.name, membersString, true)
 // 		})
 // 		message.channel.send(eb);
-		const allCodeRoles = message.guild.roles.filter(r => (/^\w{3}$/).test(r.name)).array();
+		const allCodeRoles = message.guild.roles
+		.filter(r => (/^\w{3}$/).test(r.name))
+		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
+		.array();
 		const SPLIT_LENGTH = 25;
 		const splitCodeRoles = [];
 		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
