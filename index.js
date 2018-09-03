@@ -115,8 +115,11 @@ bot.on("message", async message => {
 		await eOut(10000);
 
 		message.member.setNickname(nickname);
-		role.delete(scrimrole);
-
+		message.guild.roles.find(role => role.name === code).delete("yeet");
+		
+		if(cmd === `${prefix}finish` && message.member.hasPermissions("ADMINISTRATOR")) return message.member.setNickname(nickname) message.guild.roles.find(role => role.name === code).delete("yeet");
+		
+		
 		}
 		return;
 	}
