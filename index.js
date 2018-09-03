@@ -653,6 +653,21 @@ bot.on("message", async message => {
 	})
 	message.delete().catch(O_o=>{});
 		
+	let hurry = new Discord.RichEmbed()
+	.setTitle("Hurry up!")
+	.setDescription("You have 60 seconds to type your Last3!")
+	.setColor(#21d9f2);
+	const end2Time = Date.now() + 1000 * 60;
+	const sent2Message = await scrimlast3chan.send(hurry);
+	let now;
+	while( (now = Date.now()) < end2Time ) {
+		let minsRemaining = (end2Time - now) / (1000);
+		minsRemaining = Math.floor(minsRemaining);
+		hurry.setDescription(`You have *${minsRemaining} seconds.* to type your Last3!`)
+		sent2Message.edit(hurry);
+		await startTimeout(1000);
+	}
+		
 
 		
 
