@@ -659,9 +659,9 @@ bot.on("message", async message => {
 	.setColor("#21d9f2");
 	const end2Time = Date.now() + 1000 * 60;
 	const sent2Message = await scrimlast3chan.send(hurry);
-	let now;
-	while( (now = Date.now()) < end2Time ) {
-		let minsRemaining = (end2Time - now) / (1000);
+	let now2;
+	while( (now2 = Date.now()) < end2Time ) {
+		let minsRemaining = (end2Time - now2) / (1000);
 		minsRemaining = Math.floor(minsRemaining);
 		hurry.setDescription(`You have *${minsRemaining} seconds.* to type your Last3!`)
 		sent2Message.edit(hurry);
