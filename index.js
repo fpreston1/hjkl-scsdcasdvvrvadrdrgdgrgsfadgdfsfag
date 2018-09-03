@@ -136,20 +136,27 @@ bot.on("message", async message => {
 		
 		}
 		let rolename = code;
+		const codeRoles = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
+		codeRoles.forEach( role => {
+			const membersString = role.members.map(m => m.user.tag).join("\n");
+			let eb = new Discord.RichEmbed()
+			.addField(role.name, membersString, true)
+			.setColor(6812512);
+			message.channel.send(eb);
 		let memberrrs = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
 		let membersWithRole = message.guild.members.filter(member => {
 			return member.roles.find("name", rolename);
 		}).map(member => {
 			return member.user.username;
 		})
-		let rolesEmbed = new Discord.RichEmbed()
-		.setTitle("Game Information")
-		.addField(code ,membersWithRole.join("\n"), true)
-		.setFooter("Hosted with Small Scrims Discord")
-		.setTimestamp()
-		.setColor(6812512);
+// 		let rolesEmbed = new Discord.RichEmbed()
+// 		.setTitle("Game Information")
+// 		.addField(code ,membersWithRole.join("\n"), true)
+// 		.setFooter("Hosted with Small Scrims Discord")
+// 		.setTimestamp()
+// 		.setColor(6812512);
 		
-		return message.channel.send(rolesEmbed);
+// 		return message.channel.send(rolesEmbed);
 	}
 	   
 // 	if(message.channel.id === "478949150340153358") {
