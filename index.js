@@ -77,7 +77,6 @@ bot.on("message", async message => {
 		return;
 	   	
 	   }
-	if(message.content === '!start' && message.member.hasPermissions("ADMINISTRATOR")) return message.guild.channels.find("name", "scrim-chat").send("@everyone Scrims are starting NOW!");
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
 	.setTitle(message.content)
