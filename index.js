@@ -118,6 +118,7 @@ bot.on("message", async message => {
 		role.delete(code);
 
 		}
+		return;
 	}
 	   
 // 	if(message.channel.id === "478949150340153358") {
