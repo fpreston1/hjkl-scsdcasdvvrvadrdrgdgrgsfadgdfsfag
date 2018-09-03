@@ -71,7 +71,13 @@ bot.on("message", async message => {
 	}
 	
 	if(message.channel.id === "478949150340153358"){
-	if(message.content === '!start' && message.member.hasPermissions("ADMINISTRATOR")) return message.guild.channels.find("name", "scrim-chat").send("!start");
+	if(message.content === "!start"){
+		message.reply("Please use the #scrim-chat channel for that!").then(msg => msg.delete(2000));
+		
+		return;
+	   	
+	   }
+	if(message.content === '!start' && message.member.hasPermissions("ADMINISTRATOR")) return message.guild.channels.find("name", "scrim-chat").send("@everyone Scrims are starting NOW!");
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
 	.setTitle(message.content)
