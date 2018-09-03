@@ -97,7 +97,10 @@ bot.on("message", async message => {
 	if(code.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
 
 	let nickname = message.member.nickname;
-
+	if(scrimrole){
+	
+	message.member.addRole(message.guild.roles.find("name", code))
+	}
 	if(!scrimrole){
 		try {
 			scrimrole = await message.guild.createRole({
