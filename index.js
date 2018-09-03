@@ -104,11 +104,12 @@ bot.on("message", async message => {
 					ADD_REACTIONS: false
 				});
 			});
+					message.member.addRole(message.guild.roles.find("name", code));
+
 		}catch(e){
 			console.log(e.stack);
 		}
 
-		message.member.addRole(message.guild.roles.find("name", code));
 		message.member.setNickname(`[${code.toLowerCase()}] ${message.member.nickname}`);
 
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
