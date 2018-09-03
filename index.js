@@ -645,29 +645,24 @@ bot.on("message", async message => {
 		
 	let startEmbed = new Discord.RichEmbed()
 	.setTitle("**Waiting for server IDs...**")
+	.setDescription("You have 60 seconds to type your Last3!")
 	.addField("Please enter the last 3 digits of your server!", "When in-game you can find this in the top left corner of your screen.")
 	.setColor(6812512);
-	scrimlast3chan.send(startEmbed);
+	const end3Time = Date.now() + 1000 * 60;
+	const sent3Message = await scrimlast3chan.send(nextgameEmbed);
+	let now3;
+	while( (now3 = Date.now()) < end3Time ) {
+		let minsRemaining = (end3Time - now3) / (1000 * 5);
+		minsRemaining = Math.floor(minsRemaining);
+		startEmbed.setDescription(`You have *${minsRemaining}* seconds to type your Last3!`)
+		sent3Message.edit(startEmbed);
+		await startTimeout(1000 * 5);
+	}
 	scrimlast3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: true
 	})
 	message.delete().catch(O_o=>{});
 		
-	let hurry = new Discord.RichEmbed()
-	.setTitle("Hurry up!")
-	.setDescription("You have 60 seconds to type your Last3!")
-	.setColor("#21d9f2");
-	const end2Time = Date.now() + 1000 * 60;
-	const sent2Message = await scrimlast3chan.send(hurry);
-	let now2;
-	while( (now2 = Date.now()) < end2Time ) {
-		let minsRemaining = (end2Time - now2) / (5000);
-		minsRemaining = Math.floor(minsRemaining);
-		hurry.setDescription(`You have *${minsRemaining} seconds.* to type your Last3!`)
-		sent2Message.edit(hurry);
-		await startTimeout(5000);
-	}
-	
 		
 
 		
