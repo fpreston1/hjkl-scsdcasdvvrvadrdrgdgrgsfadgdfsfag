@@ -664,15 +664,6 @@ bot.on("message", async message => {
 	SEND_MESSAGES: true
 	})
 	message.delete().catch(O_o=>{});
-		
-		
-
-		
-
-	let nextgameEmbed = new Discord.RichEmbed()
-	.setTitle("**Next snipe in approx...**")
-	.setDescription("*25 Minutes*")
-	.setColor(13859315);
 	const allCodeRoles = message.guild.roles
 		.filter(r => (/^\w{3}$/).test(r.name))
 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
@@ -697,6 +688,39 @@ bot.on("message", async message => {
 			})
 			
 		}
+		
+		
+
+		
+
+	let nextgameEmbed = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*25 Minutes*")
+	.setColor(13859315);
+// 	const allCodeRoles = message.guild.roles
+// 		.filter(r => (/^\w{3}$/).test(r.name))
+// 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
+// 		.array();
+// 		const SPLIT_LENGTH = 25;
+// 		const splitCodeRoles = [];
+// 		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
+// 			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
+// 		}
+// 		for(const codeRoles of splitCodeRoles) {
+// 			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter(`[Live] With ${allCodeRoles.length} matches.`);
+// 			for(const role of codeRoles) {
+// 				const membersString = role.members.map(m => m.user.tag).join("\n");
+// 				eb.addField(`ID: ${role.name}`, membersString, true);
+// 			}
+// 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
+
+// 			last3chan.send(eb);
+			
+// 			last3chan.overwritePermissions(message.guild.id, {
+// 			SEND_MESSAGES: false
+// 			})
+			
+// 		}
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 	
 	last3chan.overwritePermissions(message.guild.id, {
