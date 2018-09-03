@@ -73,12 +73,12 @@ bot.on("message", async message => {
 	if(message.channel.id === "478949150340153358"){
 
 	let code = message.content;
-
+	let scrimrole = message.guild.roles.find(`name`, code);
+	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
 	if(message.content.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
 
 	let nickname = message.member.username;
 
-	let scrimrole = message.guild.roles.find("name", code);
 	if(!scrimrole){
 		try {
 			scrimrole = await message.guild.createRole({
