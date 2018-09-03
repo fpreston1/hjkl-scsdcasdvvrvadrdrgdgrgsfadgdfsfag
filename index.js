@@ -143,6 +143,7 @@ bot.on("message", async message => {
 			.addField(role.name, membersString, true)
 			.setColor(6812512);
 			message.channel.send(eb);
+		})
 		let memberrrs = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
 		let membersWithRole = message.guild.members.filter(member => {
 			return member.roles.find("name", rolename);
