@@ -654,11 +654,11 @@ bot.on("message", async message => {
 	const sent3Message = await scrimlast3chan.send(startEmbed);
 	let now3;
 	while( (now3 = Date.now()) < end3Time ) {
-		let minsRemaining = (end3Time - now3) / (1000 * 5);
+		let minsRemaining = (end3Time - now3) / (1000);
 		minsRemaining = Math.floor(minsRemaining);
 		startEmbed.setDescription(`You have *${minsRemaining}* seconds to type your Last3!`)
 		sent3Message.edit(startEmbed);
-		await startTimeout(1000);
+		await startTimeout(5000);
 	}
 	scrimlast3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: true
