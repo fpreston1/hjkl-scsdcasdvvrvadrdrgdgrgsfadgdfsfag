@@ -112,7 +112,6 @@ bot.on("message", async message => {
 					SEND_MESSAGES: false,
 					ADD_REACTIONS: false
 				});
-					message.member.setNickname(`[${code}] ${message.member.nickname}`);
 
 
 			});
@@ -125,7 +124,6 @@ bot.on("message", async message => {
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
 		await eOut(60000);
 
-		message.member.setNickname(nickname);
 		message.guild.roles.find(role => role.name === code).delete("yeet");
 		
 		
