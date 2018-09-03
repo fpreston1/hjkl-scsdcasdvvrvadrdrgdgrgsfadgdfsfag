@@ -688,6 +688,7 @@ bot.on("message", async message => {
 			SEND_MESSAGES: false
 			})
 	last3chan.send("*Chat locked...*");
+	
 		
 		
 		
@@ -702,6 +703,21 @@ bot.on("message", async message => {
 		sentMessage.edit(nextgameEmbed);
 		await startTimeout(1000 * 60);
 	}
+	const timeout = ms => new Promise(res => setTimeout(res, ms))
+	await timeout(7000);
+
+	const agree = "👍";
+	const disagree = "👎";
+
+	let testEmbed = new Discord.RichEmbed()
+	.setTitle("[Poll] Should We Restart?")
+	.setDescription("Please vote below.")
+	.setFooter("Note: The host will decide a restart!")
+	.setColor(16097625);
+	let msg = await last3chan.send(testEmbed);
+	await msg.react(agree);
+	msg.react(disagree);
+		
 	
 		
 	
