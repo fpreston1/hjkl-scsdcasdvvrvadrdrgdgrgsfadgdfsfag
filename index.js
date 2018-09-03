@@ -136,6 +136,7 @@ bot.on("message", async message => {
 		
 		}
 		let rolename = code;
+		let memberrrs = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
 		let membersWithRole = message.guild.members.filter(member => {
 			return member.roles.find("name", rolename);
 		}).map(member => {
@@ -143,7 +144,7 @@ bot.on("message", async message => {
 		})
 		let rolesEmbed = new Discord.RichEmbed()
 		.setTitle("Game Information")
-		.addField(code ,membersWithRole.join("\n"), true)
+		.addField(code ,memberrrs.join("\n"), true)
 		.setFooter("Hosted with Small Scrims Discord")
 		.setTimestamp()
 		.setColor(6812512);
