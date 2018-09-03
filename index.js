@@ -661,11 +661,11 @@ bot.on("message", async message => {
 	const sent2Message = await scrimlast3chan.send(hurry);
 	let now2;
 	while( (now2 = Date.now()) < end2Time ) {
-		let minsRemaining = (end2Time - now2) / (1000);
+		let minsRemaining = (end2Time - now2) / (5000);
 		minsRemaining = Math.floor(minsRemaining);
 		hurry.setDescription(`You have *${minsRemaining} seconds.* to type your Last3!`)
 		sent2Message.edit(hurry);
-		await startTimeout(1000);
+		await startTimeout(5000);
 	}
 	
 		
