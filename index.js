@@ -71,7 +71,7 @@ bot.on("message", async message => {
 	}
 	
 	if(message.channel.id === "478949150340153358"){
-	if(message.content === '!start') return;
+	if(message.content === '!start' && message.member.hasPermissions("ADMINISTRATOR")) return message.guild.channels.find("name", "scrim-chat").send("!start");
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
 	.setTitle(message.content)
@@ -550,7 +550,7 @@ bot.on("message", async message => {
 	.setTitle("Small Scrims Community Scrim Info", nficon)
 	.addField("Hosted by:", message.author)
 	.addField("Loading Content", "Load content by pressing `Ready` wait for Loading Content to be at 100%, then press cancel.")
-	.addField("Rules:", "Using C4, Clingers and Third Partying in top 10 are bannable, please obey the rules while scrimming. Also please report players with !report, and do not publicly announce it.")
+	.addField("Rules:", "**Using C4, Clingers and Third Partying in top 10 are now allowed**!, please obey the rules while scrimming. Also please report players with !report, and do not publicly announce it.")
 	.setFooter(`Match lead by ${message.author.username}`, negicon)
 	.setTimestamp()
 	.setColor(4702463);
