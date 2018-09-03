@@ -168,6 +168,10 @@ bot.on("message", async message => {
 				eb.addField(`ID: ${role.name}`, membersString, true);
 			}
 			message.channel.send(eb);
+			const eOut = ms => new Promise(res => setTimeout(res, ms))
+			await eOut(5000);
+
+			message.channel.bulkDelete(1);
 		}
 		
 		
