@@ -78,13 +78,8 @@ bot.on("message", async message => {
 	   	
 	   }
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
-	let scriml3Embed = new Discord.RichEmbed()
-	.setTitle(message.content)
-	.setDescription(message.author)
-	.setFooter(message.createdAt)
-	.setColor(6812512);
+
 	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
-	scrimChannel3.send(scriml3Embed);
 	message.delete();
 	}else{
 	message.delete();
@@ -168,10 +163,7 @@ bot.on("message", async message => {
 				eb.addField(`ID: ${role.name}`, membersString, true);
 			}
 			message.channel.send(eb);
-			const eOut = ms => new Promise(res => setTimeout(res, ms))
-			await eOut(5000);
 
-			message.channel.bulkDelete(1);
 		}
 		
 		
