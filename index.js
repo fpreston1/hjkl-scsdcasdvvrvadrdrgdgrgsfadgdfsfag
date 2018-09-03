@@ -133,7 +133,22 @@ bot.on("message", async message => {
 		
 		
 		
+		
 		}
+		let rolename = code;
+		let membersWithRole = message.guild.members.filter(member => {
+			return member.roles.find("name", rolename);
+		}).map(member => {
+			return member.user.username;
+		})
+		let rolesEmbed = new Discord.RichEmbed()
+		.setTitle("Game Information")
+		.setDescription("*Loading...*")
+		.addField(membersWithRole.join("\n"))
+		.setFooter("Hosted with Small Scrims Discord")
+		.setTimestamp()
+		.setColor(6812512);
+		
 		return;
 	}
 	   
