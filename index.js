@@ -671,7 +671,7 @@ bot.on("message", async message => {
 			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter("Small Scrims Discord").setTimestamp();
 			for(const role of codeRoles) {
 				const membersString = role.members.map(m => m.user.tag).join("\n");
-				eb.addField(`ID: ${role.name}`, membersString.id, true);
+				eb.addField(`ID: ${role.name}`, membersString, true);
 			}
 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 
@@ -682,6 +682,12 @@ bot.on("message", async message => {
 			})
 			
 		}
+	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
+	
+	last3chan.overwritePermissions(message.guild.id, {
+			SEND_MESSAGES: false
+			})
+	last3chan.send("*Chat locked...*");
 		
 		
 		
