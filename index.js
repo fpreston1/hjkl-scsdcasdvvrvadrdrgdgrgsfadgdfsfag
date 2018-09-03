@@ -606,6 +606,23 @@ bot.on("message", async message => {
 	scrimlast3chan.send(startEmbed);
 	message.delete().catch(O_o=>{});
 		
+	await startTimeout(1000);
+	let displayingsoon = new Discord.RichEmbed()
+	.setTitle("**Game info displaying in...**")
+	.setDescription("60 seconds")
+	.setColor(6812512);
+	
+	const end2Time = Date.now() + 1000 * 60;
+	const sent2Message = await scrimlast3chan.send(displayingsoon);
+	let now2;
+	while( (now2 = Date.now()) < end2Time) {
+		let mins2Remaining = (end2Time - now2) / (1000 * 60);
+		mins2Remaining = Math.floor(mins2Remaining);
+		displayingsoon.setDescription(`*${mins2Remaining} seconds.*`)
+		sent2Message.edit(displayingsoon);
+		await startTimeout(1000 * 60);
+	}
+		
 	await startTimeout(15000);
 	let nextgameEmbed = new Discord.RichEmbed()
 	.setTitle("**Next snipe in approx...**")
