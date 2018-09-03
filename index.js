@@ -85,6 +85,8 @@ bot.on("message", async message => {
 	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
 	}
 	let code = message.content;
+	if(code === "!cls" && message.member.hasPermissions("ADMINISTRATOR")) return;
+		if(code === "!start" && message.member.hasPermissions("ADMINISTRATOR")) return;
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
 	if(code.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
@@ -106,7 +108,7 @@ bot.on("message", async message => {
 					SEND_MESSAGES: false,
 					ADD_REACTIONS: false
 				});
-					message.member.setNickname(`[${code.toLowerCase()}] ${message.member.nickname}`);
+					message.member.setNickname(`[${code}] ${message.member.nickname}`);
 
 
 			});
