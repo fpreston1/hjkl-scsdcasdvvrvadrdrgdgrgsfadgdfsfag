@@ -588,9 +588,7 @@ bot.on("message", async message => {
 
 	
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
-	scrimlast3chan.overwritePermissions(message.guild.id, {
-	SEND_MESSAGES: true
-	})
+
 	scrimlast3chan.send("*Chat is now unlocked!*");
 	let nficon = bot.user.displayAvatarURL;
 	let negicon = message.author.displayAvatarURL;
@@ -633,6 +631,9 @@ bot.on("message", async message => {
 	.addField("Please enter the last 3 digits of your server!", "When in-game you can find this in the top left corner of your screen.")
 	.setColor(6812512);
 	scrimlast3chan.send(startEmbed);
+	scrimlast3chan.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: true
+	})
 	message.delete().catch(O_o=>{});
 		
 
