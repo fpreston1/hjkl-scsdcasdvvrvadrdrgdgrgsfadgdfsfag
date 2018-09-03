@@ -161,6 +161,11 @@ bot.on("message", async message => {
 				eb.addField(`ID: ${role.name}`, membersString, true);
 			}
 			message.channel.send(eb);
+			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
+
+			last3chan.overwritePermissions(message.guild.id, {
+			SEND_MESSAGES: false
+			})
 
 		}
 		
