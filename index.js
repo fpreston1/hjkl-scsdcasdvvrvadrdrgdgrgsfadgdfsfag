@@ -656,7 +656,7 @@ bot.on("message", async message => {
 	let hurry = new Discord.RichEmbed()
 	.setTitle("Hurry up!")
 	.setDescription("You have 60 seconds to type your Last3!")
-	.setColor(#21d9f2);
+	.setColor("#21d9f2");
 	const end2Time = Date.now() + 1000 * 60;
 	const sent2Message = await scrimlast3chan.send(hurry);
 	let now;
@@ -667,6 +667,7 @@ bot.on("message", async message => {
 		sent2Message.edit(hurry);
 		await startTimeout(1000);
 	}
+	
 		
 
 		
