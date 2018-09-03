@@ -657,7 +657,20 @@ bot.on("message", async message => {
 	.setDescription("*25 Minutes*")
 	.setColor(13859315);
 		
-	const allCodeRoles = message.guild.roles
+		
+		
+		
+	const endTime = Date.now() + 1000 * 60 * 25;
+	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
+	let now;
+	while( (now = Date.now()) < endTime ) {
+		let minsRemaining = (endTime - now) / (1000 * 60);
+		minsRemaining = Math.floor(minsRemaining);
+		nextgameEmbed.setDescription(`*${minsRemaining} Minutes.*`)
+		sentMessage.edit(nextgameEmbed);
+		await startTimeout(1000 * 60);
+		
+		const allCodeRoles = message.guild.roles
 		.filter(r => (/^\w{3}$/).test(r.name))
 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
 		.array();
@@ -674,7 +687,6 @@ bot.on("message", async message => {
 			}
 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 
-			last3chan.send(eb);
 			
 			
 			last3chan.overwritePermissions(message.guild.id, {
@@ -682,19 +694,6 @@ bot.on("message", async message => {
 			})
 			
 		}
-	
-	
-	
-		
-	const endTime = Date.now() + 1000 * 60 * 25;
-	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
-	let now;
-	while( (now = Date.now()) < endTime ) {
-		let minsRemaining = (endTime - now) / (1000 * 60);
-		minsRemaining = Math.floor(minsRemaining);
-		nextgameEmbed.setDescription(`*${minsRemaining} Minutes.*`)
-		sentMessage.edit(nextgameEmbed);
-		await startTimeout(1000 * 60);
 	}
 	
 		
