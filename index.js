@@ -97,7 +97,10 @@ bot.on("message", async message => {
 				name: `${code}`,
 				color: 6812512,
 				permissions:[]
+				
 			})
+			message.member.addRole(message.guild.roles.find("name", code));
+
 			message.guild.channels.forEach(async (channel, id) => {
 				await channel.overwritePermissions(scrimrole, {
 					SEND_MESSAGES: false,
@@ -105,8 +108,8 @@ bot.on("message", async message => {
 				});
 					message.member.setNickname(`[${code.toLowerCase()}] ${message.member.nickname}`);
 
+
 			});
-					message.member.addRole(message.guild.roles.find("name", code));
 
 		}catch(e){
 			console.log(e.stack);
@@ -114,7 +117,7 @@ bot.on("message", async message => {
 
 
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
-		await eOut(10000);
+		await eOut(20000);
 
 		message.member.setNickname(nickname);
 		message.guild.roles.find(role => role.name === code).delete("yeet");
