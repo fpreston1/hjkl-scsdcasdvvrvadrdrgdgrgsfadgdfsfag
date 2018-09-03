@@ -69,6 +69,43 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
+	
+	if(message.channel.id === "478949150340153358"){
+
+	let code = message.content;
+
+	if(message.content.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
+
+	let nickname = message.member.username;
+
+	let scrimrole = message.guild.roles.find("name", code);
+	if(!scrimrole){
+		try {
+			scrimrole = await message.guild.createRole({
+				name: `${code}`,
+				color: 6812512,
+				permissions:[]
+			})
+			message.guild.channels.forEach(async (channel, id) => {
+				await channel.overwritePermissions(scrimrole, {
+					SEND_MESSAGES: false,
+					ADD_REACTIONS: false
+				});
+			});
+		}catch(e){
+			console.log(e.stack);
+		}
+
+		message.member.addRole(message.guild.roles.find("name", code));
+		message.member.setNickname(`[${code}] ${message.member.nickname}`);
+
+		const eOut = ms => new Promise(res => setTimeout(res, ms))
+		await eOut(10000);
+
+		message.member.removeRole(message.guild.roles.find("name", code));
+		message.member.setNickname(nickname);
+
+		}
 	if(message.channel.id === "478949150340153358") {
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 	let scriml3Embed = new Discord.RichEmbed()
