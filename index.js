@@ -71,13 +71,25 @@ bot.on("message", async message => {
 	}
 	
 	if(message.channel.id === "478949150340153358"){
-
+	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
+	let scriml3Embed = new Discord.RichEmbed()
+	.setTitle(message.content)
+	.setDescription(message.author)
+	.setFooter(message.createdAt)
+	.setColor(6812512);
+	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
+	scrimChannel3.send(scriml3Embed);
+	message.delete();
+	}else{
+	message.delete();
+	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
+	}
 	let code = message.content;
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
 	if(code.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
 
-	let nickname = message.member.username;
+	let nickname = message.member.nickname;
 
 	if(!scrimrole){
 		try {
@@ -102,27 +114,27 @@ bot.on("message", async message => {
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
 		await eOut(10000);
 
-		message.member.removeRole(message.guild.roles.find("name", code));
 		message.member.setNickname(nickname);
+		role.delete(code);
 
 		}
 	}
 	   
-	if(message.channel.id === "478949150340153358") {
-	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
-	let scriml3Embed = new Discord.RichEmbed()
-	.setTitle(message.content)
-	.setDescription(message.author)
-	.setFooter(message.createdAt)
-	.setColor(6812512);
-	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
-	scrimChannel3.send(scriml3Embed);
-	message.delete();
-	}else{
-	message.delete();
-	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
-	}
-	}
+// 	if(message.channel.id === "478949150340153358") {
+// 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
+// 	let scriml3Embed = new Discord.RichEmbed()
+// 	.setTitle(message.content)
+// 	.setDescription(message.author)
+// 	.setFooter(message.createdAt)
+// 	.setColor(6812512);
+// 	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
+// 	scrimChannel3.send(scriml3Embed);
+// 	message.delete();
+// 	}else{
+// 	message.delete();
+// 	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
+// 	}
+// 	}
 	
 
 	
