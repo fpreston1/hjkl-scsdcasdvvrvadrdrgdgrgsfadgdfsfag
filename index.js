@@ -669,7 +669,6 @@ bot.on("message", async message => {
 
 		
 
-	await startTimeout(60000);
 	let nextgameEmbed = new Discord.RichEmbed()
 	.setTitle("**Next snipe in approx...**")
 	.setDescription("*25 Minutes*")
