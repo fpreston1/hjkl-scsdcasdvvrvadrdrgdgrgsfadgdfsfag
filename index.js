@@ -84,7 +84,7 @@ bot.on("message", async message => {
 	message.delete();
 	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
 	}
-	let code = message.content.toLowerCase();
+	let code = message.content;
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
 	if(code.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
@@ -109,7 +109,7 @@ bot.on("message", async message => {
 		}
 
 		message.member.addRole(message.guild.roles.find("name", code));
-		message.member.setNickname(`[${code}] ${message.member.nickname}`);
+		message.member.setNickname(`[${code.toLowerCase()}] ${message.member.nickname}`);
 
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
 		await eOut(10000);
