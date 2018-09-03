@@ -615,11 +615,11 @@ bot.on("message", async message => {
 	const sent2Message = await scrimlast3chan.send(displayingsoon);
 	let now2;
 	while( (now2 = Date.now()) < end2Time) {
-		let mins2Remaining = (end2Time - now2) / (1000 * 9);
+		let mins2Remaining = (end2Time - now2) / (1000 * 10);
 		mins2Remaining = Math.floor(mins2Remaining);
 		displayingsoon.setDescription(`*${mins2Remaining} seconds.*`)
 		sent2Message.edit(displayingsoon);
-		await startTimeout(1000 * 9);
+		await startTimeout(1000 * 10);
 		
 	}
 	
