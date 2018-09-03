@@ -85,6 +85,7 @@ bot.on("message", async message => {
 	message.delete();
 	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
 	}
+	//yeet
 	let code = message.content;
 	if(message.content === "!cls" && message.member.hasPermissions("ADMINISTRATOR")){
 		message.channel.bulkDelete(10);
