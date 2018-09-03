@@ -652,6 +652,11 @@ bot.on("message", async message => {
 		
 
 	await startTimeout(10000);
+	let nextgameEmbed = new Discord.RichEmbed()
+	.setTitle("**Next snipe in approx...**")
+	.setDescription("*25 Minutes*")
+	.setColor(13859315);
+		
 	const allCodeRoles = message.guild.roles
 		.filter(r => (/^\w{3}$/).test(r.name))
 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
@@ -677,10 +682,6 @@ bot.on("message", async message => {
 			})
 			
 		}
-	let nextgameEmbed = new Discord.RichEmbed()
-	.setTitle("**Next snipe in approx...**")
-	.setDescription("*25 Minutes*")
-	.setColor(13859315);
 	
 	
 	
