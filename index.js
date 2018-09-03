@@ -639,7 +639,9 @@ bot.on("message", async message => {
 	
 	const startTimeout = ms => new Promise(res => setTimeout(res, ms))
 	await startTimeout(9000);
-		
+	scrimlast3chan.overwritePermissions(message.guild.id, {
+	SEND_MESSAGES: true
+	})	
 		
 		
 		
@@ -656,7 +658,7 @@ bot.on("message", async message => {
 		minsRemaining = Math.floor(minsRemaining);
 		startEmbed.setDescription(`You have *${minsRemaining}* seconds to type your Last3!`)
 		sent3Message.edit(startEmbed);
-		await startTimeout(1000 * 5);
+		await startTimeout(1000);
 	}
 	scrimlast3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: true
