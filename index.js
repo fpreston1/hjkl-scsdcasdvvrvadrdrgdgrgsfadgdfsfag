@@ -84,7 +84,7 @@ bot.on("message", async message => {
 	message.delete();
 	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
 	}
-	let code = message.content;
+	let code = message.content.toLowerCase();
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
 	if(code.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
@@ -117,8 +117,8 @@ bot.on("message", async message => {
 		message.member.setNickname(nickname);
 		message.guild.roles.find(role => role.name === code).delete("yeet");
 		
-		if(cmd === `${prefix}finish` && message.member.hasPermissions("ADMINISTRATOR")) return message.member.setNickname(nickname)
-		 message.guild.roles.find(role => role.name === code).delete("yeet");
+		if(cmd === `${prefix}finish` && message.member.hasPermissions("ADMINISTRATOR")) return message.member.setNickname(nickname);
+		if(cmd === `${prefix}finish` && message.member.hasPermissions("ADMINISTRATOR")) return message.guild.roles.find(role => role.name === code).delete("yeet");
 		
 		
 		}
