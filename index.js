@@ -87,7 +87,7 @@ bot.on("message", async message => {
 	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
 	}
 	//yeet
-	let code = message.content;
+	let code = message.content.toUpperCase();
 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.channel.bulkDelete(10);
 	}
