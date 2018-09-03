@@ -135,13 +135,21 @@ bot.on("message", async message => {
 		
 		
 		}
+		let arr = [1,2,3,4,5,6,7,8,9,10];
+		const SPLIT_LENGTH = 3;
+		const splits = [];
+		let i = 0;
+		for(i=0; i<arr.length; i += SPLIT_LENGTH) {
+			splits.push(arr.slice(i, i+SPLIT_LENGTH))
+		}
+		
 		let rolename = code;
 		const codeRoles = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
 		let eb = new Discord.RichEmbed()
 		.setColor(6812512);
 		codeRoles.forEach( role => {
 			const membersString = role.members.map(m => m.user.tag).join("\n");
-			eb.addField(role.name, `@${membersString}`, true)
+			eb.addField(role.name, membersString, true)
 		})
 		message.channel.send(eb);
 		
