@@ -141,15 +141,11 @@ bot.on("message", async message => {
 		.setColor(6812512);
 		codeRoles.forEach( role => {
 			const membersString = role.members.map(m => m.user.tag).join("\n");
-			eb.addField(role.name, membersString, true)
+			eb.addField(role.name, `@${membersString}`, true)
 		})
 		message.channel.send(eb);
-		let memberrrs = message.guild.roles.filter(r => /^\w{3}$/.test(r.name));
-		let membersWithRole = message.guild.members.filter(member => {
-			return member.roles.find("name", rolename);
-		}).map(member => {
-			return member.user.username;
-		})
+		
+		
 // 		let rolesEmbed = new Discord.RichEmbed()
 // 		.setTitle("Game Information")
 // 		.addField(code ,membersWithRole.join("\n"), true)
