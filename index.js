@@ -1454,6 +1454,7 @@ bot.on("message", async message => {
 	if(args[0] === "disband"){
 	if(args[1]){
 	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
+	message.reply(`You have disbanded **${args[1].toUpperCase()}**`);
 	}else{
 	return message.reply("!t disband (team name) without brackets!");
 	}
@@ -1481,7 +1482,15 @@ bot.on("message", async message => {
 	
 	}
 	if(args[0] === "kick"){
-	return message.reply("Coming soon!");
+	if(!args[2]) return message.reply("Try !t kick (@user) (team) without brackets.");
+	let ruser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+	if(ruser) return message.reply("Try !t kick (@user) (team) without brackets.");
+	if(ruser && args[2]){
+	if(ruser.nickname.includes("[" && `${args[2]}`)){
+	ruser.setNickname(message.member.nickname.split(/ +/g).splice(2).join(" "));
+	message.reply(`${ruser} has been kicked from ${args[2]}`);
+	}
+	}
 	}
 
 		
