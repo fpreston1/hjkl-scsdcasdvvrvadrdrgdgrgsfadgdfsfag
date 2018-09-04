@@ -183,7 +183,7 @@ bot.on("message", async message => {
 
 
 		const eOut = ms => new Promise(res => setTimeout(res, ms))
-		await eOut(60000);
+		await eOut(70000);
 		
 		
 
@@ -1508,8 +1508,9 @@ bot.on("message", async message => {
 	if(message.member.nickname.includes("[")) return message.reply("You are in a team, do !t disband");
 	if(!message.member.roles.find(r => r.name === "Invited")) return message.reply("Sorry, i cant do that.");
 	if(args[1].length > 3){
-	message.member.setNickname(`${args[1].toUpperCase()} ${message.member.nickname}`);
+	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
 	message.reply(`You have joined ${args[1].toUpperCase()}`)
+	message.member.removeRole(message.guild.roles.find(r => r.name === "Invited"));
 	
 	}else{
 	message.reply("Error.");
