@@ -78,8 +78,8 @@ bot.on("message", async message => {
 		.setTimestamp()
 		.setColor(16760937);
 			
-		message.channel.send("@everyone @here @Scrimmer").then(msg => msg.delete(500));
-		message.channel.send("@everyone @here @Scrimmer").then(msg => msg.delete(500));
+		message.channel.send("<!@everyone>").then(msg => msg.delete(500));
+		message.channel.send("<!@everyone>").then(msg => msg.delete(500));
 		await message.channel.send(announcement);
 			
 		message.channel.send("------------------------------------------");
