@@ -1435,6 +1435,64 @@ bot.on("message", async message => {
 		return;
 	}
 	
+	if(cmd === `${prefix}t`){
+	let error = new Discord.RichEmbed()
+	.setTitle("Invalid Usage!")
+	.setDescription("Correct Usage: *!t kick | !t invite | !t create | !t disband | !t join*")
+	if(!args[0]) return message.reply(error);   
+	if(args[0] === "create"){
+	if(message.member.nickname.includes("[")) return message.reply("You are already in a team");
+	if(!args[1]) return;
+	if(args[1].length <= 3) return message.reply("More than 3 letters please.");
+	if(args[1]){
+	message.member.setNickname(`[*${args[1].toUpperCase()}] ${message.member.nickname}`);
+	message.reply(`Team ${args[1]} Created!`);
+	}
+	
+	}
+	if(args[0] === "disband"){
+	if(args[1]){
+	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
+	}else{
+	return;
+	}
+	}
+	if(args[0] === "invite"){
+	let ruser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
+	if(!ruser) return message.reply("Please select a person to invite");
+		
+	if(ruser){
+	ruser.addRole(message.guild.roles.find("name", "Invited"));
+	message.reply(`${ruser} has been invited.`);
+	message.reply(`${ruser}, you have 20 seconds to do !t join (team name) without brackets`);
+	const tm = ms => new Promise(res => setTimeout(res, ms))
+	await tm(20000);
+	ruser.removeRole(message.guild.roles.find("name", "Invited"));
+	}
+	
+	}
+	if(args[0] === "join" && message.member.roles.has(message.guild.roles.find("name", "Invited"))){
+	if(message.member.nickname.includes("[")) return message.reply("You are already in a team.");
+	if(!args[1]) return message.reply("!t join (team name) without brackets.");
+	if(args[1] > 3){
+	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
+	}
+	
+	}
+	if(args[0] === "kick"){
+	return message.reply("Coming soon!");
+	}
+
+		
+		
+	   return;
+	   }
+	
+	if(cmd === `${prefix}team`){
+	message.reply("Please use !t");
+	
+	}
+	
 	
 	
 
