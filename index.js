@@ -292,10 +292,11 @@ bot.on("message", async message => {
 		let username = args.slice(0).join(" ");
 		message.delete();
 		if(!username) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
-		if(username.includes("[" || "]" || "*")) return message.reply("Cannot use this nickname.");
 		if(username.length > 16) return message.channel.send("Fortnite nicknames ONLY please.").then(msg => msg.delete(2000));
+		if(!username.includes("[" || "]" || "*")){
 		message.member.setNickname(username);
 		message.reply(`All set! Your nickname has been changed to "${username}"`).then(msg => msg.delete(2000));
+	}
 	return;
 	}
 	if(cmd === `${prefix}rankme` && message.channel.id === "482044199504707584"){
@@ -1449,6 +1450,7 @@ bot.on("message", async message => {
 	}
 	if(!args[1]) return;
 	if(args[1].length <= 3) return message.reply("More than 3 letters please.");
+	if(args[1].includes("nigg")) return message.reply("Stop that!");
 	if(args[1]){
 	message.member.setNickname(`[*${args[1].toUpperCase()}] ${message.member.nickname}`);
 	message.reply(`Team ${args[1]} Created!`);
