@@ -1425,7 +1425,7 @@ bot.on("message", async message => {
 	.addField("XP", curxp, true)
 	.setFooter(`Only ${difference} XP til level up!`, message.author.displayAvatarURL);
 		
-	message.channel.send(lvlEmbed).then(msg => msg.delete(2000));
+	message.channel.send(lvlEmbed).then(msg => msg.delete(10000));
 		
 		
 		
