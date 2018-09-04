@@ -89,7 +89,7 @@ bot.on("message", async message => {
 	const fs = require("fs");
 	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
 		
-		if(err) console.log(err))
+		if(err) console.log(err));
 	});
 	
 	
