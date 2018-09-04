@@ -1474,8 +1474,8 @@ bot.on("message", async message => {
 		
 	if(ruser){
 	ruser.addRole(message.guild.roles.find("name", "Invited"));
-	message.reply(`${ruser} has been invited.`);
-	message.reply(`${ruser}, you have 20 seconds to do !t join (team name) without brackets`);
+	message.reply(`${ruser} has been invited.`).then(msg => msg.delete(20000));
+	message.reply(`${ruser}, you have 20 seconds to do !t join (team name) without brackets`).then(msg => msg.delete(20000));
 	const tm = ms => new Promise(res => setTimeout(res, ms))
 	await tm(20000);
 	ruser.removeRole(message.guild.roles.find("name", "Invited"));
@@ -1489,6 +1489,9 @@ bot.on("message", async message => {
 	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
 	message.reply(`You have joined ${args[1].toUpperCase()}`);
 	}
+	
+	}else{
+	return message.reply("You cannot do this.");
 	
 	}
 	if(args[0] === "kick"){
