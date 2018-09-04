@@ -5,6 +5,8 @@ const apikey = process.env.APIKEY;
 const Fortnite = require("fortnite");
 const YTDL = require("ytdl-core");
 const opusscript = require("opusscript");
+const xp = require("./xp.json");
+const fs = require("fs");
 
 
 bot.on("ready", async () => {
@@ -58,6 +60,39 @@ bot.on("message", async message => {
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 	let banMSG = message.content.toUpperCase();
+	
+	let xpAdd = Math.floor(Math.random() * 7) + 8;
+	
+	const xp = require("./xp.json");
+	if(!xp[message.author.id]){
+	xp[message.author.id] = {
+	xp: 0,
+		level: 1
+	};
+	}
+	
+	let curxp = xp[message.author.id].xp;
+	let curlvl = xp[message.author.id].level;
+	let nxtLvl = xp[message.author.id].level * 300;
+	xp[message.author.id].xp = curxp + xpAdd;
+	
+	if(nxtLvl <= xp[message.author.id].xp){
+	xp[message.author.id].level = curlvl + 1;
+	let lvlup = new Discord.RichEmbed()
+	.setTitle("Level Up")
+	.addField("New Level", curlvl + 1)
+	.setColor(6812512);
+		
+	message.channel.send(lvlup).then(msg => msg.delete(2000));
+
+	}
+	const fs = require("fs");
+	fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+		
+		if(err) console.log(err))
+	});
+	
+	
 	if(message.channel.id === "481865517393510402") {
 		if(message.content || banMSG.includes(`!`)) {
 			message.delete();
@@ -1369,6 +1404,36 @@ bot.on("message", async message => {
 	return message.channel.send(serverembed);
 
 }
+	
+	if(cmd === `${prefix}level`){
+	if(args[0]) return;
+	if(!xp[message.author.id]){
+	xp[message.author.id] = {
+		xp: 0,
+		level: 1
+	};
+	}
+	let curxp = xp[message.author.id].xp;
+	let curlvl = xp[message.author.id].level;
+	let nxtLvlXp = curlvl * 300;
+	let difference = nxtLvlXp - curxp;
+		
+	let lvlEmbed = new Discord.RichEmbed()
+	.setColor(6812512)
+	.setAuthor(message.author.username)
+	.addField("Level", curlvl, true)
+	.addField("XP", curxp, true)
+	.setFooter(`Only ${difference} XP til level up!`, message.author.displayAvatarURL);
+		
+	message.channel.send(lvlEmbed).then(msg => msg.delete(2000));
+		
+		
+		
+		
+		return;
+	}
+	
+	
 	
 
 
