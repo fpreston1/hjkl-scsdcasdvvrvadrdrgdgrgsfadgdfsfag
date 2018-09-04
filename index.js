@@ -1419,13 +1419,14 @@ bot.on("message", async message => {
 	let difference = nxtLvlXp - curxp;
 		
 	let lvlEmbed = new Discord.RichEmbed()
-	.setColor(6812512)
-	.setAuthor(message.author.username)
-	.addField("Level", curlvl, true)
-	.addField("XP", curxp, true)
-	.setFooter(`Only ${difference} XP til level up!`, message.author.displayAvatarURL);
+	.setColor(7239035)
+	.setAuthor(`Hey **${message.author.username}!**`)
+	.setDescription("This is a level system based on chatter.")
+	.addField("Your level is currently", curlvl, true)
+	.addField("Your XP is currently", curxp, true)
+	.setFooter(`You only need ${difference} XP to level up!`, message.author.displayAvatarURL);
 		
-	message.channel.send(lvlEmbed).then(msg => msg.delete(10000));
+	message.channel.send(lvlEmbed);
 		
 		
 		
