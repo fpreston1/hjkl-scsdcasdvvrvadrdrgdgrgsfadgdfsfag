@@ -1505,14 +1505,14 @@ bot.on("message", async message => {
 	if(args[0] === "join"){
 	let invited = message.guild.roles.find("name", "Invited");
 	if(!args[1]) return message.reply("!t join (team name) without brackets.");
-	if(args[1].length > 3 && message.member.roles.has(invited)){
+	if(message.member.roles.has(invited)){
 	if(message.member.nickname.includes("[")){
 	return message.reply("You are in a team, do !t disband");
 	}
+	if(args[1].length > 3){
 	message.member.setNickname(`${args[1].toUpperCase()} ${message.member.nickname}`);
 	message.reply(`You have joined ${args[1].toUpperCase()}`)
-	}else{
-	return message.reply("Cant do that.");
+	}
 	}
 	}
 
