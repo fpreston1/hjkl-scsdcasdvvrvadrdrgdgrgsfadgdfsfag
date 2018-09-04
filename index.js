@@ -80,10 +80,11 @@ bot.on("message", async message => {
 	xp[message.author.id].level = curlvl + 1;
 	let lvlup = new Discord.RichEmbed()
 	.setTitle("Level Up")
-	.addField("New Level", curlvl + 1)
+	.setDescription("**You have leveled up!**")
+	.addField("New Level! ✅", curlvl + 1)
 	.setColor(6812512);
 		
-	message.channel.send(lvlup).then(msg => msg.delete(2000));
+	message.reply(lvlup).then(msg => msg.delete(5000));
 
 	}
 	const fs = require("fs");
