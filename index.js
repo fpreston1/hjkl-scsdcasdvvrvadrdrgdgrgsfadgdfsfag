@@ -1485,21 +1485,21 @@ bot.on("message", async message => {
 	}
 	
 	}
-	if(args[0] === "join" && message.member.roles.has(message.guild.roles.find("name", "Invited"))){
-	if(message.member.nickname.includes("[" && "]")) return message.reply("You are already in a team.");
+	if(args[0] === "join" && args[1] > 3 && message.member.roles.has(message.guild.roles.find("name", "Invited"))){
+	if(message.member.nickname.includes("[")) return message.reply("You are already in a team.");
 	if(!args[1]) return message.reply("!t join (team name) without brackets.");
-	if(args[1] > 3){
 	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
 	message.reply(`You have joined ${args[1].toUpperCase()}`);
-	}
+	}else{
+	return message.reply("Cant do that.");
 	
 	}
 	if(args[0] === "kick"){
 	if(!args[2]) return message.reply("Try !t kick (@user) (team) without brackets.");
 	let ruser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 	if(ruser) return message.reply("Try !t kick (@user) (team) without brackets.");
-	if(ruser && args[2]){
-	if(ruser.nickname.includes("[" && `${args[2]}`)){
+	if(args[0] === "kick" && ruser && args[2]){
+	if(ruser.nickname.includes("[") && ruser.nickname.includes(args[2])){
 	ruser.setNickname(message.member.nickname.split(/ +/g).splice(2).join(" "));
 	message.reply(`${ruser} has been kicked from ${args[2]}`);
 	}
