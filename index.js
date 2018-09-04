@@ -1422,8 +1422,8 @@ bot.on("message", async message => {
 	.setColor(7239035)
 	.setTitle(`**Hey ${message.author.username}!**`)
 	.setDescription("This is a level system based on chatter.")
-	.addField("👇Your level is currently", curlvl, true)
-	.addField("👇Your XP is currently", curxp, true)
+	.addField("👇Your level is currently", ` ${curlvl}`, true)
+	.addField("👇Your XP is currently", ` ${curxp}`, true)
 	.setFooter(`You only need ${difference} XP to level up!`, message.author.displayAvatarURL);
 		
 	message.reply(lvlEmbed);
