@@ -1455,7 +1455,7 @@ bot.on("message", async message => {
 	if(args[1]){
 	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
 	}else{
-	return;
+	return message.reply("!t disband (team name) without brackets!");
 	}
 	}
 	if(args[0] === "invite"){
