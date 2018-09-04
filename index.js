@@ -290,9 +290,9 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		
 		let username = args.slice(0).join(" ");
-		if(username.includes("[" || "]" || "*")) return message.reply("Cannot use this nickname.");
 		message.delete();
 		if(!username) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
+		if(username.includes("[" || "]" || "*")) return message.reply("Cannot use this nickname.");
 		if(username.length > 16) return message.channel.send("Fortnite nicknames ONLY please.").then(msg => msg.delete(2000));
 		message.member.setNickname(username);
 		message.reply(`All set! Your nickname has been changed to "${username}"`).then(msg => msg.delete(2000));
@@ -1464,8 +1464,6 @@ bot.on("message", async message => {
 	}else{
 	return message.reply("!t disband (team name) without brackets!");
 	}
-	}else{
-	return message.reply("You cannot do this!");
 	}
 	}
 	if(args[0] === "invite"){
