@@ -1490,9 +1490,6 @@ bot.on("message", async message => {
 	if(!args[1]) return message.reply("!t join (team name) without brackets.");
 	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
 	message.reply(`You have joined ${args[1].toUpperCase()}`);
-	}else{
-	return message.reply("Cant do that.");
-	
 	}
 	if(args[0] === "kick"){
 	if(!args[2]) return message.reply("Try !t kick (@user) (team) without brackets.");
