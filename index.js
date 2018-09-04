@@ -1442,7 +1442,7 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}t`){
 	let error = new Discord.RichEmbed()
 	.setTitle("Invalid Usage!")
-	.setDescription("Correct Usage: *!t kick | !t invite | !t create | !t disband | !t join*")
+	.setDescription("Correct Usage: *!t kick | !t invite | !t create | !t disband | !t join | !t leave*")
 	.addField("**NOTE:**", "Remember, for this to work properly, please set a nickname, with !nickname (your fortnite name) without brackets.")
 	.setColor(6812512);
 	if(!args[0]) return message.reply(error);   
@@ -1462,13 +1462,17 @@ bot.on("message", async message => {
 	}
 	if(args[0] === "disband"){
 	if(!args[1]) return message.reply("Please use !t disband (team name) without brackets.");
+	if(!message.member.nickname.includes(`${args[1]}]`)) return message.reply("Cant do that.");
 	if(message.member.nickname.includes("[" && args[1] && "*")){
 	if(args[1]){
 	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
 	message.reply(`You have disbanded **${args[1].toUpperCase()}**`);
+	
 	}else{
 	return message.reply("!t disband (team name) without brackets!");
 	}
+	}else{
+	return message.reply("You are not the owner of the team, you can do !t leave");
 	}
 	}
 	if(args[0] === "invite"){
@@ -1504,17 +1508,30 @@ bot.on("message", async message => {
 	}
 	if(args[0] === "join"){
 	let invited = message.guild.roles.find(r => r.name === "Invited");
+	if(!message.member.nickname) return message.reply("Please set a nickname with !nickname (fortnite name) without brackets.");
 	if(!args[1]) return message.reply("!t join (team name) without brackets.");
-	if(message.member.nickname.includes("[")) return message.reply("You are in a team, do !t disband");
+	if(message.member.nickname.includes("[")) return message.reply("You are in a team, do !t disband or !t leave");
 	if(!message.member.roles.find(r => r.name === "Invited")) return message.reply("Sorry, i cant do that.");
 	if(args[1].length > 3){
 	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
-	message.reply(`You have joined ${args[1].toUpperCase()}`)
+	message.reply(`You have joined ${args[1].toUpperCase()}`);
 	message.member.removeRole(message.guild.roles.find(r => r.name === "Invited"));
 	
 	}else{
 	message.reply("Error.");
 	}
+	}
+	if(args[0] === "leave"){
+	
+	if(!args[1]) return message.reply("Usage !t leave (team name) without brackets.");
+	
+	if(!message.member.nickname.includes(`${args[1]}]`)) return message.reply("You cannot leave a team that you're not in.");
+	if(message.member.nickname.includes("*")) return message.reply("The owner of a team must use !t disband");
+		
+	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
+	message.reply(`You have left **${args[1]}**.`);
+	
+	
 	}
 
 		
