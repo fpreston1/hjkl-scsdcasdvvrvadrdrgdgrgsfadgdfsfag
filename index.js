@@ -1439,6 +1439,7 @@ bot.on("message", async message => {
 	let error = new Discord.RichEmbed()
 	.setTitle("Invalid Usage!")
 	.setDescription("Correct Usage: *!t kick | !t invite | !t create | !t disband | !t join*")
+	.addField("**NOTE:**", "Remember, for this to work properly, please set a nickname, with !nickname (your fortnite name) without brackets.")
 	.setColor(6812512);
 	if(!args[0]) return message.reply(error);   
 	if(args[0] === "create"){
@@ -1463,6 +1464,8 @@ bot.on("message", async message => {
 	}else{
 	return message.reply("!t disband (team name) without brackets!");
 	}
+	}else{
+	return message.reply("You cannot do this!");
 	}
 	}
 	if(args[0] === "invite"){
