@@ -64,7 +64,7 @@ bot.on("message", async message => {
 		}
 	}
 	if(message.channel.id === "486337146106675202" && message.member.roles.find(r => r.name === "Scrim Staff")){
-		if(message.contains("-")){
+		if(message.content.contains("-")){
 		message.delete();
 		message.channel.send("------------------------------------------");
 		let servericon = bot.user.displayAvatarURL;
