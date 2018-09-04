@@ -1439,6 +1439,7 @@ bot.on("message", async message => {
 	let error = new Discord.RichEmbed()
 	.setTitle("Invalid Usage!")
 	.setDescription("Correct Usage: *!t kick | !t invite | !t create | !t disband | !t join*")
+	.setColor(6812512);
 	if(!args[0]) return message.reply(error);   
 	if(args[0] === "create"){
 	if(message.member.nickname.includes("[")) return message.reply("You are already in a team");
