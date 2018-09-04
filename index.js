@@ -63,6 +63,28 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
+	if(message.channel.id === "486337146106675202" && message.member.roles.find(r => r.name === "Scrim Staff")){
+		if(message.contains("-")){
+		message.delete();
+		message.channel.send("------------------------------------------");
+		let servericon = bot.user.displayAvatarURL;
+		let hosticon = message.author.displayAvatarURL;
+		let announcement = new Discord.RichEmbed()
+		.setTitle("Announcement!")
+		.setThumbnail(servericon)
+		.setDescription("**Join Snipe Countdown in 10 Minutes!**")
+		.addField("Snipes are starting soon!", "*Be sure to join the talk channel!*", true)
+		.setFooter("Please be ready", hosticon)
+		.setTimestamp()
+		.setColor(16760937);
+			
+		message.channel.send("@everyone @here @Scrimmer").then(msg => msg.delete(500));
+		await message.channel.send(announcement);
+			
+		message.channel.send("------------------------------------------");
+		}
+	   
+	   }
 	if(message.channel.id === "482044199504707584"){
 		if(message.content || banMSG.includes(`!`)){
 			message.delete();
