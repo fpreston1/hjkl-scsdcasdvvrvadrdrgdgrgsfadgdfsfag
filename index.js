@@ -293,7 +293,7 @@ bot.on("message", async message => {
 		message.delete();
 		if(!username) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
 		if(username.length > 16) return message.channel.send("Fortnite nicknames ONLY please.").then(msg => msg.delete(2000));
-		if(!username.includes("[" || "]" || "*")){
+		if(!username.content.includes("[" || "]" || "*")){
 		message.member.setNickname(username);
 		message.reply(`All set! Your nickname has been changed to "${username}"`).then(msg => msg.delete(2000));
 	}
