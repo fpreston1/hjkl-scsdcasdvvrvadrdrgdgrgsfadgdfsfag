@@ -737,7 +737,7 @@ bot.on("message", async message => {
 		for(const codeRoles of splitCodeRoles) {
 			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter(`[Live] With ${allCodeRoles.length} matches.`);
 			for(const role of codeRoles) {
-				const membersString = role.members.map(m => m.user.nickname).join("\n");
+				const membersString = role.members.map(m => m.user.tag).join("\n");
 				eb.addField(`ID: ${role.name}`, membersString, true);
 			}
 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
@@ -1506,7 +1506,8 @@ bot.on("message", async message => {
 	let invited = message.guild.roles.find(r => r.name === "Invited");
 	if(!args[1]) return message.reply("!t join (team name) without brackets.");
 	if(message.member.nickname.includes("[")) return message.reply("You are in a team, do !t disband");
-	if(message.member.roles.has(invited) && args[1].length > 3){
+	if(!message.member.roles.has(invited)) return message.reply("Sorry, i cant do that.");
+	if(args[1].length > 3){
 	message.member.setNickname(`${args[1].toUpperCase()} ${message.member.nickname}`);
 	message.reply(`You have joined ${args[1].toUpperCase()}`)
 	
