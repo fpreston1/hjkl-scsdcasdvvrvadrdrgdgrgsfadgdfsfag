@@ -1442,7 +1442,10 @@ bot.on("message", async message => {
 	.setColor(6812512);
 	if(!args[0]) return message.reply(error);   
 	if(args[0] === "create"){
-	if(message.member.nickname.includes("[")) return message.reply("You are already in a team");
+	if(message.member.nickname.includes("[" && "]")){
+	message.reply("You are already in a team!");
+		return;
+	}
 	if(!args[1]) return;
 	if(args[1].length <= 3) return message.reply("More than 3 letters please.");
 	if(args[1]){
