@@ -290,7 +290,7 @@ bot.on("message", async message => {
 	if(cmd === `${prefix}nickname` && message.channel.id != "478949150340153358") {
 		
 		let username = args.slice(0).join(" ");
-
+		if(username.includes("[" || "]" || "*")) return message.reply("Cannot use this nickname.");
 		message.delete();
 		if(!username) return message.channel.send("Please enter your Fortnite name.").then(msg => msg.delete(2000));
 		if(username.length > 16) return message.channel.send("Fortnite nicknames ONLY please.").then(msg => msg.delete(2000));
@@ -1483,10 +1483,11 @@ bot.on("message", async message => {
 	
 	}
 	if(args[0] === "join" && message.member.roles.has(message.guild.roles.find("name", "Invited"))){
-	if(message.member.nickname.includes("[")) return message.reply("You are already in a team.");
+	if(message.member.nickname.includes("[" && "]")) return message.reply("You are already in a team.");
 	if(!args[1]) return message.reply("!t join (team name) without brackets.");
 	if(args[1] > 3){
 	message.member.setNickname(`[${args[1].toUpperCase()}] ${message.member.nickname}`);
+	message.reply(`You have joined ${args[1].toUpperCase()}`);
 	}
 	
 	}
