@@ -1462,7 +1462,7 @@ bot.on("message", async message => {
 	}
 	if(args[0] === "disband"){
 	if(!args[1]) return message.reply("Please use !t disband (team name) without brackets.");
-	if(!message.member.nickname.includes(`${args[1]}]`)) return message.reply("Cant do that.");
+	if(!message.member.nickname.includes(`${args[1].toUpperCase()}]`)) return message.reply("Cant do that.");
 	if(message.member.nickname.includes("[" && args[1] && "*")){
 	if(args[1]){
 	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
@@ -1471,8 +1471,6 @@ bot.on("message", async message => {
 	}else{
 	return message.reply("!t disband (team name) without brackets!");
 	}
-	}else{
-	return message.reply("You are not the owner of the team, you can do !t leave");
 	}
 	}
 	if(args[0] === "invite"){
@@ -1500,7 +1498,7 @@ bot.on("message", async message => {
 	let ruser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
 	if(ruser) return message.reply("Try !t kick (@user) (team) without brackets.");
 	if(args[0] === "kick" && ruser && args[2]){
-	if(ruser.nickname.includes("[") && ruser.nickname.includes(args[2])){
+	if(ruser.nickname.includes("[") && ruser.nickname.includes(args[2].toUpperCase())){
 	ruser.setNickname(message.member.nickname.split(/ +/g).splice(2).join(" "));
 	message.reply(`${ruser} has been kicked from ${args[2]}`);
 	}
