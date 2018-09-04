@@ -1453,7 +1453,7 @@ bot.on("message", async message => {
 	}
 	if(args[0] === "disband"){
 	if(!args[1]) return message.reply("Please use !t disband (team name) without brackets.");
-	if(message.member.nickname.includes("[" && args[1])){
+	if(message.member.nickname.includes("[" && args[1] && "*")){
 	if(args[1]){
 	message.member.setNickname(message.member.nickname.split(/ +/g).splice(1).join(" "));
 	message.reply(`You have disbanded **${args[1].toUpperCase()}**`);
