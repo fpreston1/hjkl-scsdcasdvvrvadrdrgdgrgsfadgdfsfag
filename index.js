@@ -137,7 +137,7 @@ bot.on("message", async message => {
 	
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 
-	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`) && !banMSG.includes("!dead")) {
+	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
 	message.delete();
 	}else{
 	message.delete();
@@ -172,7 +172,7 @@ bot.on("message", async message => {
 	
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
-	if(code.length != 3) return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
+	if(code.length != 3 || !message.content === "!dead") return message.author.send("Please only send your last3 in the **scrim-last3** channel!");
 
 	let nickname = message.member.nickname;
 	if(scrimrole){
