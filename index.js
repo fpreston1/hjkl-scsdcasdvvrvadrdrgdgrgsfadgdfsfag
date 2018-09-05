@@ -179,6 +179,7 @@ bot.on("message", async message => {
 				const membersString = role.members.map(m => m.user.tag).join("\n");
 				eb.setDescription(membersString);
 			}
+		}
 			
 	
 	
