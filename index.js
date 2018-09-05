@@ -147,46 +147,46 @@ bot.on("message", async message => {
 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.channel.bulkDelete(10);
 	}
-	if(message.content === "!dead"){
-	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
-	let members = [];
-	if(message.guild.roles.find(r => r.name === "Dead")){
-	message.guild.roles.find(r => r.name === "Dead").members.forEach(member =>{
-		members.push(member.tag)
-	});
-	}
-// 	let role = message.guild.roles.find(r => r.name === "Dead")
-// 	let result = role.members.map(m => m.user.tag).join("\n")
-// 	let dead = new Discord.RichEmbed()
-// 	.setTitle("Dead Players")
-// 	.setDescription(result)
-// 	.setColor();
-	let last3chan = message.guild.channels.find("name", "scrim-last3");
-	last3chan.bulkDelete(1);
-	const tm = ms => new Promise(res => setTimeout(res, ms))
-	await tm(300);
+// 	if(message.content === "!dead"){
+// 	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
+// 	let members = [];
+// 	if(message.guild.roles.find(r => r.name === "Dead")){
+// 	message.guild.roles.find(r => r.name === "Dead").members.forEach(member =>{
+// 		members.push(member.tag)
+// 	});
+// 	}
+//  	let role = message.guild.roles.find(r => r.name === "Dead")
+//  	let result = role.members.map(m => m.user.tag).join("\n")
+//  	let dead = new Discord.RichEmbed()
+//  	.setTitle("Dead Players")
+//  	.setDescription(result)
+//  	.setColor();
+// 	let last3chan = message.guild.channels.find("name", "scrim-last3");
+// 	last3chan.bulkDelete(1);
+// 	const tm = ms => new Promise(res => setTimeout(res, ms))
+// 	await tm(300);
 		
-	const allCodeRoles1 = message.guild.roles
-		.filter(r => r.name === "Dead");
-		const SPLIT_LENGTH1 = 25;
-		const splitCodeRoles1 = [];
-		for(let i = 0; i < allCodeRoles1.length; i += SPLIT_LENGTH1){
-			splitCodeRoles1.push(allCodeRoles1.slice(i, i + SPLIT_LENGTH1));
-		}
-		for(const codeRoles of splitCodeRoles1) {
-			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Dead Players");
-			for(const role of codeRoles) {
-				const membersString = role.members.map(m => m.user.tag).join("\n");
-				eb.setDescription(membersString);
-			}
-		}
+// 	const allCodeRoles1 = message.guild.roles
+// 		.filter(r => r.name === "Dead");
+// 		const SPLIT_LENGTH1 = 25;
+// 		const splitCodeRoles1 = [];
+// 		for(let i = 0; i < allCodeRoles1.length; i += SPLIT_LENGTH1){
+// 			splitCodeRoles1.push(allCodeRoles1.slice(i, i + SPLIT_LENGTH1));
+// 		}
+// 		for(const codeRoles of splitCodeRoles1) {
+// 			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Dead Players");
+// 			for(const role of codeRoles) {
+// 				const membersString = role.members.map(m => m.user.tag).join("\n");
+// 				eb.setDescription(membersString);
+// 			}
+// 		}
 			
 	
 	
 	
 	
 	
-	}
+// 	}
 	
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
@@ -858,26 +858,6 @@ bot.on("message", async message => {
 		sentMessage.edit(nextgameEmbed);
 		await startTimeout(1000 * 60);
 	}
-	let scrimrole = message.guild.roles.find(r => r.name === "Dead");
-		
-	scrimrole = await message.guild.createRole({
-				name: "Dead",
-				color: 6812512,
-				permissions:[]
-				
-			})
-	message.guild.channels.forEach(async (channel, id) => {
-				await channel.overwritePermissions(scrimrole, {
-					SEND_MESSAGES: false,
-					ADD_REACTIONS: false
-				});
-
-
-			});
-		
-	message.channel.send("You can do !dead if you have died.");
-
-		
 	
 		
 	
