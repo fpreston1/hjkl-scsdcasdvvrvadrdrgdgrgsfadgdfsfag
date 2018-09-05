@@ -1650,7 +1650,7 @@ bot.on("message", async message => {
 				oldEmbed.edit(newEmbed);
 			}
 		}	
-	}
+	
 
 		
 		
