@@ -1632,7 +1632,7 @@ bot.on("message", async message => {
 		if(!message.guild.roles.find(r => r.name === "Dead")) return;
 	   	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
 		const channel = message.guild.channels.find("name", "scrim-last3");
-		const oldEmbed = channel.messages.last();
+		const oldEmbed = message.embeds[0];
 		
 		const allCodeRoles = message.guild.roles
 		.filter(r => r.name === "Dead");
