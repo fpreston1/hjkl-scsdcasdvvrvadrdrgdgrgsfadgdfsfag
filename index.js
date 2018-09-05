@@ -146,6 +146,11 @@ bot.on("message", async message => {
 	let code = message.content.toUpperCase();
 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.channel.bulkDelete(10);
+		if(message.guild.roles.find(r => r.name === "Dead")){
+		message.guild.roles.find(role => role.name === "Dead").delete("yeet");
+
+		   
+		   }
 	}
 // 	if(message.content === "!dead"){
 // 	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
@@ -858,6 +863,22 @@ bot.on("message", async message => {
 		sentMessage.edit(nextgameEmbed);
 		await startTimeout(1000 * 60);
 	}
+	let dead = new Discord.RichEmbed()
+	.setTitle("Dead Players")
+	.setColor("#ff0000");
+		
+	last3chan.send(dead);
+	message.guild.createRole({
+				name: "Dead",
+				color: "#ff0000",
+				permissions:[]
+				
+			})
+	last3chan.overwritePermissions("Dead", {
+					SEND_MESSAGES: false,
+					ADD_REACTIONS: false
+				});
+	
 	
 		
 	
@@ -1605,6 +1626,37 @@ bot.on("message", async message => {
 // 	return;
 // 	}
 	
+	if(cmd === `${prefix}dead`){
+		if(message.channel.id != "478949150340153358") return;
+		if(!message.guild.roles.find(r => r.name === "Dead")) return;
+	   	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
+		const channel = message.guild.channels.find("name", "scrim-last3");
+		const oldEmbed = channel.messages.last();
+		
+		const allCodeRoles = message.guild.roles
+		.filter(r => r.name === "Dead");
+		const SPLIT_LENGTH = 25;
+		const splitCodeRoles = [];
+		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
+			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
+		}
+		for(const codeRoles of splitCodeRoles) {
+			let newEmbed = new Discord.RichEmbed()
+			.setColor("#ff0000")
+			.setTitle("Dead Players");
+			for(const role of codeRoles) {
+				const membersString = role.members.map(m => m.user.tag).join("\n");
+				newEmbed.setDescription(membersString);
+				oldEmbed.edit(newEmbed);
+			}
+		}	
+	}
+
+		
+		
+		
+	   return;
+	   }
 	
 	
 
