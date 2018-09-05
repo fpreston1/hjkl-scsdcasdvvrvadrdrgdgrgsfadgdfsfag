@@ -7,7 +7,24 @@ const YTDL = require("ytdl-core");
 const opusscript = require("opusscript");
 const xp = require("./xp.json");
 const fs = require("fs");
+bot.commands = new Discord.Collection();
 
+fs.readdir("./commands/", (err, files) => {
+	
+	if(err) console.log(err);
+	
+	let jsfile = files.filter(f => f.split(".").pop() === "js")
+	if(jsfile.length <= 0){
+	console.log("Couldnt find commands.");
+	return;
+	}
+	
+	jsfile.forEach((f, i) =>{
+		let props = require(`./commands/${f}`);
+		console.log(`${f} loaded!`);
+		bot.commands.set(props.help.name, props);
+	});
+});
 
 bot.on("ready", async () => {
 	console.log(`${bot.user.username} is online!`);
@@ -1441,35 +1458,35 @@ bot.on("message", async message => {
 	
 
 
-	if(cmd === `${prefix}report` && message.channel.id != "478949150340153358"){
-			if(message.channel.id === "481865517393510402") return;
-		if(message.channel.id === "482044199504707584") return;
+// 	if(cmd === `${prefix}report` && message.channel.id != "478949150340153358"){
+// 			if(message.channel.id === "481865517393510402") return;
+// 		if(message.channel.id === "482044199504707584") return;
 
-	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-	if(!rUser) return message.channel.send("Couldn't find the specified user.");
+// 	let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+// 	if(!rUser) return message.channel.send("Couldn't find the specified user.");
 	
-	let reason = args.join(" ").slice(22);
+// 	let reason = args.join(" ").slice(22);
 
-	let reportEmbed = new Discord.RichEmbed()
-	.setDescription("Reports")
-	.setColor(6812512)
-	.addField("Reported User", `${rUser} with ID: ${rUser.id}`)
-	.addField("Reported By", `${message.author} with ID: ${message.author.id}`)
-	.addField("Channel", message.channel)
-	.addField("Time", message.createdAt)
-	.addField("Reason", reason);
+// 	let reportEmbed = new Discord.RichEmbed()
+// 	.setDescription("Reports")
+// 	.setColor(6812512)
+// 	.addField("Reported User", `${rUser} with ID: ${rUser.id}`)
+// 	.addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+// 	.addField("Channel", message.channel)
+// 	.addField("Time", message.createdAt)
+// 	.addField("Reason", reason);
 
 
-	let reportschannel = message.guild.channels.find(`name`, "reports");
-	if(!reportschannel) return message.channel.send("Couldn't find reports channel");
+// 	let reportschannel = message.guild.channels.find(`name`, "reports");
+// 	if(!reportschannel) return message.channel.send("Couldn't find reports channel");
 	
-	message.delete().catch(O_o=>{});
-	message.reply("Your report has been sent!");
-	reportschannel.send(reportEmbed);
+// 	message.delete().catch(O_o=>{});
+// 	message.reply("Your report has been sent!");
+// 	reportschannel.send(reportEmbed);
 
 
-	return;
-}
+// 	return;
+// }
 
 
 
