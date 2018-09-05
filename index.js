@@ -684,7 +684,9 @@ bot.on("message", async message => {
 //	
 
 	
+	if(message.guild.roles.find(role => role.name === "Dead")){
 	message.guild.roles.find(role => role.name === "Dead").delete("oh");
+	}
 	let scrimlast3chan = message.guild.channels.find(`name`, "scrim-last3");
 		scrimlast3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: false
