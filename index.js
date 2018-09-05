@@ -133,6 +133,30 @@ bot.on("message", async message => {
 		return;
 	   	
 	   }
+	if(message.content === "!dead"){
+	if(!message.guild.roles.find(r => r.name === "Dead")) return;
+	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
+	const channel = message.guild.channels.find("name", "scrim-last3");
+	const oldEmbed = message.embeds[0];
+		
+		const allCodeRoles = message.guild.roles
+		.filter(r => r.name === "Dead");
+		const SPLIT_LENGTH = 25;
+		const splitCodeRoles = [];
+		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
+			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
+		}
+		for(const codeRoles of splitCodeRoles) {
+			let newEmbed = new Discord.RichEmbed()
+			.setColor("#ff0000")
+			.setTitle("Dead Players");
+			for(const role of codeRoles) {
+				const membersString = role.members.map(m => m.user.tag).join("\n");
+				newEmbed.setDescription(membersString);
+				oldEmbed.edit(newEmbed);
+			}
+		}	
+	}
 		
 	
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
@@ -195,7 +219,8 @@ bot.on("message", async message => {
 	
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
-	if(code.length != 3 || message.content === "!dead") return;
+	if(code.length != 3) return;
+	
 
 	let nickname = message.member.nickname;
 	if(scrimrole){
@@ -1627,37 +1652,37 @@ bot.on("message", async message => {
 // 	return;
 // 	}
 	
-	if(cmd === `${prefix}dead`){
-		if(message.channel.id != "478949150340153358") return;
-		if(!message.guild.roles.find(r => r.name === "Dead")) return;
-	   	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
-		const channel = message.guild.channels.find("name", "scrim-last3");
-		const oldEmbed = message.embeds[0];
+// 	if(cmd === `${prefix}dead`){
+// 		if(message.channel.id != "478949150340153358") return;
+// 		if(!message.guild.roles.find(r => r.name === "Dead")) return;
+// 	   	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
+// 		const channel = message.guild.channels.find("name", "scrim-last3");
+// 		const oldEmbed = message.embeds[0];
 		
-		const allCodeRoles = message.guild.roles
-		.filter(r => r.name === "Dead");
-		const SPLIT_LENGTH = 25;
-		const splitCodeRoles = [];
-		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
-			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
-		}
-		for(const codeRoles of splitCodeRoles) {
-			let newEmbed = new Discord.RichEmbed()
-			.setColor("#ff0000")
-			.setTitle("Dead Players");
-			for(const role of codeRoles) {
-				const membersString = role.members.map(m => m.user.tag).join("\n");
-				newEmbed.setDescription(membersString);
-				oldEmbed.edit(newEmbed);
-			}
-		}	
+// 		const allCodeRoles = message.guild.roles
+// 		.filter(r => r.name === "Dead");
+// 		const SPLIT_LENGTH = 25;
+// 		const splitCodeRoles = [];
+// 		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
+// 			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
+// 		}
+// 		for(const codeRoles of splitCodeRoles) {
+// 			let newEmbed = new Discord.RichEmbed()
+// 			.setColor("#ff0000")
+// 			.setTitle("Dead Players");
+// 			for(const role of codeRoles) {
+// 				const membersString = role.members.map(m => m.user.tag).join("\n");
+// 				newEmbed.setDescription(membersString);
+// 				oldEmbed.edit(newEmbed);
+// 			}
+// 		}	
 	
 
 		
 		
 		
-	   return;
-	   }
+// 	   return;
+// 	   }
 	
 	
 
