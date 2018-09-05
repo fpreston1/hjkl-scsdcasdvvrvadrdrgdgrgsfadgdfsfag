@@ -174,7 +174,7 @@ bot.on("message", async message => {
 			splitCodeRoles1.push(allCodeRoles1.slice(i, i + SPLIT_LENGTH1));
 		}
 		for(const codeRoles of splitCodeRoles1) {
-			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Dead Players");
+			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Dead Players").setColor("ff0000");
 			for(const role of codeRoles) {
 				const membersString = role.members.map(m => m.user.tag).join("\n");
 				eb.setDescription(membersString);
