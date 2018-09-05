@@ -137,16 +137,37 @@ bot.on("message", async message => {
 	
 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 
-	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
+	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`) && !banMSG.includes("!dead")) {
 	message.delete();
 	}else{
 	message.delete();
-	message.author.send("**Please ONLY send last3 Digits in the scrim-last3 Channel!**");
 	}
 	//yeet
 	let code = message.content.toUpperCase();
 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.channel.bulkDelete(10);
+	}
+	if(message.content === "!dead"){
+	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
+	let members = [];
+	message.guild.roles.find(r => r.name === "Dead").members.forEach(member =>{
+		members.push(member.tag)
+	});
+	let result = members.join("\n")
+	let dead = new Discord.RichEmbed()
+	.setTitle("Dead Players")
+	.setDescription(result)
+	.setColor();
+		
+	
+	let last3chan = message.guild.channels.find("name", "scrim-last3");
+	last3chan.bulkDelete(1);
+	const tm = ms => new Promise(res => setTimeout(res, ms))
+	await tm(300);
+	
+	last3chan.send(dead);
+	
+	
 	}
 	
 	let scrimrole = message.guild.roles.find(`name`, code);
@@ -799,7 +820,7 @@ bot.on("message", async message => {
 	.setDescription("Please vote below.")
 	.setFooter("Note: The host will decide a restart!")
 	.setColor(16097625);
-	let msg = await last3chan.send(testEmbed).then(msg => msg.delete(20000));
+	let msg = await last3chan.send(testEmbed);
 	await msg.react(agree);
 	msg.react(disagree);
 	
@@ -1559,28 +1580,28 @@ bot.on("message", async message => {
 	
 	}
 	
-	if(cmd === `${prefix}dead` && message.channel.id === "478949150340153358"){
-	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
-	let members = [];
-	message.guild.roles.find(r => r.name === "Dead").members.forEach(member =>{
-		members.push(member.tag)
-	});
-	let result = members.join("\n")
-	let dead = new Discord.RichEmbed()
-	.setTitle("Dead Players")
-	.setDescription(result)
-	.setColor();
+// 	if(cmd === `${prefix}dead` && message.channel.id === "478949150340153358"){
+// 	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
+// 	let members = [];
+// 	message.guild.roles.find(r => r.name === "Dead").members.forEach(member =>{
+// 		members.push(member.tag)
+// 	});
+// 	let result = members.join("\n")
+// 	let dead = new Discord.RichEmbed()
+// 	.setTitle("Dead Players")
+// 	.setDescription(result)
+// 	.setColor();
 		
 	
-	let last3chan = message.guild.channels.find("name", "scrim-last3");
-	last3chan.bulkDelete(1);
-	const tm = ms => new Promise(res => setTimeout(res, ms))
-	await tm(300);
+// 	let last3chan = message.guild.channels.find("name", "scrim-last3");
+// 	last3chan.bulkDelete(1);
+// 	const tm = ms => new Promise(res => setTimeout(res, ms))
+// 	await tm(300);
 	
-	last3chan.send(dead);
+// 	last3chan.send(dead);
 	
-	return;
-	}
+// 	return;
+// 	}
 	
 	
 	
