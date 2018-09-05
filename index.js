@@ -150,9 +150,11 @@ bot.on("message", async message => {
 	if(message.content === "!dead"){
 	message.member.addRole(message.guild.roles.find(r => r.name === "Dead"));
 	let members = [];
+	if(message.guild.roles.find(r => r.name === "Dead")){
 	message.guild.roles.find(r => r.name === "Dead").members.forEach(member =>{
 		members.push(member.tag)
 	});
+	}
 	let result = members.join("\n")
 	let dead = new Discord.RichEmbed()
 	.setTitle("Dead Players")
