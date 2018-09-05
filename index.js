@@ -155,7 +155,7 @@ bot.on("message", async message => {
 		members.push(member.tag)
 	});
 	}
-	let result = members.join("\n")
+	let result = role.members.map(m => m.user.tag).join("\n")
 	let dead = new Discord.RichEmbed()
 	.setTitle("Dead Players")
 	.setDescription(result)
