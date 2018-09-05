@@ -849,21 +849,14 @@ bot.on("message", async message => {
 	await msg.react(agree);
 	msg.react(disagree);
 	
-		
+	
 		
 		
 		
 	const endTime = Date.now() + 1000 * 60 * 25;
 	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
 	let now;
-	while( (now = Date.now()) < endTime ) {
-		let minsRemaining = (endTime - now) / (1000 * 60);
-		minsRemaining = Math.floor(minsRemaining);
-		nextgameEmbed.setDescription(`*${minsRemaining} Minutes.*`)
-		sentMessage.edit(nextgameEmbed);
-		await startTimeout(1000 * 60);
-	}
-	let dead = new Discord.RichEmbed()
+		let dead = new Discord.RichEmbed()
 	.setTitle("Dead Players")
 	.setColor("#ff0000");
 		
@@ -879,6 +872,14 @@ bot.on("message", async message => {
 					ADD_REACTIONS: false
 				});
 	
+	while( (now = Date.now()) < endTime ) {
+		let minsRemaining = (endTime - now) / (1000 * 60);
+		minsRemaining = Math.floor(minsRemaining);
+		nextgameEmbed.setDescription(`*${minsRemaining} Minutes.*`)
+		sentMessage.edit(nextgameEmbed);
+		await startTimeout(1000 * 60);
+	}
+
 	
 		
 	
