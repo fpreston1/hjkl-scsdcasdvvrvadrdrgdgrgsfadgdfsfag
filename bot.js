@@ -1,8 +1,10 @@
 const Discord = require("discord.js");
 const token = process.env.BOT_TOKEN;
 const fs = require("fs");
+const botconfig = require("./botconfig.json");
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
+
 
  
 fs.readdir("./commands/", (err, files) => {
