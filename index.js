@@ -752,7 +752,6 @@ bot.on("message", async message => {
 		scrimlast3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: false
 	})
-	scrimlast3chan.send("*Chat is now unlocked!*");
 	let nficon = bot.user.displayAvatarURL;
 	let negicon = message.author.displayAvatarURL;
 	let todaysDate = new Date();
