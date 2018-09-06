@@ -29,6 +29,8 @@ bot.on("ready", async () => {
 });
  
 bot.on("message", async message => {
+bot.commands = new Discord.Collection();
+
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
  
