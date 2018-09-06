@@ -875,8 +875,8 @@ bot.on("message", async message => {
 	last3chan.send("*Chat locked...*");
 		
 	await startTimeout(3000);
-		const agree = "";
-	const disagree = "";
+		const agree = "👍";
+	const disagree = "👎";
 
 	let testEmbed = new Discord.RichEmbed()
 	.setTitle("[Poll] Should We Restart?")
