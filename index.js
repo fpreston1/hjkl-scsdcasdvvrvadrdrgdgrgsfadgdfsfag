@@ -14,14 +14,30 @@ bot.on("ready", async () => {
 	bot.user.setActivity("to your commands!", {type: "LISTENING"});
 });
 
+
+
 bot.on('guildMemberAdd', member => {
 		let platChannel = member.guild.channels.find('name', 'choose-platform');
 		var role = member.guild.roles.find('name', 'Starter');
+
+	
 	member.addRole(role);
-	member.guild.channels.find('name', 'choose-platform').sendMessage(member.toString() + " Set platform!");
+	
+	member.guild.channels.find('name', 'choose-platform')
+		.sendMessage(member.toString() + " Set platform!");
 	platChannel.bulkDelete(1);
 	
+
+	
+
 });
+
+
+
+
+
+
+
 
 bot.on("message", async message => {
 	if(message.author.bot) return;
@@ -71,8 +87,8 @@ bot.on("message", async message => {
 			message.delete();
 		}
 	}
-	if(message.channel.id === "486337146106675202" && message.member.roles.
-	   find(r => r.name === "Scrim Staff")){
+	if(message.channel.id === "486337146106675202" && message.member.roles
+	   .find(r => r.name === "Scrim Staff")){
 		if(message.content.includes("-")){
 		message.delete();
 		message.channel.send("------------------------------------------");
@@ -117,17 +133,12 @@ bot.on("message", async message => {
 	}else{
 	message.delete();
 	}
-	//yeet
 	let code = message.content.toUpperCase();
 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
 		message.channel.bulkDelete(10);
 
 	}
 
-	
-	
-	
-	
 	
 	let scrimrole = message.guild.roles.find(`name`, code);
 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
@@ -175,10 +186,8 @@ bot.on("message", async message => {
 		
 		}
 
-
 	}
 	   
-
 
 	
 	if(cmd === `${prefix}region`){
@@ -191,6 +200,14 @@ bot.on("message", async message => {
 	
 	return;
 }
+	
+	
+	
+
+
+
+	
+});
 
 
 
