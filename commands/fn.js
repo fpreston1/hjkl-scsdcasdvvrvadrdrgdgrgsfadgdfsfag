@@ -1,6 +1,9 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js"); 
 
 module.exports.run = async (bot, message, args) => {
+	const fortnite = require("fortnite");
+	const apikey = process.env.APIKEY;
+
 
   if(message.channel.id === "478949150340153358") return;
   if(message.channel.id === "482044199504707584") return;
