@@ -134,74 +134,74 @@ bot.on("message", async message => {
 		}
 	}
 	
-// 	if(message.channel.id === "478949150340153358"){
-// 	if(message.content === "!start" && message.member.roles.find(r => r.name === "Scrim Staff")){
-// 		message.reply("Please use the #scrim-chat channel for that!").then(msg => msg.delete(2000));
+ 	if(message.channel.id === "478949150340153358"){
+ 	if(message.content === "!start" && message.member.roles.find(r => r.name === "Scrim Staff")){
+ 		message.reply("Please use the #scrim-chat channel for that!").then(msg => msg.delete(2000));
 		
-// 		return;
+ 		return;
 	   	
-// 	   }
+ 	   }
 
 	
-// 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
+ 	let scrimChannel3 = message.guild.channels.find(`name`, "last3-pulse");
 
-// 	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
-// 	message.delete();
-// 	}else{
-// 	message.delete();
-// 	}
-// 	//yeet
-// 	let code = message.content.toUpperCase();
-// 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
-// 		message.channel.bulkDelete(10);
+ 	if(message.content && !banMSG.includes(` `) && banMSG.length < 4 && banMSG.length > 2 && !banMSG.includes(`!`) && !banMSG.includes(`.`) && !banMSG.includes(`/`)) {
+ 	message.delete();
+ 	}else{
+ 	message.delete();
+	}
+ 	let code = message.content.toUpperCase();
+ 	if(message.content === "!cls" && message.member.roles.find(r => r.name === "Scrim Staff")){
+ 		message.channel.bulkDelete(10);
 
-// 	}
+ 	}
 
-// 	let scrimrole = message.guild.roles.find(`name`, code);
-// 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
-// 	if(code.length != 3) return;
+ 	let scrimrole = message.guild.roles.find(`name`, code);
+ 	if(message.member.roles.has(scrimrole)) return message.author.send("You already typed in a game code!");
+ 	if(code.length != 3) return;
 	
 
-// 	let nickname = message.member.nickname;
-// 	if(scrimrole){
+ 	let nickname = message.member.nickname;
+ 	if(scrimrole){
 	
-// 	message.member.addRole(message.guild.roles.find("name", code))
-// 	}
-// 	if(!scrimrole){
-// 		try {
-// 			scrimrole = await message.guild.createRole({
-// 				name: `${code}`,
-// 				color: 6812512,
-// 				permissions:[]
+ 	message.member.addRole(message.guild.roles.find("name", code))
+ 	}
+ 	if(!scrimrole){
+ 		try {
+ 			scrimrole = await message.guild.createRole({
+ 				name: `${code}`,
+ 				color: 6812512,
+ 				permissions:[]
 				
-// 			})
-// 			message.member.addRole(message.guild.roles.find("name", code));
+ 			})
+ 			message.member.addRole(message.guild.roles.find("name", code));
 
-// 			message.guild.channels.forEach(async (channel, id) => {
-// 				await channel.overwritePermissions(scrimrole, {
-// 					SEND_MESSAGES: false,
-// 					ADD_REACTIONS: false
-// 				});
-
-
-// 			});
-
-// 		}catch(e){
-// 			console.log(e.stack);
-// 		}
+ 			message.guild.channels.forEach(async (channel, id) => {
+ 				await channel.overwritePermissions(scrimrole, {
+ 					SEND_MESSAGES: false,
+ 					ADD_REACTIONS: false
+ 				});
 
 
-// 		const eOut = ms => new Promise(res => setTimeout(res, ms))
-// 		await eOut(70000);
+ 			});
+
+ 		}catch(e){
+ 			console.log(e.stack);
+ 		}
+
+
+ 		const eOut = ms => new Promise(res => setTimeout(res, ms))
+ 		await eOut(70000);
 		
 		
 
-// 		message.guild.roles.find(role => role.name === code).delete("yeet");
+ 		message.guild.roles.find(role => role.name === code).delete("yeet");
+		}
 		
 		
 		
 		
-	});
+
 
 
 
