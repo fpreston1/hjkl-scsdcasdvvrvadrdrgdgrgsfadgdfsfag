@@ -28,19 +28,7 @@ bot.on("ready", async () => {
   bot.user.setActivity("to your commands!", {type: "LISTENING"});
 });
  
-bot.on("message", async message => {
-bot.commands = new Discord.Collection();
 
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
- 
-  let prefix = botconfig.prefix;
-  let messageArray = message.content.split(" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
-  if(commandfile) commandfile.run(bot,message,args);
-});
  
 bot.on('guildMemberAdd', member => {
 		let platChannel = member.guild.channels.find('name', 'choose-platform');
