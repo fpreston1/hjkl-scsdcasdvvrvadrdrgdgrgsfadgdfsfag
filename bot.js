@@ -218,6 +218,7 @@ bot.on("message", async message => {
 	
 	return;
 }
+});
 
 
 bot.login(token);
