@@ -7,6 +7,25 @@ const YTDL = require("ytdl-core");
 const opusscript = require("opusscript");
 const xp = require("./xp.json");
 const fs = require("fs");
+bot.commands = new Discord.Collection();
+
+fs.readdir("./commands/", (err, files) => {
+if(err) console.log(err);
+	
+	let jsfile = files.filter(f => f.split(".").pop() === "js")
+	if(jsfile.length <= 0){
+	console.log("Couldnt find commands.");
+	return;
+	}
+	
+	jsfile.forEach((f, i) => {
+		let props = require(`./commands/${f}`);
+		console.log(`${f} loaded!`);
+		
+		bot.commands.set(props.help.name, props);
+	});
+});
+
 
 
 bot.on("ready", async () => {
@@ -47,6 +66,8 @@ bot.on("message", async message => {
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
+	let commandfile = bot.commands.get(cmd.slice(prefix.length));
+	if(commandfile) commandfile.run(bot,message,args);
 	let banMSG = message.content.toUpperCase();
 	
 	let xpAdd = Math.floor(Math.random() * 7) + 8;
