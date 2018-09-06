@@ -74,7 +74,7 @@ bot.on('guildMemberAdd', member => {
 bot.on("message", async message => {
 	if(message.author.bot) return;
 	if(message.channel.type === "dm") return;
-
+	const bot = new Discord.Client({disableEveryone: true});
 	let prefix = botconfig.prefix;
 	let messageArray = message.content.split(" ");
 	let cmd = messageArray[0];
