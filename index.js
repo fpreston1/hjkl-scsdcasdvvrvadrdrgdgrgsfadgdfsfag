@@ -752,6 +752,7 @@ bot.on("message", async message => {
 		scrimlast3chan.overwritePermissions(message.guild.id, {
 	SEND_MESSAGES: false
 	})
+	scrimlast3chan.send("*Chat is now unlocked!*");
 	let nficon = bot.user.displayAvatarURL;
 	let negicon = message.author.displayAvatarURL;
 	let todaysDate = new Date();
@@ -833,7 +834,6 @@ bot.on("message", async message => {
 			})
 			
 		}
-	}
 		
 		
 
@@ -843,30 +843,30 @@ bot.on("message", async message => {
 	.setTitle("**Next snipe in approx...**")
 	.setDescription("*25 Minutes*")
 	.setColor(13859315);
- 	const allCodeRoles = message.guild.roles
- 		.filter(r => (/^\w{3}$/).test(r.name))
- 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
-		.array();
-		const SPLIT_LENGTH = 25;
-		const splitCodeRoles = [];
- 		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
-			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
- 		}
-		for(const codeRoles of splitCodeRoles) {
-			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter(`[Live] With ${allCodeRoles.length} matches.`);
- 			for(const role of codeRoles) {
- 				const membersString = role.members.map(m => m.user.tag).join("\n");
- 				eb.addField(`ID: ${role.name}`, membersString, true);
- 			}
- 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
+// 	const allCodeRoles = message.guild.roles
+// 		.filter(r => (/^\w{3}$/).test(r.name))
+// 		.sort((roleA, roleB) => roleA.name.localeCompare(roleB.name))
+// 		.array();
+// 		const SPLIT_LENGTH = 25;
+// 		const splitCodeRoles = [];
+// 		for(let i = 0; i < allCodeRoles.length; i += SPLIT_LENGTH){
+// 			splitCodeRoles.push(allCodeRoles.slice(i, i + SPLIT_LENGTH));
+// 		}
+// 		for(const codeRoles of splitCodeRoles) {
+// 			let eb = new Discord.RichEmbed().setColor(16776960).setTitle("Game Information").setFooter(`[Live] With ${allCodeRoles.length} matches.`);
+// 			for(const role of codeRoles) {
+// 				const membersString = role.members.map(m => m.user.tag).join("\n");
+// 				eb.addField(`ID: ${role.name}`, membersString, true);
+// 			}
+// 			let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 
- 			last3chan.send(eb);
+// 			last3chan.send(eb);
 			
-			last3chan.overwritePermissions(message.guild.id, {
- 			SEND_MESSAGES: false
- 			})
+// 			last3chan.overwritePermissions(message.guild.id, {
+// 			SEND_MESSAGES: false
+// 			})
 			
- 		}
+// 		}
 	let last3chan = message.guild.channels.find(`name`, "scrim-last3");
 	
 	last3chan.overwritePermissions(message.guild.id, {
@@ -887,15 +887,13 @@ bot.on("message", async message => {
 	await msg.react(agree);
 	msg.react(disagree);
 	
-	
+		
 		
 		
 		
 	const endTime = Date.now() + 1000 * 60 * 25;
 	const sentMessage = await scrimlast3chan.send(nextgameEmbed);
 	let now;
-
-	
 	while( (now = Date.now()) < endTime ) {
 		let minsRemaining = (endTime - now) / (1000 * 60);
 		minsRemaining = Math.floor(minsRemaining);
@@ -903,13 +901,11 @@ bot.on("message", async message => {
 		sentMessage.edit(nextgameEmbed);
 		await startTimeout(1000 * 60);
 	}
-
 	
 		
 	
 	return;
 }
-	
 
 	if(cmd === `${prefix}cls` && message.member.hasPermissions("ADMINISTRATOR")) {
 	message.channel.bulkDelete(10);
